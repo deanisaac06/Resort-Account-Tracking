@@ -90,6 +90,9 @@ The AI summary uses Google's Gemini free tier: create a key at aistudio.google.c
 
 **Hourly runs:** GitHub's built-in schedule can be late or skipped, so each tracker run also has a `next-run` job that waits for the next hh:23 and starts the following run itself (free on a public repo). If the chain ever stops, run Track viral posts once by hand to restart it.
 
+### 7. Monthly history (kept forever)
+`data/history/monthly.csv` gets one row per resort per month, added on the 3rd of each month for the month before (by the hourly run, via `rollup.py`). Columns: followers and change, posts and reels, median and total reel views, median photo likes, **posts_3x** (posts that beat the account's own normal by 3x+), viral and mega counts, and the month's best post. That's about 500 rows a month (~1 MB a year), so it stays small while building up each resort's normal, how often it breaks out, and seasonality over time. To redo a month by hand: `python rollup.py 2026-11`.
+
 ---
 
 ## Running locally
