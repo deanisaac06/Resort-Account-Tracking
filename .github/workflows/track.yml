@@ -18,6 +18,12 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+      - name: History backfill (one-time; pauses tracking until every account's last 200 posts are in)
+        env:
+          PYTHONUNBUFFERED: "1"
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: python backfill.py
       - name: Check accounts
         env:
           PYTHONUNBUFFERED: "1"
