@@ -86,7 +86,7 @@ Setup:
 2. Add the secrets `SMTP_USER` (the Gmail address), `SMTP_PASS` (the app password) and `ALERT_TO` (where emails go; separate several addresses with commas). Optional: `WEEKLY_TO` if the weekly report should go to different people.
 3. To test, open Actions → **Weekly report** → Run workflow. Each report is also saved in `reports/`.
 
-The AI summary uses GitHub Models (free with the workflow's built-in `GITHUB_TOKEN`, no extra secret). The prompt lives at the top of `weekly.py`. On Mondays the hourly tracker skips the 15:00 UTC run so the report has Instagram quota for fresh numbers, preview images and ~40 posts of history per top account.
+The AI summary uses Google's Gemini free tier: create a key at aistudio.google.com/apikey and add it as the secret `GEMINI_API_KEY` (without it the email just skips the summary). The prompt lives at the top of `weekly.py`. On Mondays the hourly tracker skips the 15:00 UTC run so the report has Instagram quota for fresh numbers, preview images and ~40 posts of history per top account.
 
 ---
 
