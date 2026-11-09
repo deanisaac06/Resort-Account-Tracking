@@ -18,9 +18,9 @@ PROFILE_FIELDS = "username,name,website,biography,followers_count,media_count"
 # view_count / media_product_type are newer fields; if Meta rejects one we drop it and retry.
 MEDIA_FIELDS = [
     "id", "caption", "media_type", "media_product_type", "permalink",
-    "timestamp", "like_count", "comments_count", "view_count",
+    "timestamp", "like_count", "comments_count", "view_count", "thumbnail_url", "media_url",
 ]
-OPTIONAL_MEDIA_FIELDS = ["media_product_type", "view_count"]
+OPTIONAL_MEDIA_FIELDS = ["media_product_type", "view_count", "thumbnail_url", "media_url"]
 
 
 class RateLimited(Exception):
