@@ -1,0 +1,117 @@
+import json
+import os
+import shutil
+import sys
+import tempfile
+from datetime import datetime, timedelta, timezone
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.dirname(HERE))
+
+import detect  # noqa: E402
+
+NOW = datetime(2026, 11, 8, 20, 0, tzinfo=timezone.utc)
+
+
+def ts(days_ago):
+    return (NOW - timedelta(days=days_ago)).strftime("%Y-%m-%dT%H:%M:%S+0000")
+
+
+def post(i, views=None, likes=None, days=1):
+    return {"id": str(i), "permalink": f"https://www.instagram.com/reel/{i}/", "timestamp": ts(days),
+            "view_count": views, "like_count": likes, "comments_count": 5, "media_type": "VIDEO",
+            "caption": f"post {i}"}
+
+
+def test_flags_outlier_against_account_median():
+    posts = [post(1, views=400_000, likes=9000)] + [post(i, views=20_000, likes=500, days=i) for i in range(2, 10)]
+    hits = detect.find_viral(posts, followers=50_000, now=NOW)
+    assert [h["media_id"] for h in hits] == ["1"]
+    assert hits[0]["multiple"] == 20.0
+
+
+def test_normal_posts_not_flagged():
+    posts = [post(i, views=20_000 + i * 1000, likes=500, days=i) for i in range(1, 12)]
+    assert detect.find_viral(posts, followers=50_000, now=NOW) == []
+
+
+def test_small_account_needs_floor():
+    # 10x the median but only 3,000 views - below min_views floor, ignore
+    posts = [post(1, views=3_000)] + [post(i, views=300, days=i) for i in range(2, 10)]
+    assert detect.find_viral(posts, followers=2_000, now=NOW) == []
+
+
+def test_small_account_real_breakout():
+    posts = [post(1, views=120_000)] + [post(i, views=1_500, days=i) for i in range(2, 10)]
+    hits = detect.find_viral(posts, followers=4_000, now=NOW)
+    assert len(hits) == 1 and "views per follower" in hits[0]["reason"]
+
+
+def test_absolute_threshold_and_age_limit():
+    posts = [post(1, views=900_000, days=40), post(2, views=1_200_000, days=2)] + \
+            [post(i, views=600_000, days=i) for i in range(3, 8)]
+    hits = detect.find_viral(posts, followers=1_000_000, now=NOW)
+    assert [h["media_id"] for h in hits] == ["2"]  # old post skipped, big account still flagged on absolute
+
+
+def test_image_posts_use_likes():
+    posts = [post(1, likes=30_000)] + [post(i, likes=800, days=i) for i in range(2, 9)]
+    hits = detect.find_viral(posts, now=NOW)
+    assert hits and hits[0]["metric"] == "likes"
+
+
+def test_track_run_end_to_end(monkeypatch=None):
+    """Run track.main() against a fake API and check state, CSV and dedupe."""
+    import importlib
+    tmp = tempfile.mkdtemp()
+    src = os.path.dirname(HERE)
+    for f in ("track.py", "detect.py", "igapi.py", "outputs.py", "settings.json"):
+        shutil.copy(os.path.join(src, f), tmp)
+    with open(os.path.join(tmp, "resorts.csv"), "w") as f:
+        f.write("resort,state_prov,country,tier,instagram,track\n"
+                "Big Hill,WA,USA,Major,bighill,yes\nTiny Hill,VT,USA,Small,tinyhill,yes\n"
+                "Gone Hill,MT,USA,Small,gonehill,yes\nNo IG,ID,USA,Small,,\n")
+    sys.path.insert(0, tmp)
+    for m in ("track", "detect", "igapi", "outputs"):
+        sys.modules.pop(m, None)
+    os.environ.update(IG_USER_ID="1", IG_ACCESS_TOKEN="x")
+    track = importlib.import_module("track")
+    igapi = sys.modules["igapi"]
+    recent = datetime.now(timezone.utc)
+
+    def fake_bd(self, username, media_limit=12):
+        self.calls += 1
+        if username == "gonehill":
+            raise igapi.AccountUnavailable("Cannot find User")
+        base = 50_000 if username == "bighill" else 1_000
+        media = [{"id": f"{username}{i}", "permalink": f"https://ig/{username}{i}",
+                  "timestamp": (recent - timedelta(days=i)).strftime("%Y-%m-%dT%H:%M:%S+0000"),
+                  "view_count": base, "like_count": base // 20, "comments_count": 3, "caption": "x"}
+                 for i in range(1, 10)]
+        if username == "tinyhill":
+            media[0]["view_count"] = 250_000
+        return {"followers_count": 5000, "media_count": 300, "media": {"data": media}}
+
+    igapi.IGClient.business_discovery = fake_bd
+    igapi.IGClient.polite_sleep = lambda self, s=0: None
+    sys.argv = ["track.py"]
+    track.main()
+    state = json.load(open(os.path.join(tmp, "data", "state.json")))
+    assert list(state["alerted"]) == ["tinyhill1"]
+    assert state["accounts"]["gonehill"]["status"].startswith("unavailable")
+    assert state["accounts"]["bighill"]["median_views"] == 50_000
+    log = open(os.path.join(tmp, "data", "viral_posts.csv")).read()
+    assert "Tiny Hill" in log and "250000" in log
+    # second run must not re-alert the same post
+    track.main()
+    log2 = open(os.path.join(tmp, "data", "viral_posts.csv")).read()
+    assert log2.count("tinyhill1") == 1
+    accounts = open(os.path.join(tmp, "data", "accounts.csv")).read()
+    assert "Big Hill" in accounts and "No IG" not in accounts
+
+
+if __name__ == "__main__":
+    for name, fn in list(globals().items()):
+        if name.startswith("test_"):
+            fn()
+            print("ok", name)
