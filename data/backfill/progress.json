@@ -73,12 +73,24 @@
   "alpineskiclub",
   "batawaskihill",
   "beavervalley.skiclub",
-  "bluemtnresort"
+  "bluemtnresort",
+  "bolermtn",
+  "brimacombe",
+  "calabogiepeaks",
+  "caledonskiclub",
+  "craigleithskiclub",
+  "skidagmar",
+  "devilsglencountryclub",
+  "skidryden",
+  "georgianpeaks",
+  "glen_eden",
+  "hockleyvalleyresort"
  ],
  "skipped": {
-  "whitewaterskiresort": "Invalid user id"
+  "whitewaterskiresort": "Invalid user id",
+  "_chicopee_": "Invalid user id"
  },
  "current": null,
- "calls": 74,
- "calls_at_save": 74
+ "calls": 86,
+ "calls_at_save": 86
 }
