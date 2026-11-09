@@ -93,3 +93,71 @@ def find_viral(posts, followers=None, settings=None, now=None):
                 "caption": (post.get("caption") or "").replace("\n", " ")[:200],
             })
     return hits
+
+
+# --------------------------------------------------------------------------- mega viral
+# "Industry-wide notable": rare enough that it would get talked about across ski marketing.
+# Judgment call: a typical resort Reel lands in the 5K-150K view range, and a 1M+ Reel from a
+# resort account happens only a handful of times a month across North America. Requiring 2M+
+# views AND 10x the account's own normal keeps this to a few alerts per season. Anything past
+# 5M views alerts regardless (that's top-of-the-industry for any resort account).
+MEGA_DEFAULTS = {
+    "min_views": 2_000_000,     # views needed (together with min_multiple)
+    "min_multiple": 10.0,       # ...and at least this many times the account's median
+    "always_views": 5_000_000,  # alert at this many views no matter what
+    "min_likes": 100_000,       # photo posts (no view counts): likes needed, with min_multiple
+    "max_age_days": 30,
+    "watch_views": 300_000,     # posts climbing past this get re-checked every run
+    "watch_multiple": 8.0,      # ...or posts already at this multiple
+}
+
+
+def score_posts(posts, followers=None, now=None, max_age_days=30, min_baseline_posts=4):
+    """Every recent post with its metric, the account's normal for that metric, and the multiple."""
+    now = now or datetime.now(timezone.utc)
+    out = []
+    for post in posts:
+        name, value = metric_for(post)
+        if value is None or not post.get("timestamp"):
+            continue
+        age_days = (now - _parse_ts(post["timestamp"])).total_seconds() / 86400
+        if age_days > max_age_days:
+            continue
+        base = baselines([p for p in posts if p.get("id") != post.get("id")])
+        base_val, n_base = base[name], base["n_" + name]
+        multiple = value / max(base_val, 1) if base_val and n_base >= min_baseline_posts else None
+        out.append({
+            "media_id": post.get("id"),
+            "permalink": post.get("permalink"),
+            "timestamp": post.get("timestamp"),
+            "posted": post.get("timestamp", "")[:10],
+            "age_days": round(age_days, 1),
+            "media_type": post.get("media_product_type") or post.get("media_type"),
+            "metric": name,
+            "value": value,
+            "views": post.get("view_count"),
+            "likes": post.get("like_count"),
+            "comments": post.get("comments_count"),
+            "baseline": round(base_val) if base_val else None,
+            "multiple": round(multiple, 1) if multiple else None,
+            "followers": followers,
+            "caption": (post.get("caption") or "").replace("\n", " ")[:200],
+        })
+    return out
+
+
+def is_mega(p, settings=None):
+    s = dict(MEGA_DEFAULTS, **(settings or {}))
+    if p.get("age_days", 0) > s["max_age_days"]:
+        return False
+    mult = p.get("multiple") or 0
+    if p["metric"] == "views":
+        return p["value"] >= s["always_views"] or (p["value"] >= s["min_views"] and mult >= s["min_multiple"])
+    return p["value"] >= s["min_likes"] and mult >= s["min_multiple"]
+
+
+def is_watch(p, settings=None):
+    """Posts that are climbing fast enough to be worth re-checking every hour."""
+    s = dict(MEGA_DEFAULTS, **(settings or {}))
+    return p.get("age_days", 99) <= 7 and (
+        (p["metric"] == "views" and p["value"] >= s["watch_views"]) or (p.get("multiple") or 0) >= s["watch_multiple"])
