@@ -1,0 +1,19 @@
+{
+ "accounts": {
+  "49degreesnorth": {}
+ },
+ "alerted": {},
+ "cursor": 0,
+ "last_run": {
+  "api_calls": 1,
+  "at": "2026-11-09 07:29 UTC",
+  "checked": 0,
+  "new_hits": 0,
+  "stopped": "rate limit: API usage at 86% - stopping this run",
+  "usage": {
+   "call_count": 68,
+   "total_cputime": 0,
+   "total_time": 86
+  }
+ }
+}
