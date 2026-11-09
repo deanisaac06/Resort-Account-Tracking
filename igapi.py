@@ -35,6 +35,10 @@ class TokenError(Exception):
     pass
 
 
+class TooMuchData(Exception):
+    """Meta asked us to request fewer posts per call."""
+
+
 class IGClient:
     def __init__(self, ig_user_id=None, token=None, usage_ceiling=85):
         self.ig_user_id = ig_user_id or os.environ["IG_USER_ID"]
@@ -71,12 +75,16 @@ class IGClient:
             self.stop = True
 
     # ---- calls ------------------------------------------------------------------
-    def business_discovery(self, username, media_limit=12):
+    def business_discovery(self, username, media_limit=12, after=None, media_fields=None):
+        """Profile + recent posts. `after` pages further back (cursor from media.paging.cursors.after);
+        `media_fields` asks for a lighter set of post fields (cheaper calls for big backfills)."""
         username = username.strip().lstrip("@").lower()
         while True:
+            wanted = [f for f in (media_fields or self.media_fields) if f in self.media_fields or f not in MEDIA_FIELDS]
+            media = f"media.limit({media_limit})" + (f".after({after})" if after else "")
             fields = (
                 f"business_discovery.username({username})"
-                f"{{{PROFILE_FIELDS},media.limit({media_limit}){{{','.join(self.media_fields)}}}}}"
+                f"{{{PROFILE_FIELDS},{media}{{{','.join(wanted)}}}}}"
             )
             resp = requests.get(
                 f"{BASE}/{self.ig_user_id}",
@@ -97,6 +105,8 @@ class IGClient:
             if code == 100 and droppable:
                 self.media_fields.remove(droppable[0])
                 continue
+            if "reduce the amount of data" in msg.lower() or code == 1 and "data" in msg.lower():
+                raise TooMuchData(msg)
             if code in (4, 17, 32, 613) or "rate limit" in msg.lower():
                 raise RateLimited(msg)
             if code == 190:
