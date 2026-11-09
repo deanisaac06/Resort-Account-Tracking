@@ -3,9 +3,11 @@ Both are optional - if the secrets aren't set, the tracker just writes CSVs in d
 import json
 import os
 import smtplib
+import uuid
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.utils import make_msgid
 from html import escape
 
 VIRAL_COLUMNS = [
@@ -79,6 +81,9 @@ def send_email(subject, body, html=None, to=None, images=None):
     else:
         msg = alt
     msg["Subject"], msg["From"], msg["To"] = subject, user, to
+    # unique IDs so Gmail shows every report/alert as its own email instead of threading them
+    msg["Message-ID"] = make_msgid(domain="ski-tracker.local")
+    msg["X-Entity-Ref-ID"] = uuid.uuid4().hex
     host = os.environ.get("SMTP_HOST", "smtp.gmail.com")
     with smtplib.SMTP_SSL(host, 465, timeout=30) as s:
         s.login(user, pw)
