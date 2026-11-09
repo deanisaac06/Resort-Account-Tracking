@@ -116,7 +116,8 @@ def main():
         month = sys.argv[1]
     else:
         month = prev_month(now)
-        if now.day < ROLLUP_DAY or any(row["month"] == month for row in history):
+        # done = rows with follower counts exist (backfilled months have none, so they get replaced)
+        if now.day < ROLLUP_DAY or any(row["month"] == month and row.get("followers") for row in history):
             return                            # not time yet, or already done
     state = load_json(STATE, {})
     rows = rollup(month, state, load_resorts(), history)
