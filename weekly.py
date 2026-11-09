@@ -15,6 +15,8 @@ import base64
 import io
 import json
 import os
+import re
+import time
 from datetime import datetime, timedelta, timezone
 from html import escape
 from statistics import median
@@ -38,7 +40,7 @@ DEFAULTS = {
     "top_biggest": 10,
     "history_posts": 40,     # posts of history pulled per top account for context
     "ai_summary": True,
-    "ai_models": ["gemini-flash-latest", "gemini-2.5-flash"],
+    "ai_models": ["gemini-3.8-flash", "gemini-flash-latest"],
 }
 
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta"
@@ -217,11 +219,17 @@ def ai_rows(posts):
 
 
 def _gemini(model, key, prompt):
-    r = requests.post(f"{GEMINI_URL}/models/{model}:generateContent", timeout=120,
-                      headers={"x-goog-api-key": key, "Content-Type": "application/json"},
-                      json={"systemInstruction": {"parts": [{"text": AI_SYSTEM}]},
-                            "contents": [{"role": "user", "parts": [{"text": prompt}]}],
-                            "generationConfig": {"temperature": 0.4, "maxOutputTokens": 4096}})
+    for attempt in range(3):   # Google returns 503 "high demand" now and then - wait and retry
+        r = requests.post(f"{GEMINI_URL}/models/{model}:generateContent", timeout=120,
+                          headers={"x-goog-api-key": key, "Content-Type": "application/json"},
+                          json={"systemInstruction": {"parts": [{"text": AI_SYSTEM}]},
+                                "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+                                "generationConfig": {"temperature": 0.4, "maxOutputTokens": 4096}})
+        if r.status_code in (500, 503) and attempt < 2:
+            print(f"  {model}: busy (HTTP {r.status_code}), retrying in {20 * (attempt + 1)}s")
+            time.sleep(20 * (attempt + 1))
+            continue
+        break
     try:
         parts = r.json()["candidates"][0]["content"]["parts"]
         text = "".join(p.get("text", "") for p in parts if not p.get("thought")).strip()
@@ -239,8 +247,9 @@ def _flash_models(key):
         r = requests.get(f"{GEMINI_URL}/models", params={"pageSize": 200}, headers={"x-goog-api-key": key}, timeout=30)
         names = [m["name"].split("/", 1)[1] for m in r.json().get("models", [])
                  if "generateContent" in m.get("supportedGenerationMethods", [])]
-        flash = [n for n in names if "flash" in n and not any(x in n for x in ("lite", "image", "tts", "live", "audio", "exp"))]
-        return sorted(flash, reverse=True)
+        # plain "gemini-<version>-flash" models only (those are on the free tier), newest version first
+        flash = [n for n in names if re.fullmatch(r"gemini-\d+(\.\d+)?-flash", n)]
+        return sorted(flash, key=lambda n: [float(x) for x in re.findall(r"\d+(?:\.\d+)?", n)[:1]], reverse=True)
     except Exception as e:
         print("  couldn't list Gemini models:", str(e)[:100])
         return []
