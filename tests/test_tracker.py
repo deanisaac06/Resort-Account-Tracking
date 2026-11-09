@@ -182,3 +182,22 @@ def test_mega_email_and_watchlist_end_to_end():
     assert all(p["handle"] != "summit" or p["value"] < 1_000_000 for p in outp + biggest)  # not repeated
     title, text, html = weekly.render(outp, biggest, megas, stats, s, datetime.now(timezone.utc))
     assert "MEGA VIRAL THIS WEEK" in text and "<table" in html
+
+
+def test_weekly_history_note_and_render():
+    import weekly
+    hist = [post(i, views=20_000, days=i * 4) for i in range(1, 40)]          # ~5 months of normal reels
+    hist += [post(99, views=150_000, days=150)]                              # one old hit
+    p = {"media_id": "new", "timestamp": ts(0.5), "metric": "views", "value": 238_000}
+    ctx = weekly.history_note(p, hist)
+    assert ctx["note"].startswith("Best of its last 40 reels")
+    p["value"] = 100_000
+    assert weekly.history_note(p, hist)["note"] == "Best since " + (NOW - timedelta(days=150)).strftime("%b %Y")
+    card = dict(media_id="1", permalink="https://ig/1", posted="2026-11-06", resort="Powder Mountain",
+                handle="powdermountain", state_prov="UT", tier="Mid", metric="views", value=238_000,
+                baseline=17_000, multiple=14.0, history=ctx, caption="lift test")
+    stats = {"since": "2026-11-02", "posts_seen": 1, "accounts_checked": 1, "accounts_posting": 1, "unavailable": 0}
+    s = dict(weekly.DEFAULTS)
+    title, text, html = weekly.render([card], [], [], stats, s, NOW, "Para one.\nPara two.", {"1": "cid:p1"})
+    assert "cid:p1" in html and "Para two." in html and "This week" in html and "14&times;" in html
+    assert "Powder Mountain" in weekly.ai_rows([card])
