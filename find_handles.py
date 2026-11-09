@@ -116,6 +116,9 @@ def guess(rows, client):
                 r["ig_followers"], r["ig_website_match"] = bd.get("followers_count", ""), "yes"
                 print(f"guess  {r['resort']:<40} @{cand}")
                 break
+            if client.stop:
+                print("Near Meta's hourly quota - run again in an hour to continue")
+                return
             time.sleep(0.4)
 
 
@@ -136,6 +139,9 @@ def verify(rows, client):
         r["ig_followers"] = bd.get("followers_count", "")
         want = domain(r["website"])
         r["ig_website_match"] = "yes" if want and want.split("/")[0] in domain(bd.get("website", "")) else "check"
+        if client.stop:
+            print("Near Meta's hourly quota - run again in an hour to continue")
+            return
         time.sleep(0.4)
 
 
