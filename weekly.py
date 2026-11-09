@@ -7,9 +7,8 @@ Run:  python weekly.py                       (send the email + save reports/week
 
 It reads data/state.json, which the hourly tracker keeps filled with every recent post. Then it
 re-checks the top accounts on Instagram (fresh numbers, preview images and ~40 posts of history
-for context), and asks an AI model (free GitHub Models, using the workflow's GITHUB_TOKEN) to
-write the summary. Every one of those extras is optional: if a step fails, the email still goes
-out without it.
+for context), and asks Google's Gemini (free tier, GEMINI_API_KEY secret) to write the summary.
+Every one of those extras is optional: if a step fails, the email still goes out without it.
 """
 import argparse
 import base64
@@ -39,10 +38,10 @@ DEFAULTS = {
     "top_biggest": 10,
     "history_posts": 40,     # posts of history pulled per top account for context
     "ai_summary": True,
-    "ai_models": ["openai/gpt-4.1", "openai/gpt-4o"],
+    "ai_models": ["gemini-flash-latest", "gemini-2.5-flash"],
 }
 
-AI_URL = "https://models.github.ai/inference/chat/completions"
+GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta"
 AI_SYSTEM = ("You are a senior social media strategist at a marketing agency that works with ski resorts. "
              "You write tight, specific analysis for a weekly industry email. No hype, no emojis, no bullet "
              "points, no headings. Only state facts that are in the data you are given.")
@@ -217,31 +216,61 @@ def ai_rows(posts):
     return "\n".join(rows)
 
 
+def _gemini(model, key, prompt):
+    r = requests.post(f"{GEMINI_URL}/models/{model}:generateContent", timeout=120,
+                      headers={"x-goog-api-key": key, "Content-Type": "application/json"},
+                      json={"systemInstruction": {"parts": [{"text": AI_SYSTEM}]},
+                            "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+                            "generationConfig": {"temperature": 0.4, "maxOutputTokens": 4096}})
+    try:
+        parts = r.json()["candidates"][0]["content"]["parts"]
+        text = "".join(p.get("text", "") for p in parts if not p.get("thought")).strip()
+        if text:
+            return text
+    except Exception:
+        pass
+    print(f"  {model}: HTTP {r.status_code} {r.text[:300]!r}")
+    return None
+
+
+def _flash_models(key):
+    """Ask Google which Flash models this key can use (newest first), in case the configured names change."""
+    try:
+        r = requests.get(f"{GEMINI_URL}/models", params={"pageSize": 200}, headers={"x-goog-api-key": key}, timeout=30)
+        names = [m["name"].split("/", 1)[1] for m in r.json().get("models", [])
+                 if "generateContent" in m.get("supportedGenerationMethods", [])]
+        flash = [n for n in names if "flash" in n and not any(x in n for x in ("lite", "image", "tts", "live", "audio", "exp"))]
+        return sorted(flash, reverse=True)
+    except Exception as e:
+        print("  couldn't list Gemini models:", str(e)[:100])
+        return []
+
+
 def ai_summary(posts, stats, s, now):
-    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GITHUB_MODELS_TOKEN")
-    if not (s.get("ai_summary") and token and posts):
-        print("AI summary skipped (no GITHUB_TOKEN, turned off, or no posts).")
+    key = os.environ.get("GEMINI_API_KEY")
+    if not (s.get("ai_summary") and key and posts):
+        print("AI summary skipped (no GEMINI_API_KEY secret, turned off, or no posts).")
         return None
     top_reels = round(100 * sum(p["metric"] == "views" for p in posts) / len(posts))
     prompt = AI_PROMPT.format(since=stats["since"], today=now.strftime("%Y-%m-%d"), posts_seen=stats["posts_seen"],
                               accounts_posting=stats["accounts_posting"], reel_share=stats["reel_share"],
                               top_reel_share=top_reels, n_top=len(posts), rows=ai_rows(posts))
-    for model in s["ai_models"]:
-        try:
-            r = requests.post(AI_URL, timeout=90, headers={
-                "Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json",
-                "X-GitHub-Api-Version": "2022-11-28", "Content-Type": "application/json"},
-                json={"model": model, "temperature": 0.4, "max_tokens": 450, "stream": False,
-                      "messages": [{"role": "system", "content": AI_SYSTEM}, {"role": "user", "content": prompt}]})
+    tried = []
+    for model in list(s["ai_models"]) + ["__discover__"]:
+        candidates = _flash_models(key)[:3] if model == "__discover__" else [model]
+        for m in candidates:
+            if m in tried:
+                continue
+            tried.append(m)
             try:
-                text = r.json()["choices"][0]["message"]["content"].strip()
-                print(f"AI summary from {model}: {len(text)} chars")
+                text = _gemini(m, key, prompt)
+            except Exception as e:
+                print(f"  {m} error: {str(e)[:200]}")
+                text = None
+            if text:
+                print(f"AI summary from {m}: {len(text)} chars")
                 return text
-            except Exception:
-                print(f"AI model {model} failed: HTTP {r.status_code}, {r.headers.get('content-type')}, "
-                      f"url {r.url}, body {r.text[:300]!r}")
-        except Exception as e:
-            print(f"AI model {model} error: {str(e)[:200]}")
+    print("AI summary failed for", tried)
     return None
 
 
