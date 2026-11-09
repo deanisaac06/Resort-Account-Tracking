@@ -29,6 +29,14 @@
     "min_views": 10000,
     "min_likes": 1000,
     "top_outperformers": 20,
-    "top_biggest": 10
+    "top_biggest": 10,
+    "history_posts": 40,
+    "ai_summary": true,
+    "ai_models": [
+      "openai/gpt-4.1",
+      "openai/gpt-4o"
+    ],
+    "report_weekday": 0,
+    "reserve_hour_utc": 15
   }
 }
