@@ -142,6 +142,7 @@ def score_posts(posts, followers=None, now=None, max_age_days=30, min_baseline_p
             "multiple": round(multiple, 1) if multiple else None,
             "followers": followers,
             "caption": (post.get("caption") or "").replace("\n", " ")[:200],
+            "thumb": post.get("thumbnail_url") or post.get("media_url"),
         })
     return out
 
