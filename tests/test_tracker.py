@@ -201,3 +201,47 @@ def test_weekly_history_note_and_render():
     title, text, html = weekly.render([card], [], [], stats, s, NOW, "Para one.\nPara two.", {"1": "cid:p1"})
     assert "cid:p1" in html and "Para two." in html and "This week" in html and "14&times;" in html
     assert "Powder Mountain" in weekly.ai_rows([card])
+
+
+def test_weekly_auto_retries_ai_then_sends_with_notice():
+    import importlib
+    import weekly
+    importlib.reload(weekly)
+    tmp = tempfile.mkdtemp()
+    weekly.STATUS = os.path.join(tmp, "weekly_status.json")
+    weekly.SETTINGS = os.path.join(tmp, "nope.json")
+    sent, ai = [], {"ok": False}
+    clock = {"now": datetime(2026, 11, 16, 15, 23, tzinfo=timezone.utc)}   # a Monday, report hour
+
+    class FakeDT(datetime):
+        @classmethod
+        def now(cls, tz=None):
+            return clock["now"]
+    weekly.datetime = FakeDT
+    weekly.prepare = lambda now, s: {"built_at": now.isoformat(), "outperformers": [], "biggest": [], "megas": [],
+                                     "stats": {}, "s": {}}
+    weekly.ai_summary = lambda *a: "Summary." if ai["ok"] else None
+    weekly.send = lambda snap, summary, notice=None, dry=False, prev=None: sent.append((summary, notice)) or True
+    sys.argv = ["weekly.py", "--auto"]
+
+    clock["now"] = datetime(2026, 11, 16, 14, 23, tzinfo=timezone.utc)
+    json.dump({"sent_week": "2026-11-09"}, open(weekly.STATUS, "w"))
+    weekly.main()                                   # before Monday 15:00 and last week already sent -> nothing
+    assert sent == []
+
+    clock["now"] = datetime(2026, 11, 16, 15, 23, tzinfo=timezone.utc)
+    weekly.main()                                   # due, AI fails -> held, not sent
+    assert sent == [] and json.load(open(weekly.STATUS))["pending"]["attempts"] == 1
+    clock["now"] = datetime(2026, 11, 16, 20, 23, tzinfo=timezone.utc)
+    weekly.main()                                   # still failing 5h later -> still held
+    assert sent == []
+    clock["now"] = datetime(2026, 11, 17, 15, 30, tzinfo=timezone.utc)
+    weekly.main()                                   # 24h+ -> send with the warning
+    assert len(sent) == 1 and sent[0][0] is None and "broken" in sent[0][1]
+    weekly.main()                                   # never twice
+    assert len(sent) == 1
+
+    clock["now"] = datetime(2026, 11, 23, 15, 23, tzinfo=timezone.utc)
+    ai["ok"] = True
+    weekly.main()                                   # next week, AI works -> normal email
+    assert sent[-1] == ("Summary.", None)
