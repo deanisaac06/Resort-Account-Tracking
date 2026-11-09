@@ -43,6 +43,7 @@ class IGClient:
         self.media_fields = list(MEDIA_FIELDS)
         self.calls = 0
         self.last_usage = {}
+        self.stop = False  # set when Meta reports we're near the hourly quota
 
     # ---- rate limit bookkeeping -------------------------------------------------
     def _check_usage(self, resp):
@@ -66,7 +67,8 @@ class IGClient:
                     usage[k] = max(usage.get(k, 0), v)
         self.last_usage = usage
         if usage and max(usage.values()) >= self.usage_ceiling:
-            raise RateLimited(f"API usage at {max(usage.values())}% - stopping this run")
+            # keep the data we just got, but tell the caller to stop after this one
+            self.stop = True
 
     # ---- calls ------------------------------------------------------------------
     def business_discovery(self, username, media_limit=12):
@@ -87,6 +89,7 @@ class IGClient:
             if not err:
                 self._check_usage(resp)
                 return body.get("business_discovery", {})
+            self._check_usage(resp)
 
             code, sub, msg = err.get("code"), err.get("error_subcode"), err.get("message", "")
             # Field not supported -> drop an optional field and retry once per field
