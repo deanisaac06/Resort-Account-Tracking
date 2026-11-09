@@ -200,11 +200,17 @@ def main():
             print(f"  @{h}: {str(e)[:120]}")
             break
         media = data.get("media") or {}
-        cur["posts"] += [c for c in (compact(m) for m in media.get("data", [])) if c and c["ts"]]
-        nxt = (media.get("paging") or {}).get("cursors", {}).get("after") if (media.get("paging") or {}).get("next") else None
+        page_posts = media.get("data", [])
+        seen = {p["permalink"] for p in cur["posts"]}
+        fresh = [c for c in (compact(m) for m in page_posts) if c and c["ts"] and c["permalink"] not in seen]
+        cur["posts"] += fresh
+        # Business Discovery often omits paging.next, so keep going whenever a cursor came back with a full page
+        cursor = ((media.get("paging") or {}).get("cursors") or {}).get("after")
+        asked = min(page, TARGET_POSTS - (len(cur["posts"]) - len(fresh)))
+        nxt = cursor if cursor and fresh and (len(page_posts) >= asked or (media.get("paging") or {}).get("next")) else None
         cur["after"] = nxt
         hit_cap = len(cur["posts"]) >= TARGET_POSTS
-        if hit_cap or not nxt or not media.get("data"):
+        if hit_cap or not nxt:
             rows = monthly_rows(by_handle[h], h, cur["posts"], hit_cap, now, settings)
             upsert(rows)
             oldest = min((p["ts"] for p in cur["posts"]), default="-")
