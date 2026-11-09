@@ -41,6 +41,10 @@ DEFAULTS = {
     "history_posts": 40,     # posts of history pulled per top account for context
     "ai_summary": True,
     "ai_models": ["gemini-3.8-flash", "gemini-flash-latest"],
+    "ai_max_seconds": 900,   # how long one attempt at the AI summary may take
+    "ai_retry_hours": 24,    # keep retrying hourly this long before sending without the summary
+    "report_weekday": 0,     # Monday
+    "report_hour_utc": 15,   # 15:00 UTC = 7am Pacific (8am during daylight time)
 }
 
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta"
@@ -265,7 +269,7 @@ def ai_summary(posts, stats, s, now):
                               accounts_posting=stats["accounts_posting"], reel_share=stats["reel_share"],
                               top_reel_share=top_reels, n_top=len(posts), rows=ai_rows(posts))
     tried = []
-    deadline = time.time() + s.get("ai_max_seconds", 300)   # never let a slow AI day hold up the email
+    deadline = time.time() + s.get("ai_max_seconds", 900)
     for model in list(s["ai_models"]) + ["__discover__"]:
         candidates = _flash_models(key)[:3] if model == "__discover__" else [model]
         for m in candidates:
@@ -338,7 +342,7 @@ def card_html(i, p, img_src, accent="#0a7d32"):
             f"{note_html}</div>")
 
 
-def render(outperformers, biggest, megas, stats, s, now, summary=None, img_src=None):
+def render(outperformers, biggest, megas, stats, s, now, summary=None, img_src=None, notice=None):
     """img_src: {media_id: src} for preview images (cid: links for email, data: URIs for previews)."""
     img_src = img_src or {}
     title = f"Ski resort Instagram: week ending {now.strftime('%b %-d, %Y')}"
@@ -346,6 +350,8 @@ def render(outperformers, biggest, megas, stats, s, now, summary=None, img_src=N
             f"({stats['accounts_checked']} accounts checked). Outperformed = at least {s['min_multiple']:g}x that "
             f"account's own normal.")
     text = [title, "", head, ""]
+    if notice:
+        text = [f"NOTE: {notice}", ""] + text
     if summary:
         text += ["THIS WEEK", summary, ""]
     if megas:
@@ -363,6 +369,10 @@ def render(outperformers, biggest, megas, stats, s, now, summary=None, img_src=N
     html = [f"<div style='font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:680px;margin:0 auto;color:#222'>"
             f"<h2 style='margin:0 0 4px;font-size:22px;color:#111'>{escape(title)}</h2>",
             f"<p style='color:#666;margin:0 0 6px;font-size:13px'>{escape(head)}</p>"]
+    if notice:
+        html.insert(0, f"<div style='font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:680px;margin:0 auto 14px;"
+                       f"background:#fef3f2;border:1px solid #fecdca;color:#b42318;border-radius:8px;padding:10px 14px;"
+                       f"font-size:14px'><b>Heads up:</b> {escape(notice)}</div>")
     if summary:
         paras = "".join(f"<p style='margin:0 0 10px'>{escape(x.strip())}</p>" for x in summary.split("\n") if x.strip())
         html.append(h2.format("This week") +
@@ -386,40 +396,110 @@ def render(outperformers, biggest, megas, stats, s, now, summary=None, img_src=N
     return title, "\n".join(text), "".join(html)
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--dry-run", action="store_true")
-    ap.add_argument("--preview", help="write an HTML preview with images inlined to this path")
-    args = ap.parse_args()
-    now = datetime.now(timezone.utc)
-    state, settings = load(STATE, {}), load(SETTINGS, {})
-    outperformers, biggest, megas, stats, s = build(state, settings, now)
+# ------------------------------------------------------------------ scheduling / retries
+STATUS = os.path.join(HERE, "data", "weekly_status.json")
 
-    top = megas + outperformers
-    enrich(top, s)
+
+def save(path, data):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w") as f:
+        json.dump(data, f, indent=1)
+
+
+def week_due(now, s):
+    """The scheduled send time for the current week (Monday 15:00 UTC by default) and that week's label."""
+    monday = (now - timedelta(days=(now.weekday() - s["report_weekday"]) % 7)).replace(
+        hour=s["report_hour_utc"], minute=0, second=0, microsecond=0)
+    if monday > now:
+        monday -= timedelta(days=7)
+    return monday, monday.strftime("%Y-%m-%d")
+
+
+def prepare(now, s_settings):
+    """Pick the posts and pull fresh numbers/history/preview links. Returns a JSON-able snapshot."""
+    state = load(STATE, {})
+    outperformers, biggest, megas, stats, s = build(state, s_settings, now)
+    enrich(megas + outperformers, s)
+    return {"built_at": now.isoformat(), "outperformers": outperformers, "biggest": biggest,
+            "megas": megas, "stats": stats, "s": s}
+
+
+def send(snap, summary, notice=None, dry_run=False, preview=None):
+    now = datetime.fromisoformat(snap["built_at"])
+    o, b, m, stats, s = snap["outperformers"], snap["biggest"], snap["megas"], snap["stats"], snap["s"]
+    top = m + o
     images = {}
     for p in top:
         data = fetch_thumb(p.get("thumb"))
         if data:
             images[f"p{p['media_id']}"] = data
     print(f"Preview images: {len(images)}/{len(top)}")
-    summary = ai_summary(top, stats, s, now)
-
     cid = {p["media_id"]: f"cid:p{p['media_id']}" for p in top if f"p{p['media_id']}" in images}
-    title, text, html = render(outperformers, biggest, megas, stats, s, now, summary, cid)
+    title, text, html = render(o, b, m, stats, s, now, summary, cid, notice)
     print(text)
-    if args.preview:
+    if preview:
         uri = {p["media_id"]: "data:image/jpeg;base64," + base64.b64encode(images[f"p{p['media_id']}"]).decode()
                for p in top if f"p{p['media_id']}" in images}
-        with open(args.preview, "w", encoding="utf-8") as f:
-            f.write(render(outperformers, biggest, megas, stats, s, now, summary, uri)[2])
-    if args.dry_run:
-        return
+        with open(preview, "w", encoding="utf-8") as f:
+            f.write(render(o, b, m, stats, s, now, summary, uri, notice)[2])
+    if dry_run:
+        return True
     os.makedirs(REPORTS, exist_ok=True)
     with open(os.path.join(REPORTS, f"weekly-{now.strftime('%Y-%m-%d')}.md"), "w", encoding="utf-8") as f:
         f.write(text + "\n")
-    to = os.environ.get("WEEKLY_TO") or os.environ.get("ALERT_TO")
-    outputs.send_email(title, text, html, to=to, images=images)
+    return outputs.send_email(title, text, html, to=os.environ.get("WEEKLY_TO") or os.environ.get("ALERT_TO"),
+                              images=images)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--auto", action="store_true",
+                    help="called every hour by the tracker: send this week's report once it's due, "
+                         "retrying the AI summary each hour for up to 24h")
+    ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--preview", help="write an HTML preview with images inlined to this path")
+    args = ap.parse_args()
+    now = datetime.now(timezone.utc)
+    settings = load(SETTINGS, {})
+    s = dict(DEFAULTS, **settings.get("weekly", {}))
+
+    if not args.auto:   # manual run from the Actions tab: build and send right away (doesn't count as this week's report)
+        snap = prepare(now, settings)
+        summary = ai_summary(snap["megas"] + snap["outperformers"], snap["stats"], snap["s"], now)
+        notice = None if summary else "The AI summary couldn't be generated for this manual run."
+        send(snap, summary, notice, args.dry_run, args.preview)
+        return
+
+    status = load(STATUS, {})
+    due, week = week_due(now, s)
+    if status.get("sent_week") == week:
+        return                                   # this week's report already went out
+    pending = status.get("pending")
+    if not pending or pending.get("week") != week:
+        print(f"Weekly report for {week} is due - building it")
+        pending = {"week": week, "first_try": now.isoformat(), "attempts": 0, "snap": prepare(now, settings)}
+    snap = pending["snap"]
+    pending["attempts"] += 1
+    summary = ai_summary(snap["megas"] + snap["outperformers"], snap["stats"], snap["s"], now)
+    waited = (now - datetime.fromisoformat(pending["first_try"])).total_seconds() / 3600
+    notice = None
+    if not summary:
+        if waited < s["ai_retry_hours"]:
+            print(f"AI summary failed (attempt {pending['attempts']}) - holding the report and retrying next hour")
+            status["pending"] = pending
+            if not args.dry_run:
+                save(STATUS, status)
+            return
+        notice = (f"The AI summary is broken this week - it failed {pending['attempts']} times over "
+                  f"{waited:.0f} hours, so this report went out without it. Check the GEMINI_API_KEY secret "
+                  f"and the Weekly report logs.")
+    if send(snap, summary, notice, args.dry_run, args.preview) and not args.dry_run:
+        status.update(sent_week=week, sent_at=now.isoformat(), attempts=pending["attempts"])
+        status.pop("pending", None)
+        save(STATUS, status)
+    elif not args.dry_run:
+        status["pending"] = pending              # email failed to send - try again next hour
+        save(STATUS, status)
 
 
 if __name__ == "__main__":
