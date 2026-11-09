@@ -3,7 +3,9 @@ Both are optional - if the secrets aren't set, the tracker just writes CSVs in d
 import json
 import os
 import smtplib
+from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from html import escape
 
 VIRAL_COLUMNS = [
     "detected_at", "resort", "handle", "state_prov", "tier", "permalink", "posted",
@@ -54,12 +56,17 @@ def push_to_sheet(new_hits, accounts):
 
 
 # ---------------------------------------------------------------- Email
-def send_email(subject, body):
-    user, pw, to = os.environ.get("SMTP_USER"), os.environ.get("SMTP_PASS"), os.environ.get("ALERT_TO")
+def send_email(subject, body, html=None, to=None):
+    user, pw = os.environ.get("SMTP_USER"), os.environ.get("SMTP_PASS")
+    to = to or os.environ.get("ALERT_TO")
     if not (user and pw and to):
+        print("Email not configured (SMTP_USER / SMTP_PASS / ALERT_TO) - skipping:", subject)
         return False
-    msg = MIMEText(body, "plain", "utf-8")
+    msg = MIMEMultipart("alternative")
     msg["Subject"], msg["From"], msg["To"] = subject, user, to
+    msg.attach(MIMEText(body, "plain", "utf-8"))
+    if html:
+        msg.attach(MIMEText(html, "html", "utf-8"))
     host = os.environ.get("SMTP_HOST", "smtp.gmail.com")
     with smtplib.SMTP_SSL(host, 465, timeout=30) as s:
         s.login(user, pw)
@@ -67,19 +74,35 @@ def send_email(subject, body):
     return True
 
 
-def email_digest(new_hits):
-    if not new_hits:
-        return False
-    new_hits = sorted(new_hits, key=lambda h: -(h.get("value") or 0))
-    lines = [f"{len(new_hits)} new viral post(s) from ski resort accounts:\n"]
-    for h in new_hits:
-        stat = f"{h['value']:,} {h['metric']}"
-        lines.append(
-            f"- {h['resort']} (@{h['handle']}, {h['state_prov']}): {stat}"
-            + (f", {h['multiple']}x their median" if h.get("multiple") else "")
-            + f"\n  {h['permalink']}\n  {h['caption'][:120]}\n"
-        )
-    top = new_hits[0]
-    subject = f"Viral ski post: {top['resort']} - {top['value']:,} {top['metric']}" + (
-        f" (+{len(new_hits) - 1} more)" if len(new_hits) > 1 else "")
-    return send_email(subject, "\n".join(lines))
+def fmt(n):
+    if n is None:
+        return "-"
+    if n >= 1_000_000:
+        return f"{n / 1_000_000:.1f}M"
+    if n >= 10_000:
+        return f"{n / 1000:.0f}K"
+    return f"{n:,}"
+
+
+def email_mega(megas):
+    """One email per mega-viral post, sent the moment it's detected."""
+    sent = 0
+    for m in sorted(megas, key=lambda m: -m["value"]):
+        mult = f"{m['multiple']:.0f}x their normal" if m.get("multiple") else "no baseline yet"
+        subject = f"MEGA VIRAL: {m['resort']} - {fmt(m['value'])} {m['metric']} ({mult})"
+        text = (f"{m['resort']} (@{m['handle']}, {m['state_prov']}) has a post that's blowing up.\n\n"
+                f"{m['metric'].title()}: {m['value']:,}\n"
+                f"Account normal: {fmt(m.get('baseline'))} {m['metric']} per post ({mult})\n"
+                f"Followers: {fmt(m.get('followers'))}\n"
+                f"Likes / comments: {fmt(m.get('likes'))} / {fmt(m.get('comments'))}\n"
+                f"Posted: {m['posted']} ({m['age_days']} days ago), type: {m.get('media_type') or '-'}\n\n"
+                f"{m['permalink']}\n\nCaption: {m.get('caption') or '-'}\n")
+        html = f"""<div style="font-family:Arial,sans-serif;max-width:560px">
+<p style="font-size:13px;color:#b42318;font-weight:bold;letter-spacing:.5px">MEGA VIRAL POST</p>
+<h2 style="margin:4px 0">{escape(m['resort'])} <span style="color:#666;font-weight:normal">@{escape(m['handle'])} &middot; {escape(m['state_prov'])}</span></h2>
+<p style="font-size:34px;font-weight:bold;margin:12px 0 4px">{fmt(m['value'])} {m['metric']}</p>
+<p style="margin:0 0 14px;color:#444">{mult} (normal: {fmt(m.get('baseline'))}) &middot; {fmt(m.get('followers'))} followers &middot; posted {m['posted']}</p>
+<p><a href="{m['permalink']}" style="background:#1f3a5f;color:#fff;padding:9px 16px;border-radius:6px;text-decoration:none">Open the post</a></p>
+<p style="color:#555;font-size:13px">{escape(m.get('caption') or '')}</p></div>"""
+        sent += bool(send_email(subject, text, html))
+    return sent
