@@ -1,0 +1,16 @@
+{
+  "posts_per_account": 12,
+  "sleep_seconds": 0.5,
+  "viral": {
+    "multiplier": 5.0,
+    "min_views": 25000,
+    "min_likes": 2500,
+    "absolute_views": 500000,
+    "absolute_likes": 25000,
+    "absolute_min_multiple": 1.5,
+    "views_per_follower": 3.0,
+    "vpf_min_multiple": 2.0,
+    "max_age_days": 21,
+    "min_baseline_posts": 4
+  }
+}
