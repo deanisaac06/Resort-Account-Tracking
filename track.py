@@ -88,6 +88,10 @@ def main():
     if not args.only and now.weekday() == w.get("report_weekday", 0) and now.hour == w.get("report_hour_utc", 15):
         print("Weekly report hour - skipping tracking so the report has Instagram quota to work with.")
         return
+    from backfill import backfill_running
+    if backfill_running() and not args.only:
+        print("History backfill in progress - normal tracking is paused until it finishes.")
+        return
     client = IGClient()
     now_s = now.strftime("%Y-%m-%d %H:%M UTC")
     state.setdefault("posts", {})
