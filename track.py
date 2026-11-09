@@ -5,17 +5,21 @@ Run:  python track.py            (normal run, used by GitHub Actions)
 
 Each run checks up to MAX_CALLS accounts (Business Discovery allows ~200 calls/hour
 per app user), picking up where the last run stopped, so the whole list is covered
-every few hours.
+every few hours. Accounts with a post that's climbing fast (see is_watch in detect.py)
+are re-checked at the start of every run so a mega-viral post is caught within ~an hour.
+
+Emails: only "mega viral" posts are emailed from here, the moment they're found.
+The weekly performance report is sent by weekly.py.
 """
 import argparse
 import csv
 import json
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from statistics import median
 
-from detect import find_viral
+from detect import find_viral, is_mega, is_watch, score_posts
 from igapi import AccountUnavailable, IGClient, RateLimited, TokenError
 import outputs
 
@@ -82,18 +86,35 @@ def main():
     client = IGClient()
     now = datetime.now(timezone.utc)
     now_s = now.strftime("%Y-%m-%d %H:%M UTC")
+    state.setdefault("posts", {})
     cursor = 0 if args.only else state.get("cursor", 0) % len(resorts)
-    new_hits, checked, stop_reason = [], 0, None
+    by_handle = {r["instagram"].strip().lstrip("@").lower(): r for r in resorts}
 
-    for i in range(min(args.max_calls, len(resorts))):
-        r = resorts[(cursor + i) % len(resorts)]
-        handle = r["instagram"].strip().lstrip("@").lower()
+    # 1) watchlist: accounts with a fast-climbing post from the last week, biggest first
+    watch = []
+    if not args.only:
+        climbing = sorted((p for p in state["posts"].values() if is_watch(p, settings.get("mega"))),
+                          key=lambda p: -p["value"])
+        for p in climbing:
+            if p["handle"] in by_handle and p["handle"] not in watch:
+                watch.append(p["handle"])
+        watch = watch[: settings.get("watch_max", 20)]
+    # 2) then the normal rotation through the whole list
+    rotation = [resorts[(cursor + i) % len(resorts)]["instagram"].strip().lstrip("@").lower()
+                for i in range(len(resorts))]
+    queue = watch + [h for h in rotation if h not in watch]
+
+    new_hits, new_mega, checked, rotated, stop_reason = [], [], 0, 0, None
+    for handle in queue[: args.max_calls]:
+        r = by_handle[handle]
+        in_rotation = handle not in watch
         acct = state["accounts"].setdefault(handle, {})
         try:
             data = client.business_discovery(handle, media_limit=settings.get("posts_per_account", 12))
         except AccountUnavailable as e:
             acct.update(status="unavailable: " + str(e)[:80], last_checked=now_s)
             checked += 1
+            rotated += in_rotation
             continue
         except RateLimited as e:
             stop_reason = f"rate limit: {e}"
@@ -104,9 +125,11 @@ def main():
         except Exception as e:  # network blip etc. - skip this account this round
             acct.update(status="error: " + str(e)[:80], last_checked=now_s)
             checked += 1
+            rotated += in_rotation
             continue
 
         checked += 1
+        rotated += in_rotation
         posts = (data.get("media") or {}).get("data", [])
         followers = data.get("followers_count")
         views = [p["view_count"] for p in posts if p.get("view_count") is not None]
@@ -118,12 +141,23 @@ def main():
             last_post=posts[0]["timestamp"][:10] if posts else None,
             website=data.get("website"),
         )
+        meta = dict(resort=r["resort"], handle=handle, state_prov=r.get("state_prov", ""), tier=r.get("tier", ""))
+
+        # keep every recent post's latest numbers (feeds the weekly report)
+        for p in score_posts(posts, followers, now):
+            rec = state["posts"].setdefault(p["media_id"], {"first_seen": now_s})
+            rec.update(p, **meta, last_seen=now_s)
+            if is_mega(rec, settings.get("mega")) and not rec.get("mega_alerted"):
+                rec["mega_alerted"] = now_s
+                new_mega.append(dict(rec))
+
+        # regular "viral" flags (5x normal etc.) -> sheet + log + weekly report
         for hit in find_viral(posts, followers, settings.get("viral", {}), now):
+            if hit["media_id"] in state["posts"]:
+                state["posts"][hit["media_id"]]["viral"] = hit["reason"]
             if hit["media_id"] in state["alerted"]:
                 continue
-            hit.update(detected_at=now_s, resort=r["resort"], handle=handle,
-                       state_prov=r.get("state_prov", ""), tier=r.get("tier", ""),
-                       posted=hit["timestamp"][:10])
+            hit.update(detected_at=now_s, **meta, posted=hit["timestamp"][:10])
             state["alerted"][hit["media_id"]] = {"handle": handle, "at": now_s, "value": hit["value"]}
             new_hits.append(hit)
         if client.stop:
@@ -131,10 +165,16 @@ def main():
             break
         client.polite_sleep(settings.get("sleep_seconds", 0.5))
 
+    # forget posts older than ~5 weeks so state.json stays small
+    cutoff = (now - timedelta(days=35)).strftime("%Y-%m-%d")
+    for k in [k for k, p in state["posts"].items() if p.get("posted", "9999") < cutoff]:
+        state["posts"].pop(k)
+
     if not args.only:
-        state["cursor"] = (cursor + checked) % len(resorts)
-    state["last_run"] = {"at": now_s, "checked": checked, "api_calls": client.calls,
-                         "new_hits": len(new_hits), "stopped": stop_reason, "usage": client.last_usage}
+        state["cursor"] = (cursor + rotated) % len(resorts)
+    state["last_run"] = {"at": now_s, "checked": checked, "watchlist": len(watch), "api_calls": client.calls,
+                         "new_hits": len(new_hits), "new_mega": len(new_mega), "stopped": stop_reason,
+                         "usage": client.last_usage}
 
     # trim alert memory to the last ~60 days so state.json stays small
     if len(state["alerted"]) > 5000:
@@ -147,7 +187,10 @@ def main():
         accounts.append({**{k: r.get(k, "") for k in ("resort", "state_prov", "country", "tier")},
                          "handle": r["instagram"], **a})
 
-    print(f"Checked {checked} accounts, {client.calls} API calls, {len(new_hits)} new viral posts. {stop_reason or ''}")
+    print(f"Checked {checked} accounts ({len(watch)} on watchlist), {client.calls} API calls, "
+          f"{len(new_hits)} new viral, {len(new_mega)} MEGA. {stop_reason or ''}")
+    for m in new_mega:
+        print(f"  MEGA   {m['resort']:<30} {m['value']:>10,} {m['metric']}  {m['permalink']}")
     for h in new_hits:
         print(f"  VIRAL  {h['resort']:<30} {h['value']:>10,} {h['metric']:<5} {h['reason']}  {h['permalink']}")
 
@@ -164,9 +207,9 @@ def main():
     except Exception as e:
         print("Sheet update failed:", e)
     try:
-        outputs.email_digest(new_hits)
+        outputs.email_mega(new_mega)
     except Exception as e:
-        print("Email failed:", e)
+        print("Mega email failed:", e)
 
 
 if __name__ == "__main__":
