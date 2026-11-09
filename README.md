@@ -71,9 +71,20 @@ You can change every number in `settings.json`. Each post is only alerted once.
 4. Add the secrets `SHEET_ID` and `GOOGLE_SA_JSON` (paste the whole JSON file).
 The tracker adds new hits to a **Viral posts** tab and rewrites an **Accounts** tab with followers and median views for every resort, which is handy for benchmarking.
 
-### 6. Email alerts (optional)
+### 6. Emails
+There are two emails:
+
+| Email | When | What |
+|---|---|---|
+| **Weekly report** | Mondays ~7:45am Pacific (`weekly.yml`) | Last 7 days: posts that beat their own account's normal by 3x+, the biggest posts by views, and any mega-viral posts |
+| **Mega viral alert** | Within about an hour of detection (hourly tracker) | One email per post that hits 2M+ views **and** 10x the account's normal, or 5M+ views no matter what (100K+ likes and 10x for photos) |
+
+The mega thresholds are set to be rare: a few times a season across the whole industry. Posts that pass 300K views (or 8x normal) go on a watchlist and get re-checked every hour, so a post that's taking off is caught fast. Tune all of this under `mega` and `weekly` in `settings.json`.
+
+Setup:
 1. Turn on 2-step verification for a Gmail account, then create an **App password** (myaccount.google.com/apppasswords).
-2. Add the secrets `SMTP_USER` (the Gmail address), `SMTP_PASS` (the app password) and `ALERT_TO` (where alerts go; separate several addresses with commas).
+2. Add the secrets `SMTP_USER` (the Gmail address), `SMTP_PASS` (the app password) and `ALERT_TO` (where emails go; separate several addresses with commas). Optional: `WEEKLY_TO` if the weekly report should go to different people.
+3. To test, open Actions → **Weekly report** → Run workflow. Each report is also saved in `reports/`.
 
 ---
 
