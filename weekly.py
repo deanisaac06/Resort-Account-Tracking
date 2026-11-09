@@ -231,13 +231,15 @@ def ai_summary(posts, stats, s, now):
             r = requests.post(AI_URL, timeout=90, headers={
                 "Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json",
                 "X-GitHub-Api-Version": "2022-11-28", "Content-Type": "application/json"},
-                json={"model": model, "temperature": 0.4, "max_tokens": 450,
+                json={"model": model, "temperature": 0.4, "max_tokens": 450, "stream": False,
                       "messages": [{"role": "system", "content": AI_SYSTEM}, {"role": "user", "content": prompt}]})
-            if r.status_code == 200:
+            try:
                 text = r.json()["choices"][0]["message"]["content"].strip()
                 print(f"AI summary from {model}: {len(text)} chars")
                 return text
-            print(f"AI model {model} failed: {r.status_code} {r.text[:200]}")
+            except Exception:
+                print(f"AI model {model} failed: HTTP {r.status_code}, {r.headers.get('content-type')}, "
+                      f"url {r.url}, body {r.text[:300]!r}")
         except Exception as e:
             print(f"AI model {model} error: {str(e)[:200]}")
     return None
