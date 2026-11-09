@@ -245,3 +245,29 @@ def test_weekly_auto_retries_ai_then_sends_with_notice():
     ai["ok"] = True
     weekly.main()                                   # next week, AI works -> normal email
     assert sent[-1] == ("Summary.", None)
+
+
+def test_monthly_rollup():
+    import rollup
+    state = {"accounts": {"big": {"status": "ok", "followers": 1200}, "quiet": {"status": "ok", "followers": 50},
+                          "gone": {"status": "unavailable: x"}},
+             "posts": {
+                 "1": {"handle": "big", "posted": "2026-11-03", "metric": "views", "value": 90_000, "multiple": 6.0,
+                       "permalink": "p1", "viral": "5x"},
+                 "2": {"handle": "big", "posted": "2026-11-20", "metric": "views", "value": 10_000, "multiple": 0.9,
+                       "permalink": "p2"},
+                 "3": {"handle": "big", "posted": "2026-11-21", "metric": "likes", "value": 400, "multiple": 3.1,
+                       "permalink": "p3"},
+                 "4": {"handle": "big", "posted": "2026-10-30", "metric": "views", "value": 1, "multiple": 9.0,
+                       "permalink": "old"}}}
+    resorts = [{"resort": "Big", "instagram": "big", "state_prov": "CO", "tier": "Major"},
+               {"resort": "Quiet", "instagram": "quiet", "state_prov": "VT", "tier": "Small"},
+               {"resort": "Gone", "instagram": "gone", "state_prov": "MT", "tier": "Small"}]
+    history = [{"month": "2026-10", "handle": "big", "followers": "1000"}]
+    rows = {r["handle"]: r for r in rollup.rollup("2026-11", state, resorts, history)}
+    assert set(rows) == {"big", "quiet"}                    # unreadable accounts skipped
+    b = rows["big"]
+    assert (b["posts"], b["reels"], b["posts_3x"], b["viral_posts"]) == (3, 2, 2, 1)
+    assert b["median_reel_views"] == 50_000 and b["total_reel_views"] == 100_000
+    assert b["followers_change"] == 200 and b["top_post"] == "p1" and b["best_multiple"] == 6.0
+    assert rows["quiet"]["posts"] == 0                      # a month with no posts is still recorded
