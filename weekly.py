@@ -218,14 +218,14 @@ def ai_rows(posts):
     return "\n".join(rows)
 
 
-def _gemini(model, key, prompt):
+def _gemini(model, key, prompt, deadline):
     for attempt in range(3):   # Google returns 503 "high demand" now and then - wait and retry
-        r = requests.post(f"{GEMINI_URL}/models/{model}:generateContent", timeout=120,
+        r = requests.post(f"{GEMINI_URL}/models/{model}:generateContent", timeout=max(20, min(90, deadline - time.time())),
                           headers={"x-goog-api-key": key, "Content-Type": "application/json"},
                           json={"systemInstruction": {"parts": [{"text": AI_SYSTEM}]},
                                 "contents": [{"role": "user", "parts": [{"text": prompt}]}],
                                 "generationConfig": {"temperature": 0.4, "maxOutputTokens": 4096}})
-        if r.status_code in (500, 503) and attempt < 2:
+        if r.status_code in (500, 503) and attempt < 2 and time.time() + 20 * (attempt + 1) < deadline:
             print(f"  {model}: busy (HTTP {r.status_code}), retrying in {20 * (attempt + 1)}s")
             time.sleep(20 * (attempt + 1))
             continue
@@ -265,14 +265,15 @@ def ai_summary(posts, stats, s, now):
                               accounts_posting=stats["accounts_posting"], reel_share=stats["reel_share"],
                               top_reel_share=top_reels, n_top=len(posts), rows=ai_rows(posts))
     tried = []
+    deadline = time.time() + s.get("ai_max_seconds", 300)   # never let a slow AI day hold up the email
     for model in list(s["ai_models"]) + ["__discover__"]:
         candidates = _flash_models(key)[:3] if model == "__discover__" else [model]
         for m in candidates:
-            if m in tried:
+            if m in tried or time.time() > deadline - 20:
                 continue
             tried.append(m)
             try:
-                text = _gemini(m, key, prompt)
+                text = _gemini(m, key, prompt, deadline)
             except Exception as e:
                 print(f"  {m} error: {str(e)[:200]}")
                 text = None
