@@ -85,9 +85,8 @@ def main():
 
     now = datetime.now(timezone.utc)
     w = settings.get("weekly", {})
-    if (os.environ.get("GITHUB_EVENT_NAME") == "schedule" and now.weekday() == w.get("report_weekday", 0)
-            and now.hour == w.get("reserve_hour_utc", 15)):
-        print("Skipping this hour so the weekly report has Instagram quota to work with.")
+    if not args.only and now.weekday() == w.get("report_weekday", 0) and now.hour == w.get("report_hour_utc", 15):
+        print("Weekly report hour - skipping tracking so the report has Instagram quota to work with.")
         return
     client = IGClient()
     now_s = now.strftime("%Y-%m-%d %H:%M UTC")
