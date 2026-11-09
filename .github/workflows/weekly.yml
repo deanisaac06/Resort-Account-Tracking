@@ -1,7 +1,7 @@
 name: Weekly report
+# The real Monday report is sent automatically by the hourly "Track viral posts" run (it retries the
+# AI summary every hour for up to 24h). This workflow is for sending a copy by hand / testing.
 on:
-  schedule:
-    - cron: "43 15 * * 1"   # Mondays 15:43 UTC = 7:43am Pacific (8:43am during daylight time)
   workflow_dispatch:
     inputs:
       dry_run:
@@ -14,7 +14,7 @@ concurrency: tracker
 jobs:
   weekly:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -33,6 +33,7 @@ jobs:
           WEEKLY_TO: ${{ secrets.WEEKLY_TO }}
         run: python weekly.py ${{ inputs.dry_run && '--dry-run' || '' }}
       - name: Save report
+        if: ${{ !inputs.dry_run }}
         run: |
           git config user.name "ski-tracker-bot"
           git config user.email "actions@users.noreply.github.com"
