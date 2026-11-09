@@ -1,4 +1,4 @@
-"""One-time history backfill: pull each resort's last ~200 posts and turn them into monthly rows in
+"""One-time history backfill: pull each resort's recent posts (300-1000 depending on resort size) and turn them into monthly rows in
 data/history/monthly.csv (same columns rollup.py writes every month), so seasonality and each
 resort's long-run normal are visible right away instead of after months of tracking.
 
@@ -23,7 +23,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 PROGRESS = os.path.join(HERE, "data", "backfill", "progress.json")
 SETTINGS = os.path.join(HERE, "settings.json")
 
-TARGET_POSTS = 200
+TARGET_POSTS = 200      # fallback only - the real target depends on resort size (see post_targets)
+# Posts to pull per resort, by physical size rank (trail km, then lifts). Buckets don't stack:
+# the biggest 10% get 1000, the next 20% (to the top 30%) 800, the next 20% (to 50%) 600, the rest 300.
+SIZE_BUCKETS = [(0.10, 1000), (0.30, 800), (0.50, 600), (1.00, 300)]
 PAGE = 50
 LIGHT_FIELDS = ["timestamp", "like_count", "comments_count", "view_count", "permalink", "media_product_type"]
 
@@ -148,6 +151,24 @@ def compact(m):
             "permalink": m.get("permalink", "")}
 
 
+def _num(x):
+    try:
+        return float(x)
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def post_targets(resorts, buckets=None):
+    """{handle: posts to pull}, from each resort's size rank among all tracked resorts."""
+    buckets = buckets or SIZE_BUCKETS
+    ranked = sorted(resorts, key=lambda r: (_num(r.get("trail_km")), _num(r.get("lifts"))), reverse=True)
+    out, n = {}, len(ranked)
+    for i, r in enumerate(ranked):
+        h = r["instagram"].strip().lstrip("@").lower()
+        out.setdefault(h, next(t for share, t in buckets if i < max(1, round(n * share))))
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--status", action="store_true")
@@ -160,6 +181,7 @@ def main():
         progress = {"started": now.isoformat(), "done": [], "skipped": {}, "current": None, "calls": 0}
     resorts = rollup.load_resorts()
     by_handle = {r["instagram"].strip().lstrip("@").lower(): r for r in resorts}
+    targets = post_targets(resorts)
     todo = [h for h in by_handle if h not in progress["done"] and h not in progress["skipped"]]
     print(f"Backfill: {len(progress['done'])} done, {len(progress['skipped'])} skipped, {len(todo)} to go "
           f"({progress['calls']} API calls so far)")
@@ -180,7 +202,8 @@ def main():
             cur = progress["current"] = {"handle": todo[0], "after": None, "posts": []}
         h = cur["handle"]
         try:
-            data = client.business_discovery(h, media_limit=min(page, TARGET_POSTS - len(cur["posts"])),
+            target = targets.get(h, TARGET_POSTS)
+            data = client.business_discovery(h, media_limit=min(page, target - len(cur["posts"])),
                                              after=cur["after"], media_fields=LIGHT_FIELDS)
         except TooMuchData:
             page = progress["page"] = max(10, page // 2)
@@ -206,16 +229,17 @@ def main():
         cur["posts"] += fresh
         # Business Discovery often omits paging.next, so keep going whenever a cursor came back with a full page
         cursor = ((media.get("paging") or {}).get("cursors") or {}).get("after")
-        asked = min(page, TARGET_POSTS - (len(cur["posts"]) - len(fresh)))
+        asked = min(page, target - (len(cur["posts"]) - len(fresh)))
         nxt = cursor if cursor and fresh and (len(page_posts) >= asked or (media.get("paging") or {}).get("next")) else None
         cur["after"] = nxt
-        hit_cap = len(cur["posts"]) >= TARGET_POSTS
+        hit_cap = len(cur["posts"]) >= target
         if hit_cap or not nxt:
             rows = monthly_rows(by_handle[h], h, cur["posts"], hit_cap, now, settings)
             upsert(rows)
             oldest = min((p["ts"] for p in cur["posts"]), default="-")
             print(f"  @{h}: {len(cur['posts'])} posts back to {oldest} -> {len(rows)} months")
             progress["done"].append(h)
+            progress.setdefault("posts_pulled", {})[h] = len(cur["posts"])
             progress["current"] = None
             todo.remove(h)
             finished += 1
