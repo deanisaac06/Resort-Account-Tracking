@@ -172,8 +172,8 @@ def main():
             break
         client.polite_sleep(settings.get("sleep_seconds", 0.5))
 
-    # forget posts older than ~5 weeks so state.json stays small
-    cutoff = (now - timedelta(days=35)).strftime("%Y-%m-%d")
+    # forget posts older than ~6 weeks so state.json stays small (rollup.py has saved each month by then)
+    cutoff = (now - timedelta(days=settings.get("keep_post_days", 45))).strftime("%Y-%m-%d")
     for k in [k for k, p in state["posts"].items() if p.get("posted", "9999") < cutoff]:
         state["posts"].pop(k)
 
