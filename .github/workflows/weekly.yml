@@ -2,7 +2,12 @@ name: Weekly report
 on:
   schedule:
     - cron: "43 15 * * 1"   # Mondays 15:43 UTC = 7:43am Pacific (8:43am during daylight time)
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Build the report but don't email it"
+        type: boolean
+        default: false
 permissions:
   contents: write
   models: read      # free AI summary via GitHub Models
@@ -26,7 +31,7 @@ jobs:
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           ALERT_TO: ${{ secrets.ALERT_TO }}
           WEEKLY_TO: ${{ secrets.WEEKLY_TO }}
-        run: python weekly.py
+        run: python weekly.py ${{ inputs.dry_run && '--dry-run' || '' }}
       - name: Save report
         run: |
           git config user.name "ski-tracker-bot"
