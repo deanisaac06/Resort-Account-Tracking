@@ -5,11 +5,12 @@ on:
   workflow_dispatch: {}
 permissions:
   contents: write
+  models: read      # free AI summary via GitHub Models
 concurrency: tracker
 jobs:
   weekly:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -18,6 +19,9 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Build and send the weekly report
         env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           ALERT_TO: ${{ secrets.ALERT_TO }}
