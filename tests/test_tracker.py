@@ -115,3 +115,70 @@ if __name__ == "__main__":
         if name.startswith("test_"):
             fn()
             print("ok", name)
+
+
+def test_mega_rules():
+    base = [post(i, views=30_000, days=i) for i in range(2, 10)]
+    summit = detect.score_posts([post(1, views=3_500_000)] + base, followers=87_000, now=NOW)
+    assert detect.is_mega(summit[0])                        # 3.5M, ~117x normal
+    big_normal = detect.score_posts([post(1, views=2_500_000)] + [post(i, views=600_000, days=i) for i in range(2, 10)], now=NOW)
+    assert not detect.is_mega(big_normal[0])                # 2.5M but only ~4x a big account's normal
+    huge = detect.score_posts([post(1, views=6_000_000)] + [post(i, views=1_500_000, days=i) for i in range(2, 10)], now=NOW)
+    assert detect.is_mega(huge[0])                          # 5M+ always counts
+    modest = detect.score_posts([post(1, views=900_000)] + base, now=NOW)
+    assert not detect.is_mega(modest[0]) and detect.is_watch(modest[0])  # climbing -> watchlist
+
+
+def test_mega_email_and_watchlist_end_to_end():
+    import importlib
+    tmp = tempfile.mkdtemp()
+    src = os.path.dirname(HERE)
+    for f in ("track.py", "detect.py", "igapi.py", "outputs.py", "settings.json", "weekly.py"):
+        shutil.copy(os.path.join(src, f), tmp)
+    with open(os.path.join(tmp, "resorts.csv"), "w") as f:
+        f.write("resort,state_prov,country,tier,instagram,track\n"
+                + "".join(f"Hill {i},WA,USA,Small,hill{i},yes\n" for i in range(6))
+                + "Summit,WA,USA,Major,summit,yes\n")
+    sys.path.insert(0, tmp)
+    for m in ("track", "detect", "igapi", "outputs", "weekly"):
+        sys.modules.pop(m, None)
+    os.environ.update(IG_USER_ID="1", IG_ACCESS_TOKEN="x")
+    track = importlib.import_module("track")
+    igapi, outputs = sys.modules["igapi"], sys.modules["outputs"]
+    recent = datetime.now(timezone.utc)
+    big = {"views": 400_000}
+    calls = []
+
+    def fake_bd(self, username, media_limit=12):
+        self.calls += 1
+        calls.append(username)
+        media = [{"id": f"{username}{i}", "permalink": f"https://ig/{username}{i}",
+                  "timestamp": (recent - timedelta(days=i)).strftime("%Y-%m-%dT%H:%M:%S+0000"),
+                  "view_count": 30_000, "like_count": 900, "comments_count": 3, "caption": "pow day"}
+                 for i in range(1, 10)]
+        if username == "summit":
+            media[0]["view_count"] = big["views"]
+        return {"followers_count": 87_000, "media_count": 300, "media": {"data": media}}
+
+    sent = []
+    igapi.IGClient.business_discovery = fake_bd
+    igapi.IGClient.polite_sleep = lambda self, s=0: None
+    outputs.send_email = lambda subject, body, html=None, to=None: sent.append(subject) or True
+    sys.argv = ["track.py", "--max-calls", "7"]
+    track.main()                                   # 400K: climbing, not mega
+    assert not sent
+    big["views"] = 3_500_000
+    sys.argv = ["track.py", "--max-calls", "2"]
+    calls.clear()
+    track.main()                                   # summit is on the watchlist -> checked first
+    assert calls[0] == "summit"
+    assert len(sent) == 1 and "MEGA VIRAL: Summit" in sent[0] and "3.5M views" in sent[0]
+    track.main()                                   # never alerts twice
+    assert len(sent) == 1
+    weekly = importlib.import_module("weekly")
+    state = json.load(open(os.path.join(tmp, "data", "state.json")))
+    outp, biggest, megas, stats, s = weekly.build(state, {}, datetime.now(timezone.utc))
+    assert megas[0]["handle"] == "summit" and megas[0]["value"] == 3_500_000
+    assert all(p["handle"] != "summit" or p["value"] < 1_000_000 for p in outp + biggest)  # not repeated
+    title, text, html = weekly.render(outp, biggest, megas, stats, s, datetime.now(timezone.utc))
+    assert "MEGA VIRAL THIS WEEK" in text and "<table" in html
