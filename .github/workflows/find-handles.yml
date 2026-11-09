@@ -1,0 +1,30 @@
+name: Find handles
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "scrape = read resort websites, verify = check handles via API, guess = try likely handles"
+        default: "--scrape --verify"
+permissions:
+  contents: write
+concurrency: tracker
+jobs:
+  find:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: python find_handles.py ${{ github.event.inputs.mode }}
+      - run: |
+          git config user.name "ski-tracker-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add resorts.csv
+          git diff --cached --quiet || git commit -m "update handles"
+          git push
