@@ -126,6 +126,9 @@ def main():
                        posted=hit["timestamp"][:10])
             state["alerted"][hit["media_id"]] = {"handle": handle, "at": now_s, "value": hit["value"]}
             new_hits.append(hit)
+        if client.stop:
+            stop_reason = f"near Meta's hourly quota ({client.last_usage}) - continuing next run"
+            break
         client.polite_sleep(settings.get("sleep_seconds", 0.5))
 
     if not args.only:
