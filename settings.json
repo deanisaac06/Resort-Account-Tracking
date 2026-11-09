@@ -12,5 +12,23 @@
     "vpf_min_multiple": 2.0,
     "max_age_days": 21,
     "min_baseline_posts": 4
+  },
+  "watch_max": 20,
+  "mega": {
+    "min_views": 2000000,
+    "min_multiple": 10.0,
+    "always_views": 5000000,
+    "min_likes": 100000,
+    "max_age_days": 30,
+    "watch_views": 300000,
+    "watch_multiple": 8.0
+  },
+  "weekly": {
+    "lookback_days": 7,
+    "min_multiple": 3.0,
+    "min_views": 10000,
+    "min_likes": 1000,
+    "top_outperformers": 20,
+    "top_biggest": 10
   }
 }
