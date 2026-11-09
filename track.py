@@ -83,8 +83,13 @@ def main():
     if not resorts:
         sys.exit("No accounts to track - fill the instagram column in resorts.csv")
 
-    client = IGClient()
     now = datetime.now(timezone.utc)
+    w = settings.get("weekly", {})
+    if (os.environ.get("GITHUB_EVENT_NAME") == "schedule" and now.weekday() == w.get("report_weekday", 0)
+            and now.hour == w.get("reserve_hour_utc", 15)):
+        print("Skipping this hour so the weekly report has Instagram quota to work with.")
+        return
+    client = IGClient()
     now_s = now.strftime("%Y-%m-%d %H:%M UTC")
     state.setdefault("posts", {})
     cursor = 0 if args.only else state.get("cursor", 0) % len(resorts)
@@ -146,7 +151,10 @@ def main():
         # keep every recent post's latest numbers (feeds the weekly report)
         for p in score_posts(posts, followers, now):
             rec = state["posts"].setdefault(p["media_id"], {"first_seen": now_s})
+            thumb = p.pop("thumb", None)
             rec.update(p, **meta, last_seen=now_s)
+            if thumb and (p.get("multiple") or 0) >= 2.5:   # only keep preview links for standouts
+                rec["thumb"] = thumb
             if is_mega(rec, settings.get("mega")) and not rec.get("mega_alerted"):
                 rec["mega_alerted"] = now_s
                 new_mega.append(dict(rec))
