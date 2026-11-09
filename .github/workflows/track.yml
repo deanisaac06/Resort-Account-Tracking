@@ -1,15 +1,16 @@
 name: Track viral posts
 on:
   schedule:
-    - cron: "23 * * * *"   # every hour at :23 (UTC)
+    - cron: "23 * * * *"   # GitHub's own hourly timer - often late or skipped, so "next-run" below is the backup
   workflow_dispatch: {}
 permissions:
   contents: write
-concurrency: tracker
+  actions: write           # lets a run start the next one
 jobs:
   track:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 40
+    concurrency: tracker
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -19,6 +20,7 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Check accounts
         env:
+          PYTHONUNBUFFERED: "1"
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
@@ -28,10 +30,46 @@ jobs:
           ALERT_TO: ${{ secrets.ALERT_TO }}
           MAX_CALLS: "150"
         run: python track.py
+      - name: Weekly report (Mondays; retries the AI summary hourly for up to 24h)
+        if: always()
+        env:
+          PYTHONUNBUFFERED: "1"
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          ALERT_TO: ${{ secrets.ALERT_TO }}
+          WEEKLY_TO: ${{ secrets.WEEKLY_TO }}
+        run: python weekly.py --auto
       - name: Save state
+        if: always()
         run: |
           git config user.name "ski-tracker-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/
+          git add data/ reports/ 2>/dev/null || git add data/
           git diff --cached --quiet || git commit -m "tracker run $(date -u +%F_%H%M)"
           git pull --rebase --quiet && git push
+
+  next-run:
+    # GitHub's built-in schedule hasn't been firing for this repo, so every run queues the next one
+    # for the coming hh:23. Only one of these waits at a time (concurrency), and it skips starting a
+    # run if GitHub's own schedule already started one, so runs never pile up.
+    needs: track
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    concurrency: clock
+    steps:
+      - name: Wait for the next hour, then start it
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          now=$(date +%s); next=$(( now / 3600 * 3600 + 23 * 60 ))
+          while [ "$next" -le $(( now + 300 )) ]; do next=$(( next + 3600 )); done
+          echo "Sleeping until $(date -u -d @$next +%H:%M) UTC"; sleep $(( next - now ))
+          recent=$(gh run list -R "$GITHUB_REPOSITORY" --workflow track.yml --limit 10 --json createdAt \
+                     --jq '[.[] | select((now - (.createdAt | fromdateiso8601)) < 1800)] | length')
+          if [ "$recent" -gt 0 ]; then echo "A run already started this hour - not starting another"; exit 0; fi
+          gh workflow run track.yml -R "$GITHUB_REPOSITORY" --ref main
+          echo "Started the next hourly run"
