@@ -3,6 +3,7 @@ Both are optional - if the secrets aren't set, the tracker just writes CSVs in d
 import json
 import os
 import smtplib
+from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from html import escape
@@ -56,17 +57,28 @@ def push_to_sheet(new_hits, accounts):
 
 
 # ---------------------------------------------------------------- Email
-def send_email(subject, body, html=None, to=None):
+def send_email(subject, body, html=None, to=None, images=None):
+    """images: optional {content_id: jpeg_bytes}, referenced in the html as <img src="cid:content_id">."""
     user, pw = os.environ.get("SMTP_USER"), os.environ.get("SMTP_PASS")
     to = to or os.environ.get("ALERT_TO")
     if not (user and pw and to):
         print("Email not configured (SMTP_USER / SMTP_PASS / ALERT_TO) - skipping:", subject)
         return False
-    msg = MIMEMultipart("alternative")
-    msg["Subject"], msg["From"], msg["To"] = subject, user, to
-    msg.attach(MIMEText(body, "plain", "utf-8"))
+    alt = MIMEMultipart("alternative")
+    alt.attach(MIMEText(body, "plain", "utf-8"))
     if html:
-        msg.attach(MIMEText(html, "html", "utf-8"))
+        alt.attach(MIMEText(html, "html", "utf-8"))
+    if images:
+        msg = MIMEMultipart("related")
+        msg.attach(alt)
+        for cid, data in images.items():
+            img = MIMEImage(data, "jpeg")
+            img.add_header("Content-ID", f"<{cid}>")
+            img.add_header("Content-Disposition", "inline", filename=f"{cid}.jpg")
+            msg.attach(img)
+    else:
+        msg = alt
+    msg["Subject"], msg["From"], msg["To"] = subject, user, to
     host = os.environ.get("SMTP_HOST", "smtp.gmail.com")
     with smtplib.SMTP_SSL(host, 465, timeout=30) as s:
         s.login(user, pw)
