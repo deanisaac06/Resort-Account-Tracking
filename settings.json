@@ -37,6 +37,8 @@
       "gemini-flash-latest"
     ],
     "report_weekday": 0,
-    "reserve_hour_utc": 15
+    "ai_max_seconds": 900,
+    "ai_retry_hours": 24,
+    "report_hour_utc": 15
   }
 }
