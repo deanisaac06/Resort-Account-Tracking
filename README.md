@@ -93,6 +93,8 @@ The AI summary uses Google's Gemini free tier: create a key at aistudio.google.c
 ### 7. Monthly history (kept forever)
 `data/history/monthly.csv` gets one row per resort per month, added on the 3rd of each month for the month before (by the hourly run, via `rollup.py`). Columns: followers and change, posts and reels, median and total reel views, median photo likes, **posts_3x** (posts that beat the account's own normal by 3x+), viral and mega counts, and the month's best post. That's about 500 rows a month (~1 MB a year), so it stays small while building up each resort's normal, how often it breaks out, and seasonality over time. To redo a month by hand: `python rollup.py 2026-11`.
 
+**Backfill:** `backfill.py` pulls each account's last 200 posts once (50 per call, picking up where it left off each hour) and writes monthly rows for the past months they cover, so history starts well before tracking did. Backfilled months have no follower counts. Normal tracking is paused while it runs and resumes automatically when `data/backfill/progress.json` shows `completed`. `python backfill.py --status` shows progress.
+
 ---
 
 ## Running locally
