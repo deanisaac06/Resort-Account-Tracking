@@ -42,6 +42,9 @@ jobs:
           ALERT_TO: ${{ secrets.ALERT_TO }}
           WEEKLY_TO: ${{ secrets.WEEKLY_TO }}
         run: python weekly.py --auto
+      - name: Monthly history (on the 3rd, adds last month's one-line-per-resort summary)
+        if: always()
+        run: python rollup.py
       - name: Save state
         if: always()
         run: |
