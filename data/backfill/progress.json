@@ -35,1220 +35,324 @@
   "hudsonbaymountain",
   "kickinghorsemtn",
   "kimberleyalpineresort",
-  "manningpark"
+  "manningpark",
+  "mountcain",
+  "ski_timothy",
+  "mountwashington",
+  "mtseymour"
  ],
  "skipped": {
   "whitewaterskiresort": "Invalid user id",
   "_chicopee_": "Invalid user id"
  },
  "current": {
-  "handle": "mountcain",
-  "after": "QVFIVDdEN2pMWW9MN2ExLUlNT0hmME95NUZA2bk5SS0RVX3RpN24xYV9PN3dlTHRsdHNnMlJaOE16ZAXh5YVd6TF9NVXQtLTZArRzVHQVZAnRU14QWROTkxHUDZA3",
+  "handle": "baldymountainresort",
+  "after": "QVFIVHpPSXJxZAEY4cFZAkZAkVhSVM5bmIyZAW5iZAGVYOFRYbkQzclp4TUU3dGRoZAER2QXRZAN0FjYWg0T3V3dHZAVb2FqWGRCUVVJLWZA3Tjc4S0FqYXZAWLW5PaC1n",
   "posts": [
    {
-    "ts": "2026-11-08",
-    "metric": "likes",
-    "value": 153,
-    "permalink": "https://www.instagram.com/p/DfeCLGslHG2/"
+    "ts": "2026-11-09",
+    "metric": "views",
+    "value": 4782,
+    "permalink": "https://www.instagram.com/reel/DfiMaW5CUUY/"
    },
    {
-    "ts": "2026-10-31",
+    "ts": "2026-11-09",
     "metric": "likes",
-    "value": 566,
-    "permalink": "https://www.instagram.com/p/DfLKxXVEhJs/"
+    "value": 11,
+    "permalink": "https://www.instagram.com/p/DfiBS35DwB2/"
    },
    {
-    "ts": "2026-10-29",
+    "ts": "2026-11-04",
     "metric": "likes",
-    "value": 198,
-    "permalink": "https://www.instagram.com/p/DfESKrYlCJ2/"
+    "value": 64,
+    "permalink": "https://www.instagram.com/p/DfVJdqUk-dT/"
    },
    {
-    "ts": "2026-10-10",
+    "ts": "2026-11-01",
     "metric": "likes",
-    "value": 189,
-    "permalink": "https://www.instagram.com/p/DeTG0oThBFm/"
+    "value": 54,
+    "permalink": "https://www.instagram.com/p/DfNIxPmgYfK/"
    },
    {
-    "ts": "2026-10-10",
+    "ts": "2026-10-30",
     "metric": "likes",
-    "value": 234,
-    "permalink": "https://www.instagram.com/p/DeTFu5wJ36O/"
+    "value": 229,
+    "permalink": "https://www.instagram.com/p/DfIfmLQE01w/"
    },
    {
-    "ts": "2026-09-24",
+    "ts": "2026-10-27",
     "metric": "likes",
-    "value": 473,
-    "permalink": "https://www.instagram.com/p/DdqFCeilVMn/"
+    "value": 416,
+    "permalink": "https://www.instagram.com/p/DfALxiGE9TS/"
    },
    {
-    "ts": "2026-09-03",
-    "metric": "likes",
-    "value": 115,
-    "permalink": "https://www.instagram.com/p/DczrsFGTiRq/"
+    "ts": "2026-10-26",
+    "metric": "views",
+    "value": 8610,
+    "permalink": "https://www.instagram.com/reel/De-QCUVFRK0/"
    },
    {
-    "ts": "2026-08-28",
+    "ts": "2026-10-21",
     "metric": "likes",
-    "value": 288,
-    "permalink": "https://www.instagram.com/p/Dcke-dYOTMF/"
+    "value": 46,
+    "permalink": "https://www.instagram.com/p/DevIRc-gQ35/"
+   },
+   {
+    "ts": "2026-10-13",
+    "metric": "likes",
+    "value": 6,
+    "permalink": "https://www.instagram.com/p/Dec-3Lsgcjk/"
+   },
+   {
+    "ts": "2026-10-08",
+    "metric": "likes",
+    "value": 6,
+    "permalink": "https://www.instagram.com/p/DePTwwAGLix/"
+   },
+   {
+    "ts": "2026-10-06",
+    "metric": "views",
+    "value": 1657,
+    "permalink": "https://www.instagram.com/reel/DeKRghBRJJV/"
+   },
+   {
+    "ts": "2026-10-06",
+    "metric": "likes",
+    "value": 9,
+    "permalink": "https://www.instagram.com/p/DeIjcL5gYCX/"
+   },
+   {
+    "ts": "2026-10-03",
+    "metric": "views",
+    "value": 1842,
+    "permalink": "https://www.instagram.com/reel/DeDCA_IS5x5/"
+   },
+   {
+    "ts": "2026-10-02",
+    "metric": "likes",
+    "value": 178,
+    "permalink": "https://www.instagram.com/p/DeAdkGBElbi/"
+   },
+   {
+    "ts": "2026-09-19",
+    "metric": "likes",
+    "value": 60,
+    "permalink": "https://www.instagram.com/p/DdepeFQjzPO/"
+   },
+   {
+    "ts": "2026-09-05",
+    "metric": "likes",
+    "value": 206,
+    "permalink": "https://www.instagram.com/p/Dc4ui8Xxk9K/"
+   },
+   {
+    "ts": "2026-09-04",
+    "metric": "likes",
+    "value": 16,
+    "permalink": "https://www.instagram.com/p/Dc3qQHfAazB/"
+   },
+   {
+    "ts": "2026-08-29",
+    "metric": "likes",
+    "value": 17,
+    "permalink": "https://www.instagram.com/p/DcmtRVKDFKK/"
+   },
+   {
+    "ts": "2026-08-19",
+    "metric": "likes",
+    "value": 30,
+    "permalink": "https://www.instagram.com/p/DcM9R87j9L1/"
+   },
+   {
+    "ts": "2026-08-17",
+    "metric": "views",
+    "value": 658,
+    "permalink": "https://www.instagram.com/reel/DcHzvkGjapC/"
+   },
+   {
+    "ts": "2026-08-14",
+    "metric": "likes",
+    "value": 49,
+    "permalink": "https://www.instagram.com/p/DcCf1r9Ct5o/"
    },
    {
     "ts": "2026-08-13",
     "metric": "likes",
-    "value": 243,
-    "permalink": "https://www.instagram.com/p/Db9-TAFBzAL/"
+    "value": 16,
+    "permalink": "https://www.instagram.com/p/Db_mgvpSkwu/"
    },
    {
-    "ts": "2026-04-16",
+    "ts": "2026-08-06",
     "metric": "likes",
-    "value": 427,
-    "permalink": "https://www.instagram.com/p/DXLRXWzFNlP/"
+    "value": 16,
+    "permalink": "https://www.instagram.com/p/DbgoJoCvVW0/"
    },
    {
-    "ts": "2026-04-09",
+    "ts": "2026-07-22",
     "metric": "likes",
-    "value": 197,
-    "permalink": "https://www.instagram.com/p/DW5PTW3lGRE/"
+    "value": 12,
+    "permalink": "https://www.instagram.com/p/DbGv7PJAe_P/"
+   },
+   {
+    "ts": "2026-07-16",
+    "metric": "likes",
+    "value": 32,
+    "permalink": "https://www.instagram.com/p/Da2vq8jGm0U/"
+   },
+   {
+    "ts": "2026-07-08",
+    "metric": "likes",
+    "value": 35,
+    "permalink": "https://www.instagram.com/p/DaieLCjNGmz/"
+   },
+   {
+    "ts": "2026-07-03",
+    "metric": "likes",
+    "value": 33,
+    "permalink": "https://www.instagram.com/p/DaVLbm9x4Ik/"
+   },
+   {
+    "ts": "2026-06-27",
+    "metric": "views",
+    "value": 1956,
+    "permalink": "https://www.instagram.com/reel/DaGTMmkRdXG/"
+   },
+   {
+    "ts": "2026-06-27",
+    "metric": "likes",
+    "value": 53,
+    "permalink": "https://www.instagram.com/p/DaGA365FMmu/"
+   },
+   {
+    "ts": "2026-06-26",
+    "metric": "likes",
+    "value": 14,
+    "permalink": "https://www.instagram.com/p/DaCBEe1xQIz/"
+   },
+   {
+    "ts": "2026-06-19",
+    "metric": "likes",
+    "value": 38,
+    "permalink": "https://www.instagram.com/p/DZxpU-cR1gh/"
+   },
+   {
+    "ts": "2026-06-17",
+    "metric": "likes",
+    "value": 91,
+    "permalink": "https://www.instagram.com/p/DZtKUR_j2gL/"
+   },
+   {
+    "ts": "2026-06-12",
+    "metric": "views",
+    "value": 2215,
+    "permalink": "https://www.instagram.com/reel/DZfmo32x07H/"
+   },
+   {
+    "ts": "2026-06-10",
+    "metric": "likes",
+    "value": 102,
+    "permalink": "https://www.instagram.com/p/DZbKoWZDxe_/"
+   },
+   {
+    "ts": "2026-06-04",
+    "metric": "likes",
+    "value": 64,
+    "permalink": "https://www.instagram.com/p/DZLEfSnvEIF/"
+   },
+   {
+    "ts": "2026-06-04",
+    "metric": "likes",
+    "value": 9,
+    "permalink": "https://www.instagram.com/p/DZJlJc9RbDZ/"
+   },
+   {
+    "ts": "2026-06-01",
+    "metric": "likes",
+    "value": 50,
+    "permalink": "https://www.instagram.com/p/DZDJtfeRGAS/"
+   },
+   {
+    "ts": "2026-05-06",
+    "metric": "likes",
+    "value": 22,
+    "permalink": "https://www.instagram.com/p/DYAiaAsj1ft/"
+   },
+   {
+    "ts": "2026-05-04",
+    "metric": "likes",
+    "value": 11,
+    "permalink": "https://www.instagram.com/p/DX73LCMPGZP/"
+   },
+   {
+    "ts": "2026-05-02",
+    "metric": "likes",
+    "value": 25,
+    "permalink": "https://www.instagram.com/p/DX17dPXEUEp/"
+   },
+   {
+    "ts": "2026-04-27",
+    "metric": "likes",
+    "value": 16,
+    "permalink": "https://www.instagram.com/p/DXoyPLtkWxp/"
+   },
+   {
+    "ts": "2026-04-23",
+    "metric": "likes",
+    "value": 53,
+    "permalink": "https://www.instagram.com/p/DXevYBfESLe/"
+   },
+   {
+    "ts": "2026-04-20",
+    "metric": "likes",
+    "value": 33,
+    "permalink": "https://www.instagram.com/p/DXW1x4QEdMw/"
+   },
+   {
+    "ts": "2026-04-13",
+    "metric": "likes",
+    "value": 83,
+    "permalink": "https://www.instagram.com/p/DXF0R6mD-9o/"
    },
    {
     "ts": "2026-04-07",
     "metric": "likes",
-    "value": 181,
-    "permalink": "https://www.instagram.com/p/DW0PeI2iX4k/"
+    "value": 205,
+    "permalink": "https://www.instagram.com/p/DW10SvYj8CY/"
    },
    {
-    "ts": "2026-04-02",
+    "ts": "2026-03-28",
     "metric": "likes",
-    "value": 213,
-    "permalink": "https://www.instagram.com/p/DWnbYF7FDU1/"
-   },
-   {
-    "ts": "2026-03-27",
-    "metric": "views",
-    "value": 6666,
-    "permalink": "https://www.instagram.com/reel/DWZ0EGgEu9b/"
+    "value": 52,
+    "permalink": "https://www.instagram.com/p/DWcKMBRD7Wk/"
    },
    {
     "ts": "2026-03-26",
     "metric": "likes",
-    "value": 120,
-    "permalink": "https://www.instagram.com/p/DWVr_78FWAa/"
+    "value": 32,
+    "permalink": "https://www.instagram.com/p/DWWuQX2kegK/"
    },
    {
-    "ts": "2026-03-23",
-    "metric": "likes",
-    "value": 96,
-    "permalink": "https://www.instagram.com/p/DWNULrojlrX/"
+    "ts": "2026-03-20",
+    "metric": "views",
+    "value": 17261,
+    "permalink": "https://www.instagram.com/reel/DWH7gSZgUv8/"
    },
    {
-    "ts": "2026-03-21",
-    "metric": "likes",
-    "value": 25,
-    "permalink": "https://www.instagram.com/p/DWIkjDgoNvZ/"
+    "ts": "2026-03-20",
+    "metric": "views",
+    "value": 8542,
+    "permalink": "https://www.instagram.com/reel/DWHK_2Tka7S/"
    },
    {
     "ts": "2026-03-19",
-    "metric": "likes",
-    "value": 205,
-    "permalink": "https://www.instagram.com/p/DWDRZEJlHBp/"
-   },
-   {
-    "ts": "2026-03-17",
-    "metric": "likes",
-    "value": 17,
-    "permalink": "https://www.instagram.com/p/DV-Eel7D3DK/"
-   },
-   {
-    "ts": "2026-03-12",
-    "metric": "likes",
-    "value": 279,
-    "permalink": "https://www.instagram.com/p/DVxXGmMlgUE/"
-   },
-   {
-    "ts": "2026-03-05",
-    "metric": "likes",
-    "value": 58,
-    "permalink": "https://www.instagram.com/p/DVffLZOFGV4/"
-   },
-   {
-    "ts": "2026-03-04",
-    "metric": "likes",
-    "value": 396,
-    "permalink": "https://www.instagram.com/p/DVcs1ddFFcJ/"
-   },
-   {
-    "ts": "2026-03-03",
-    "metric": "likes",
-    "value": 388,
-    "permalink": "https://www.instagram.com/p/DVaSoP_jlTo/"
-   },
-   {
-    "ts": "2026-02-26",
-    "metric": "likes",
-    "value": 293,
-    "permalink": "https://www.instagram.com/p/DVNeYrlFEsp/"
-   },
-   {
-    "ts": "2026-02-25",
-    "metric": "likes",
-    "value": 550,
-    "permalink": "https://www.instagram.com/p/DVK3zStmv1K/"
-   },
-   {
-    "ts": "2026-02-20",
     "metric": "views",
-    "value": 17538,
-    "permalink": "https://www.instagram.com/reel/DU9ufZ9AKdH/"
-   },
-   {
-    "ts": "2026-02-19",
-    "metric": "likes",
-    "value": 387,
-    "permalink": "https://www.instagram.com/p/DU7QfxcmG3v/"
-   },
-   {
-    "ts": "2026-02-12",
-    "metric": "likes",
-    "value": 382,
-    "permalink": "https://www.instagram.com/p/DUpImSkj-2o/"
-   },
-   {
-    "ts": "2026-02-04",
-    "metric": "likes",
-    "value": 49,
-    "permalink": "https://www.instagram.com/p/DUWTJO9EuuZ/"
-   },
-   {
-    "ts": "2026-01-28",
-    "metric": "likes",
-    "value": 211,
-    "permalink": "https://www.instagram.com/p/DUEp5EDktsY/"
-   },
-   {
-    "ts": "2026-01-27",
-    "metric": "likes",
-    "value": 196,
-    "permalink": "https://www.instagram.com/p/DUAEybZjgdq/"
-   },
-   {
-    "ts": "2026-01-25",
-    "metric": "likes",
-    "value": 63,
-    "permalink": "https://www.instagram.com/p/DT6smd0lEQv/"
-   },
-   {
-    "ts": "2026-01-22",
-    "metric": "likes",
-    "value": 341,
-    "permalink": "https://www.instagram.com/p/DTyxxH3gXmM/"
-   },
-   {
-    "ts": "2026-01-15",
-    "metric": "likes",
-    "value": 294,
-    "permalink": "https://www.instagram.com/p/DTjAB0rkk0Q/"
-   },
-   {
-    "ts": "2026-01-13",
-    "metric": "likes",
-    "value": 65,
-    "permalink": "https://www.instagram.com/p/DTeBsV8kq27/"
-   },
-   {
-    "ts": "2026-01-08",
-    "metric": "likes",
-    "value": 398,
-    "permalink": "https://www.instagram.com/p/DTPQquxlP20/"
-   },
-   {
-    "ts": "2026-01-01",
-    "metric": "likes",
-    "value": 309,
-    "permalink": "https://www.instagram.com/p/DS9BIhxFGZv/"
-   },
-   {
-    "ts": "2025-12-26",
-    "metric": "likes",
-    "value": 419,
-    "permalink": "https://www.instagram.com/p/DStRWTfD89Q/"
-   },
-   {
-    "ts": "2025-12-25",
-    "metric": "likes",
-    "value": 658,
-    "permalink": "https://www.instagram.com/p/DSrOXuylDtO/"
-   },
-   {
-    "ts": "2025-12-19",
-    "metric": "likes",
-    "value": 391,
-    "permalink": "https://www.instagram.com/p/DSdDrQTD3Bq/"
-   },
-   {
-    "ts": "2025-12-19",
-    "metric": "likes",
-    "value": 916,
-    "permalink": "https://www.instagram.com/p/DSbS2zwlJec/"
-   },
-   {
-    "ts": "2025-12-18",
-    "metric": "likes",
-    "value": 1565,
-    "permalink": "https://www.instagram.com/p/DSY2pMsFO4k/"
-   },
-   {
-    "ts": "2025-12-11",
-    "metric": "likes",
-    "value": 398,
-    "permalink": "https://www.instagram.com/p/DSGw0RRlOZh/"
-   },
-   {
-    "ts": "2025-12-04",
-    "metric": "likes",
-    "value": 240,
-    "permalink": "https://www.instagram.com/p/DR0zl_OFPCm/"
-   },
-   {
-    "ts": "2025-12-02",
-    "metric": "likes",
-    "value": 419,
-    "permalink": "https://www.instagram.com/p/DRv0W4ilKgt/"
-   },
-   {
-    "ts": "2025-11-24",
-    "metric": "likes",
-    "value": 34,
-    "permalink": "https://www.instagram.com/p/DRaxxZnEpGu/"
-   },
-   {
-    "ts": "2025-11-17",
-    "metric": "likes",
-    "value": 269,
-    "permalink": "https://www.instagram.com/p/DRJCZUnj8pn/"
-   },
-   {
-    "ts": "2025-11-05",
-    "metric": "likes",
-    "value": 95,
-    "permalink": "https://www.instagram.com/p/DQp9oJSElne/"
-   },
-   {
-    "ts": "2025-11-03",
-    "metric": "likes",
-    "value": 113,
-    "permalink": "https://www.instagram.com/p/DQnGTUHkzp9/"
-   },
-   {
-    "ts": "2025-10-29",
-    "metric": "likes",
-    "value": 188,
-    "permalink": "https://www.instagram.com/p/DQaVgLDEj9e/"
-   },
-   {
-    "ts": "2025-10-23",
-    "metric": "likes",
-    "value": 69,
-    "permalink": "https://www.instagram.com/p/DQIoFQMEXwx/"
-   },
-   {
-    "ts": "2025-10-09",
-    "metric": "likes",
-    "value": 60,
-    "permalink": "https://www.instagram.com/p/DPmmQvlATZV/"
-   },
-   {
-    "ts": "2025-10-03",
-    "metric": "likes",
-    "value": 85,
-    "permalink": "https://www.instagram.com/p/DPXUGn9ASYf/"
-   },
-   {
-    "ts": "2025-09-27",
-    "metric": "likes",
-    "value": 152,
-    "permalink": "https://www.instagram.com/p/DPFbnP3gece/"
-   },
-   {
-    "ts": "2025-09-26",
-    "metric": "likes",
-    "value": 480,
-    "permalink": "https://www.instagram.com/p/DPDH5KikaRd/"
-   },
-   {
-    "ts": "2025-09-15",
-    "metric": "likes",
-    "value": 419,
-    "permalink": "https://www.instagram.com/p/DOogT5yEg97/"
-   },
-   {
-    "ts": "2025-09-03",
-    "metric": "likes",
-    "value": 305,
-    "permalink": "https://www.instagram.com/p/DOH1gPaCR6w/"
-   },
-   {
-    "ts": "2025-04-24",
-    "metric": "likes",
-    "value": 93,
-    "permalink": "https://www.instagram.com/p/DI2NdpDzkc5/"
-   },
-   {
-    "ts": "2025-04-17",
-    "metric": "likes",
-    "value": 204,
-    "permalink": "https://www.instagram.com/p/DIiBLy7pkvF/"
-   },
-   {
-    "ts": "2025-04-16",
-    "metric": "likes",
-    "value": 60,
-    "permalink": "https://www.instagram.com/p/DIhUPu_T--J/"
-   },
-   {
-    "ts": "2025-04-10",
-    "metric": "likes",
-    "value": 256,
-    "permalink": "https://www.instagram.com/p/DIQToELxGO2/"
-   },
-   {
-    "ts": "2025-04-04",
-    "metric": "likes",
-    "value": 540,
-    "permalink": "https://www.instagram.com/p/DICXRPxBA9o/"
-   },
-   {
-    "ts": "2025-04-03",
-    "metric": "likes",
-    "value": 131,
-    "permalink": "https://www.instagram.com/p/DH_fLEzv9x2/"
-   },
-   {
-    "ts": "2025-04-03",
-    "metric": "likes",
-    "value": 31,
-    "permalink": "https://www.instagram.com/p/DH9uYRdSrSX/"
-   },
-   {
-    "ts": "2025-04-01",
-    "metric": "likes",
-    "value": 62,
-    "permalink": "https://www.instagram.com/p/DH4izpbNipA/"
-   },
-   {
-    "ts": "2025-03-28",
-    "metric": "likes",
-    "value": 45,
-    "permalink": "https://www.instagram.com/p/DHuYpdhv-54/"
-   },
-   {
-    "ts": "2025-03-27",
-    "metric": "likes",
-    "value": 52,
-    "permalink": "https://www.instagram.com/p/DHsNBsBsrb6/"
-   },
-   {
-    "ts": "2025-03-25",
-    "metric": "likes",
-    "value": 251,
-    "permalink": "https://www.instagram.com/p/DHoq_UFSuwO/"
-   },
-   {
-    "ts": "2025-03-24",
-    "metric": "likes",
-    "value": 82,
-    "permalink": "https://www.instagram.com/p/DHmEOCnyjeO/"
-   },
-   {
-    "ts": "2025-03-24",
-    "metric": "likes",
-    "value": 217,
-    "permalink": "https://www.instagram.com/p/DHkJEvQPqF2/"
-   },
-   {
-    "ts": "2025-03-20",
-    "metric": "likes",
-    "value": 677,
-    "permalink": "https://www.instagram.com/p/DHblL8tyQci/"
-   },
-   {
-    "ts": "2025-03-20",
-    "metric": "likes",
-    "value": 74,
-    "permalink": "https://www.instagram.com/p/DHaOVNIOqz5/"
-   },
-   {
-    "ts": "2025-03-16",
-    "metric": "likes",
-    "value": 181,
-    "permalink": "https://www.instagram.com/p/DHRfzQOy-7a/"
-   },
-   {
-    "ts": "2025-03-13",
-    "metric": "likes",
-    "value": 153,
-    "permalink": "https://www.instagram.com/p/DHINJmlucn1/"
-   },
-   {
-    "ts": "2025-03-06",
-    "metric": "likes",
-    "value": 85,
-    "permalink": "https://www.instagram.com/p/DG2JOTJxWJT/"
-   },
-   {
-    "ts": "2025-02-28",
-    "metric": "likes",
-    "value": 233,
-    "permalink": "https://www.instagram.com/p/DGmappUJ5Nx/"
-   },
-   {
-    "ts": "2025-02-20",
-    "metric": "likes",
-    "value": 713,
-    "permalink": "https://www.instagram.com/p/DGT3_24S3tG/"
-   },
-   {
-    "ts": "2025-02-20",
-    "metric": "likes",
-    "value": 367,
-    "permalink": "https://www.instagram.com/p/DGSCuEDxCPM/"
-   },
-   {
-    "ts": "2025-02-13",
-    "metric": "likes",
-    "value": 235,
-    "permalink": "https://www.instagram.com/p/DGAHT4Cx_9o/"
-   },
-   {
-    "ts": "2025-02-06",
-    "metric": "likes",
-    "value": 324,
-    "permalink": "https://www.instagram.com/p/DFuLDsaOXMP/"
-   },
-   {
-    "ts": "2025-02-01",
-    "metric": "likes",
-    "value": 443,
-    "permalink": "https://www.instagram.com/p/DFhIXE5RBrC/"
-   },
-   {
-    "ts": "2025-01-30",
-    "metric": "likes",
-    "value": 120,
-    "permalink": "https://www.instagram.com/p/DFcAlX2RZSQ/"
-   },
-   {
-    "ts": "2025-01-23",
-    "metric": "likes",
-    "value": 302,
-    "permalink": "https://www.instagram.com/p/DFKHeVlRWli/"
-   },
-   {
-    "ts": "2025-01-17",
-    "metric": "likes",
-    "value": 81,
-    "permalink": "https://www.instagram.com/p/DE7vdRzxie4/"
-   },
-   {
-    "ts": "2025-01-17",
-    "metric": "likes",
-    "value": 60,
-    "permalink": "https://www.instagram.com/p/DE6F8qJScq9/"
-   },
-   {
-    "ts": "2025-01-16",
-    "metric": "likes",
-    "value": 37,
-    "permalink": "https://www.instagram.com/p/DE5ykdeSFJv/"
-   },
-   {
-    "ts": "2025-01-16",
-    "metric": "likes",
-    "value": 295,
-    "permalink": "https://www.instagram.com/p/DE3rHBWvx2R/"
-   },
-   {
-    "ts": "2025-01-15",
-    "metric": "likes",
-    "value": 91,
-    "permalink": "https://www.instagram.com/p/DE1AZZbvAQj/"
-   },
-   {
-    "ts": "2025-01-09",
-    "metric": "likes",
-    "value": 749,
-    "permalink": "https://www.instagram.com/p/DEl8M-vRnld/"
-   },
-   {
-    "ts": "2025-01-07",
-    "metric": "likes",
-    "value": 652,
-    "permalink": "https://www.instagram.com/p/DEiOFP-ywzh/"
-   },
-   {
-    "ts": "2025-01-06",
-    "metric": "views",
-    "value": 18577,
-    "permalink": "https://www.instagram.com/reel/DEfn0kMyVus/"
-   },
-   {
-    "ts": "2025-01-06",
-    "metric": "likes",
-    "value": 702,
-    "permalink": "https://www.instagram.com/p/DEdt_jAS1W1/"
-   },
-   {
-    "ts": "2024-12-29",
-    "metric": "likes",
-    "value": 62,
-    "permalink": "https://www.instagram.com/p/DEK-rFXyaZx/"
-   },
-   {
-    "ts": "2024-12-27",
-    "metric": "likes",
-    "value": 1068,
-    "permalink": "https://www.instagram.com/p/DEEB4hDPR7U/"
-   },
-   {
-    "ts": "2024-12-26",
-    "metric": "likes",
-    "value": 194,
-    "permalink": "https://www.instagram.com/p/DEBmVv1v6pE/"
-   },
-   {
-    "ts": "2024-12-19",
-    "metric": "likes",
-    "value": 613,
-    "permalink": "https://www.instagram.com/p/DDv8Y7ORA1K/"
-   },
-   {
-    "ts": "2024-12-12",
-    "metric": "likes",
-    "value": 440,
-    "permalink": "https://www.instagram.com/p/DDduBvGRHQV/"
-   },
-   {
-    "ts": "2024-12-05",
-    "metric": "likes",
-    "value": 440,
-    "permalink": "https://www.instagram.com/p/DDLvgVgRgox/"
-   },
-   {
-    "ts": "2024-11-27",
-    "metric": "likes",
-    "value": 124,
-    "permalink": "https://www.instagram.com/p/DC5BD2GSqCY/"
-   },
-   {
-    "ts": "2024-11-14",
-    "metric": "likes",
-    "value": 63,
-    "permalink": "https://www.instagram.com/p/DCW90bNPU1s/"
-   },
-   {
-    "ts": "2024-11-03",
-    "metric": "likes",
-    "value": 62,
-    "permalink": "https://www.instagram.com/p/DB5YcY1RxJb/"
-   },
-   {
-    "ts": "2024-11-01",
-    "metric": "likes",
-    "value": 610,
-    "permalink": "https://www.instagram.com/p/DB0QvL3xupe/"
-   },
-   {
-    "ts": "2024-10-09",
-    "metric": "likes",
-    "value": 86,
-    "permalink": "https://www.instagram.com/p/DA4key_y3Gj/"
-   },
-   {
-    "ts": "2024-10-03",
-    "metric": "likes",
-    "value": 39,
-    "permalink": "https://www.instagram.com/p/DApOKvfvccA/"
-   },
-   {
-    "ts": "2024-10-01",
-    "metric": "likes",
-    "value": 96,
-    "permalink": "https://www.instagram.com/p/DAkaaOEpagz/"
-   },
-   {
-    "ts": "2024-09-26",
-    "metric": "likes",
-    "value": 548,
-    "permalink": "https://www.instagram.com/p/DAXpLGgRS4k/"
-   },
-   {
-    "ts": "2024-09-24",
-    "metric": "likes",
-    "value": 725,
-    "permalink": "https://www.instagram.com/p/DAT687NS9XN/"
-   },
-   {
-    "ts": "2024-09-19",
-    "metric": "likes",
-    "value": 570,
-    "permalink": "https://www.instagram.com/p/DAFaGcrRLWW/"
-   },
-   {
-    "ts": "2024-04-04",
-    "metric": "likes",
-    "value": 198,
-    "permalink": "https://www.instagram.com/p/C5Ujv9FJsR_/"
-   },
-   {
-    "ts": "2024-03-27",
-    "metric": "likes",
-    "value": 109,
-    "permalink": "https://www.instagram.com/p/C5CPf8zPGRH/"
-   },
-   {
-    "ts": "2024-03-23",
-    "metric": "views",
-    "value": 16625,
-    "permalink": "https://www.instagram.com/reel/C43pV_GvIPy/"
-   },
-   {
-    "ts": "2024-03-22",
-    "metric": "likes",
-    "value": 86,
-    "permalink": "https://www.instagram.com/p/C40_JUFv1dK/"
-   },
-   {
-    "ts": "2024-03-22",
-    "metric": "likes",
-    "value": 116,
-    "permalink": "https://www.instagram.com/p/C405W94vXSM/"
-   },
-   {
-    "ts": "2024-03-22",
-    "metric": "views",
-    "value": 10474,
-    "permalink": "https://www.instagram.com/reel/C4zfnFMO0Tv/"
-   },
-   {
-    "ts": "2024-03-21",
-    "metric": "views",
-    "value": 5242,
-    "permalink": "https://www.instagram.com/reel/C4ypWxMvlAp/"
-   },
-   {
-    "ts": "2024-03-21",
-    "metric": "likes",
-    "value": 117,
-    "permalink": "https://www.instagram.com/p/C4yWHa0vnLy/"
-   },
-   {
-    "ts": "2024-03-21",
-    "metric": "likes",
-    "value": 458,
-    "permalink": "https://www.instagram.com/p/C4weMB6pSD8/"
-   },
-   {
-    "ts": "2024-03-20",
-    "metric": "likes",
-    "value": 68,
-    "permalink": "https://www.instagram.com/p/C4wVJyyvDrd/"
-   },
-   {
-    "ts": "2024-03-20",
-    "metric": "likes",
-    "value": 467,
-    "permalink": "https://www.instagram.com/p/C4vZa4ZrEA8/"
-   },
-   {
-    "ts": "2024-03-20",
-    "metric": "views",
-    "value": 10892,
-    "permalink": "https://www.instagram.com/reel/C4t1_4-Jun9/"
-   },
-   {
-    "ts": "2024-03-15",
-    "metric": "likes",
-    "value": 195,
-    "permalink": "https://www.instagram.com/p/C4ivHQ3x0hr/"
-   },
-   {
-    "ts": "2024-03-14",
-    "metric": "likes",
-    "value": 322,
-    "permalink": "https://www.instagram.com/p/C4g4MSavnQI/"
-   },
-   {
-    "ts": "2024-03-14",
-    "metric": "likes",
-    "value": 307,
-    "permalink": "https://www.instagram.com/p/C4ev6D4r4Pv/"
-   },
-   {
-    "ts": "2024-03-13",
-    "metric": "likes",
-    "value": 156,
-    "permalink": "https://www.instagram.com/p/C4eTRwgvvn4/"
-   },
-   {
-    "ts": "2024-03-07",
-    "metric": "likes",
-    "value": 371,
-    "permalink": "https://www.instagram.com/p/C4MdcjxJzbN/"
-   },
-   {
-    "ts": "2024-03-05",
-    "metric": "likes",
-    "value": 148,
-    "permalink": "https://www.instagram.com/p/C4JtUvlvr2a/"
-   },
-   {
-    "ts": "2024-02-28",
-    "metric": "likes",
-    "value": 836,
-    "permalink": "https://www.instagram.com/p/C36F4U1S3nv/"
-   },
-   {
-    "ts": "2024-02-27",
-    "metric": "likes",
-    "value": 149,
-    "permalink": "https://www.instagram.com/p/C31Vw7zxqET/"
-   },
-   {
-    "ts": "2024-02-26",
-    "metric": "likes",
-    "value": 664,
-    "permalink": "https://www.instagram.com/p/C31Fkwpv2WH/"
-   },
-   {
-    "ts": "2024-02-02",
-    "metric": "likes",
-    "value": 806,
-    "permalink": "https://www.instagram.com/p/C228IRVSr2J/"
-   },
-   {
-    "ts": "2024-02-02",
-    "metric": "likes",
-    "value": 252,
-    "permalink": "https://www.instagram.com/p/C21AhEtL7a1/"
-   },
-   {
-    "ts": "2024-01-24",
-    "metric": "likes",
-    "value": 628,
-    "permalink": "https://www.instagram.com/p/C2dzrs6RBV0/"
-   },
-   {
-    "ts": "2024-01-18",
-    "metric": "likes",
-    "value": 224,
-    "permalink": "https://www.instagram.com/p/C2QlTlWPHt7/"
-   },
-   {
-    "ts": "2024-01-18",
-    "metric": "likes",
-    "value": 760,
-    "permalink": "https://www.instagram.com/p/C2OZ_V3rImm/"
-   },
-   {
-    "ts": "2024-01-12",
-    "metric": "likes",
-    "value": 294,
-    "permalink": "https://www.instagram.com/p/C2Ad0vFR1Yn/"
-   },
-   {
-    "ts": "2024-01-11",
-    "metric": "likes",
-    "value": 364,
-    "permalink": "https://www.instagram.com/p/C1-JP0MPKxi/"
-   },
-   {
-    "ts": "2024-01-11",
-    "metric": "likes",
-    "value": 861,
-    "permalink": "https://www.instagram.com/p/C18jRXXLgwI/"
-   },
-   {
-    "ts": "2024-01-06",
-    "metric": "likes",
-    "value": 369,
-    "permalink": "https://www.instagram.com/p/C1vgzPnrUhZ/"
-   },
-   {
-    "ts": "2024-01-02",
-    "metric": "likes",
-    "value": 816,
-    "permalink": "https://www.instagram.com/p/C1nJyAeykr-/"
-   },
-   {
-    "ts": "2023-12-28",
-    "metric": "likes",
-    "value": 501,
-    "permalink": "https://www.instagram.com/p/C1anAngv74y/"
-   },
-   {
-    "ts": "2023-12-27",
-    "metric": "likes",
-    "value": 558,
-    "permalink": "https://www.instagram.com/p/C1VlHdgJNAi/"
-   },
-   {
-    "ts": "2023-12-21",
-    "metric": "likes",
-    "value": 1047,
-    "permalink": "https://www.instagram.com/p/C1GNGnzr4tN/"
-   },
-   {
-    "ts": "2023-12-14",
-    "metric": "likes",
-    "value": 628,
-    "permalink": "https://www.instagram.com/p/C01-9H4vsp-/"
-   },
-   {
-    "ts": "2023-12-13",
-    "metric": "likes",
-    "value": 579,
-    "permalink": "https://www.instagram.com/p/C00ADHhPKrY/"
-   },
-   {
-    "ts": "2023-12-07",
-    "metric": "likes",
-    "value": 1079,
-    "permalink": "https://www.instagram.com/p/C0idzyiL8aD/"
-   },
-   {
-    "ts": "2023-12-04",
-    "metric": "likes",
-    "value": 1482,
-    "permalink": "https://www.instagram.com/p/C0awHXYLWHl/"
-   },
-   {
-    "ts": "2023-11-02",
-    "metric": "likes",
-    "value": 909,
-    "permalink": "https://www.instagram.com/p/CzIG4FyLDuZ/"
-   },
-   {
-    "ts": "2023-10-27",
-    "metric": "likes",
-    "value": 316,
-    "permalink": "https://www.instagram.com/p/Cy6G7iDxTpn/"
-   },
-   {
-    "ts": "2023-04-21",
-    "metric": "likes",
-    "value": 434,
-    "permalink": "https://www.instagram.com/p/CrTbdKVrRKQ/"
-   },
-   {
-    "ts": "2023-04-18",
-    "metric": "likes",
-    "value": 447,
-    "permalink": "https://www.instagram.com/p/CrLy6Wyr_oG/"
-   },
-   {
-    "ts": "2023-04-18",
-    "metric": "likes",
-    "value": 418,
-    "permalink": "https://www.instagram.com/p/CrKDEaPvF70/"
-   },
-   {
-    "ts": "2023-04-14",
-    "metric": "likes",
-    "value": 526,
-    "permalink": "https://www.instagram.com/p/Cq_1zuapjYN/"
-   },
-   {
-    "ts": "2023-04-11",
-    "metric": "likes",
-    "value": 327,
-    "permalink": "https://www.instagram.com/p/Cq4ADvBP6fg/"
-   },
-   {
-    "ts": "2023-04-06",
-    "metric": "likes",
-    "value": 171,
-    "permalink": "https://www.instagram.com/p/Cqrfr6hLWnK/"
-   },
-   {
-    "ts": "2023-04-06",
-    "metric": "likes",
-    "value": 292,
-    "permalink": "https://www.instagram.com/p/CqrY7zgrghO/"
-   },
-   {
-    "ts": "2023-03-31",
-    "metric": "likes",
-    "value": 477,
-    "permalink": "https://www.instagram.com/p/CqeD0gFviVQ/"
-   },
-   {
-    "ts": "2023-03-30",
-    "metric": "likes",
-    "value": 247,
-    "permalink": "https://www.instagram.com/p/Cqbf-k7Pjv-/"
-   },
-   {
-    "ts": "2023-03-30",
-    "metric": "views",
-    "value": 7210,
-    "permalink": "https://www.instagram.com/reel/CqbGtT0t1Z5/"
-   },
-   {
-    "ts": "2023-03-30",
-    "metric": "likes",
-    "value": 419,
-    "permalink": "https://www.instagram.com/p/CqZZYkELPR6/"
-   },
-   {
-    "ts": "2023-03-30",
-    "metric": "likes",
-    "value": 445,
-    "permalink": "https://www.instagram.com/p/CqZJVrov-Ew/"
-   },
-   {
-    "ts": "2023-03-29",
-    "metric": "likes",
-    "value": 57,
-    "permalink": "https://www.instagram.com/p/CqYWSi-pdwL/"
-   },
-   {
-    "ts": "2023-03-28",
-    "metric": "views",
-    "value": 6763,
-    "permalink": "https://www.instagram.com/reel/CqWXCnzgFRZ/"
-   },
-   {
-    "ts": "2023-03-28",
-    "metric": "likes",
-    "value": 166,
-    "permalink": "https://www.instagram.com/p/CqUFS-tpbUP/"
-   },
-   {
-    "ts": "2023-03-22",
-    "metric": "likes",
-    "value": 101,
-    "permalink": "https://www.instagram.com/p/CqErglkrN8U/"
-   },
-   {
-    "ts": "2023-03-19",
-    "metric": "likes",
-    "value": 372,
-    "permalink": "https://www.instagram.com/p/Cp-lAEDJTYT/"
-   },
-   {
-    "ts": "2023-03-07",
-    "metric": "likes",
-    "value": 226,
-    "permalink": "https://www.instagram.com/p/CpgNqYlPx-Y/"
-   },
-   {
-    "ts": "2023-01-14",
-    "metric": "likes",
-    "value": 245,
-    "permalink": "https://www.instagram.com/p/CnYKmfSpUXP/"
-   },
-   {
-    "ts": "2022-12-30",
-    "metric": "likes",
-    "value": 418,
-    "permalink": "https://www.instagram.com/p/Cmxb923vpKM/"
-   },
-   {
-    "ts": "2022-12-15",
-    "metric": "likes",
-    "value": 629,
-    "permalink": "https://www.instagram.com/p/CmKyw35v1VR/"
-   },
-   {
-    "ts": "2022-12-08",
-    "metric": "likes",
-    "value": 404,
-    "permalink": "https://www.instagram.com/p/Cl4tjO1vW2s/"
-   },
-   {
-    "ts": "2022-11-09",
-    "metric": "likes",
-    "value": 866,
-    "permalink": "https://www.instagram.com/p/CkwNYRtyPlH/"
-   },
-   {
-    "ts": "2022-04-21",
-    "metric": "views",
-    "value": 6068,
-    "permalink": "https://www.instagram.com/reel/CcnpXoMlwbp/"
-   },
-   {
-    "ts": "2022-04-20",
-    "metric": "likes",
-    "value": 326,
-    "permalink": "https://www.instagram.com/p/CclVhZtPm11/"
-   },
-   {
-    "ts": "2022-04-20",
-    "metric": "likes",
-    "value": 444,
-    "permalink": "https://www.instagram.com/p/CcjpvtvL4oD/"
-   },
-   {
-    "ts": "2022-04-08",
-    "metric": "likes",
-    "value": 312,
-    "permalink": "https://www.instagram.com/p/CcGXmAwPlNv/"
-   },
-   {
-    "ts": "2022-04-06",
-    "metric": "likes",
-    "value": 163,
-    "permalink": "https://www.instagram.com/p/CcBpbpWvPH-/"
-   },
-   {
-    "ts": "2022-04-06",
-    "metric": "views",
-    "value": 9103,
-    "permalink": "https://www.instagram.com/reel/CcA5zwJlxWe/"
-   },
-   {
-    "ts": "2022-04-05",
-    "metric": "likes",
-    "value": 658,
-    "permalink": "https://www.instagram.com/p/Cb-_9cevuoj/"
-   },
-   {
-    "ts": "2022-04-05",
-    "metric": "likes",
-    "value": 640,
-    "permalink": "https://www.instagram.com/p/Cb8_iDqLfQ6/"
-   },
-   {
-    "ts": "2022-04-01",
-    "metric": "likes",
-    "value": 167,
-    "permalink": "https://www.instagram.com/p/Cb0yyt-v4hl/"
-   },
-   {
-    "ts": "2022-04-01",
-    "metric": "likes",
-    "value": 677,
-    "permalink": "https://www.instagram.com/p/Cb0n0myv9Eo/"
-   },
-   {
-    "ts": "2022-03-31",
-    "metric": "likes",
-    "value": 398,
-    "permalink": "https://www.instagram.com/p/Cbv_6cyrjT2/"
-   },
-   {
-    "ts": "2022-03-29",
-    "metric": "likes",
-    "value": 264,
-    "permalink": "https://www.instagram.com/p/CbrGvrcOBst/"
-   },
-   {
-    "ts": "2022-03-25",
-    "metric": "likes",
-    "value": 150,
-    "permalink": "https://www.instagram.com/p/CbiSqCfOhhk/"
-   },
-   {
-    "ts": "2022-03-24",
-    "metric": "likes",
-    "value": 286,
-    "permalink": "https://www.instagram.com/p/CbgCA16P4v3/"
-   },
-   {
-    "ts": "2022-03-19",
-    "metric": "likes",
-    "value": 122,
-    "permalink": "https://www.instagram.com/p/CbRh6y-upVv/"
-   },
-   {
-    "ts": "2022-03-11",
-    "metric": "likes",
-    "value": 412,
-    "permalink": "https://www.instagram.com/p/Ca-aVrov4_x/"
-   },
-   {
-    "ts": "2022-03-10",
-    "metric": "likes",
-    "value": 501,
-    "permalink": "https://www.instagram.com/p/Ca6RVKJr_1D/"
-   },
-   {
-    "ts": "2022-03-09",
-    "metric": "likes",
-    "value": 297,
-    "permalink": "https://www.instagram.com/p/Ca3T3ZFlEmL/"
-   },
-   {
-    "ts": "2022-03-05",
-    "metric": "views",
-    "value": 21447,
-    "permalink": "https://www.instagram.com/reel/CatEKtKFR26/"
-   },
-   {
-    "ts": "2022-03-03",
-    "metric": "likes",
-    "value": 461,
-    "permalink": "https://www.instagram.com/p/CaplphNptBT/"
-   },
-   {
-    "ts": "2022-03-03",
-    "metric": "likes",
-    "value": 278,
-    "permalink": "https://www.instagram.com/p/CaoFCobL_TR/"
-   },
-   {
-    "ts": "2022-03-01",
-    "metric": "likes",
-    "value": 281,
-    "permalink": "https://www.instagram.com/p/CakrX76vw6x/"
-   },
-   {
-    "ts": "2022-02-25",
-    "metric": "views",
-    "value": 12493,
-    "permalink": "https://www.instagram.com/reel/CaaSFptlfJ6/"
-   },
-   {
-    "ts": "2022-02-24",
-    "metric": "likes",
-    "value": 877,
-    "permalink": "https://www.instagram.com/p/CaYGoPovkKp/"
-   },
-   {
-    "ts": "2022-02-24",
-    "metric": "likes",
-    "value": 269,
-    "permalink": "https://www.instagram.com/p/CaWNbIbrYwZ/"
-   },
-   {
-    "ts": "2022-02-18",
-    "metric": "likes",
-    "value": 1056,
-    "permalink": "https://www.instagram.com/p/CaIvFxTPSju/"
-   },
-   {
-    "ts": "2022-02-18",
-    "metric": "likes",
-    "value": 348,
-    "permalink": "https://www.instagram.com/p/CaGb_lSlcNA/"
-   },
-   {
-    "ts": "2022-02-17",
-    "metric": "views",
-    "value": 6555,
-    "permalink": "https://www.instagram.com/reel/CaFZSqZFUl2/"
-   },
-   {
-    "ts": "2022-02-11",
-    "metric": "views",
-    "value": 18194,
-    "permalink": "https://www.instagram.com/reel/CZ2DT84JgXr/"
+    "value": 4634,
+    "permalink": "https://www.instagram.com/reel/DWDItlxkVit/"
    }
   ]
  },
- "calls": 591,
- "calls_at_save": 587,
+ "calls": 643,
+ "calls_at_save": 642,
  "note": "restarted Nov 9 21:10 UTC with size-based targets (1000/800/600/300 posts)",
  "posts_pulled": {
   "sunshinevillage": 1000,
@@ -1285,6 +389,10 @@
   "hudsonbaymountain": 800,
   "kickinghorsemtn": 800,
   "kimberleyalpineresort": 1000,
-  "manningpark": 600
+  "manningpark": 600,
+  "mountcain": 404,
+  "ski_timothy": 504,
+  "mountwashington": 1000,
+  "mtseymour": 600
  }
 }
