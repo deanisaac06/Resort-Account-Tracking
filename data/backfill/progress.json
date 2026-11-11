@@ -257,7 +257,10 @@
   "skibittersweet",
   "snowrivermountain",
   "highlandsharborsprings",
-  "boyne.mountain"
+  "boyne.mountain",
+  "caberfaepeaks",
+  "crystalmountainmi",
+  "marquette_mountain"
  ],
  "skipped": {
   "whitewaterskiresort": "Invalid user id",
@@ -268,11 +271,12 @@
   "owlsheadquebec": "Invalid user id",
   "keystone_resort": "Invalid user id",
   "kellycanyonresort": "Invalid user id",
-  "skispruce": "Invalid user id"
+  "skispruce": "Invalid user id",
+  "cannonsburg": "Invalid user id"
  },
  "current": null,
- "calls": 2958,
- "calls_at_save": 2958,
+ "calls": 2983,
+ "calls_at_save": 2983,
  "note": "restarted Nov 9 21:10 UTC with size-based targets (1000/800/600/300 posts)",
  "posts_pulled": {
   "sunshinevillage": 1000,
@@ -531,6 +535,9 @@
   "skibittersweet": 164,
   "snowrivermountain": 800,
   "highlandsharborsprings": 600,
-  "boyne.mountain": 800
+  "boyne.mountain": 800,
+  "caberfaepeaks": 300,
+  "crystalmountainmi": 600,
+  "marquette_mountain": 300
  }
 }
