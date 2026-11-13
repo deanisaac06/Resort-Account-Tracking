@@ -395,7 +395,11 @@
   "skiwillamette",
   "bear_creek",
   "skibigbear",
-  "skijfbb"
+  "skijfbb",
+  "blueknoballseasonsresort",
+  "bluemtresort",
+  "camelbackresortpa",
+  "elkmountainskiresort"
  ],
  "skipped": {
   "whitewaterskiresort": "Invalid user id",
@@ -418,8 +422,8 @@
   "alpinevalleyohio": "Invalid user id"
  },
  "current": null,
- "calls": 4303,
- "calls_at_save": 4303,
+ "calls": 4335,
+ "calls_at_save": 4335,
  "note": "restarted Nov 9 21:10 UTC with size-based targets (1000/800/600/300 posts)",
  "posts_pulled": {
   "sunshinevillage": 1000,
@@ -816,6 +820,10 @@
   "skiwillamette": 393,
   "bear_creek": 297,
   "skibigbear": 300,
-  "skijfbb": 600
+  "skijfbb": 600,
+  "blueknoballseasonsresort": 300,
+  "bluemtresort": 600,
+  "camelbackresortpa": 600,
+  "elkmountainskiresort": 9
  }
 }
