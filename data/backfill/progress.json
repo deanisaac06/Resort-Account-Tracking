@@ -486,7 +486,11 @@
   "whitecapmountains",
   "wilmotmtn",
   "woodwind_park",
-  "canaanresort"
+  "canaanresort",
+  "oglebayparkresort",
+  "snowshoemtn",
+  "timberlinemountain",
+  "skiwinterplace"
  ],
  "skipped": {
   "whitewaterskiresort": "Invalid user id",
@@ -510,9 +514,314 @@
   "ski_sawmill": "Invalid user id",
   "ausblick_ski_club": "Invalid user id"
  },
- "current": null,
- "calls": 5280,
- "calls_at_save": 5280,
+ "current": {
+  "handle": "antelope_butte",
+  "after": "QVFIVGc5emdDV0pXSlU2VjFRdENhT0J3dThSNFlERDFTRWFwX2pBNmN2Q28xVjF1WEN6emJBdHNMTnZAxMlVXd1kwQTFpbTVQa09NUUV4N2FneGU2OXdXSUV3",
+  "posts": [
+   {
+    "ts": "2026-11-11",
+    "metric": "likes",
+    "value": 66,
+    "permalink": "https://www.instagram.com/p/DflQU5RIJI9/"
+   },
+   {
+    "ts": "2026-11-10",
+    "metric": "likes",
+    "value": 121,
+    "permalink": "https://www.instagram.com/p/DfirQxXCd_5/"
+   },
+   {
+    "ts": "2026-11-03",
+    "metric": "views",
+    "value": 29482,
+    "permalink": "https://www.instagram.com/reel/DfQn2fjlING/"
+   },
+   {
+    "ts": "2026-08-08",
+    "metric": "views",
+    "value": 13749,
+    "permalink": "https://www.instagram.com/reel/Dby0FuuFVef/"
+   },
+   {
+    "ts": "2026-07-30",
+    "metric": "likes",
+    "value": 78,
+    "permalink": "https://www.instagram.com/p/DbbyO1LGshH/"
+   },
+   {
+    "ts": "2026-05-02",
+    "metric": "views",
+    "value": 15896,
+    "permalink": "https://www.instagram.com/reel/DX2EhpKj-Z6/"
+   },
+   {
+    "ts": "2026-05-01",
+    "metric": "views",
+    "value": 10300,
+    "permalink": "https://www.instagram.com/reel/DXzTb-2FSzR/"
+   },
+   {
+    "ts": "2026-04-29",
+    "metric": "likes",
+    "value": 113,
+    "permalink": "https://www.instagram.com/p/DXstoMoFCn-/"
+   },
+   {
+    "ts": "2026-04-25",
+    "metric": "views",
+    "value": 10825,
+    "permalink": "https://www.instagram.com/reel/DXksw91CIFi/"
+   },
+   {
+    "ts": "2026-04-18",
+    "metric": "views",
+    "value": 9231,
+    "permalink": "https://www.instagram.com/reel/DXSWadDASjZ/"
+   },
+   {
+    "ts": "2026-04-18",
+    "metric": "views",
+    "value": 6839,
+    "permalink": "https://www.instagram.com/reel/DXSUeEtk_If/"
+   },
+   {
+    "ts": "2026-04-18",
+    "metric": "views",
+    "value": 1138,
+    "permalink": "https://www.instagram.com/reel/DXQS9mCgUvZ/"
+   },
+   {
+    "ts": "2026-04-18",
+    "metric": "views",
+    "value": 1218,
+    "permalink": "https://www.instagram.com/reel/DXQKj2KESx8/"
+   },
+   {
+    "ts": "2026-04-17",
+    "metric": "views",
+    "value": 849,
+    "permalink": "https://www.instagram.com/reel/DXQC52ljLcx/"
+   },
+   {
+    "ts": "2026-04-17",
+    "metric": "views",
+    "value": 11020,
+    "permalink": "https://www.instagram.com/reel/DXNvTBiFfHq/"
+   },
+   {
+    "ts": "2026-04-16",
+    "metric": "likes",
+    "value": 6,
+    "permalink": "https://www.instagram.com/p/DXLK6RFmg2D/"
+   },
+   {
+    "ts": "2026-04-13",
+    "metric": "likes",
+    "value": 102,
+    "permalink": "https://www.instagram.com/p/DXFfB3gAZst/"
+   },
+   {
+    "ts": "2026-04-11",
+    "metric": "likes",
+    "value": 169,
+    "permalink": "https://www.instagram.com/p/DXAY2opgdKl/"
+   },
+   {
+    "ts": "2026-04-06",
+    "metric": "likes",
+    "value": 33,
+    "permalink": "https://www.instagram.com/p/DWxRlwfFOiR/"
+   },
+   {
+    "ts": "2026-04-05",
+    "metric": "views",
+    "value": 7780,
+    "permalink": "https://www.instagram.com/reel/DWwdQDdjnKw/"
+   },
+   {
+    "ts": "2026-04-04",
+    "metric": "views",
+    "value": 4773,
+    "permalink": "https://www.instagram.com/reel/DWuflAiFFfO/"
+   },
+   {
+    "ts": "2026-04-04",
+    "metric": "likes",
+    "value": 160,
+    "permalink": "https://www.instagram.com/p/DWtnsYQlggr/"
+   },
+   {
+    "ts": "2026-04-03",
+    "metric": "likes",
+    "value": 187,
+    "permalink": "https://www.instagram.com/p/DWrEDO9FoGz/"
+   },
+   {
+    "ts": "2026-04-02",
+    "metric": "likes",
+    "value": 69,
+    "permalink": "https://www.instagram.com/p/DWpYGw5k9CN/"
+   },
+   {
+    "ts": "2026-04-01",
+    "metric": "likes",
+    "value": 20,
+    "permalink": "https://www.instagram.com/p/DWmJVo-jxMx/"
+   },
+   {
+    "ts": "2026-03-31",
+    "metric": "likes",
+    "value": 84,
+    "permalink": "https://www.instagram.com/p/DWjyGqaEtZF/"
+   },
+   {
+    "ts": "2026-03-31",
+    "metric": "likes",
+    "value": 17,
+    "permalink": "https://www.instagram.com/p/DWjewVOmkgw/"
+   },
+   {
+    "ts": "2026-03-31",
+    "metric": "views",
+    "value": 18267,
+    "permalink": "https://www.instagram.com/reel/DWiN_I_FI_e/"
+   },
+   {
+    "ts": "2026-03-30",
+    "metric": "views",
+    "value": 43402,
+    "permalink": "https://www.instagram.com/reel/DWfrH1mCBAs/"
+   },
+   {
+    "ts": "2026-03-30",
+    "metric": "likes",
+    "value": 112,
+    "permalink": "https://www.instagram.com/p/DWfamt1DJ9f/"
+   },
+   {
+    "ts": "2026-03-30",
+    "metric": "likes",
+    "value": 53,
+    "permalink": "https://www.instagram.com/p/DWfTG21DBSX/"
+   },
+   {
+    "ts": "2026-03-29",
+    "metric": "views",
+    "value": 12918,
+    "permalink": "https://www.instagram.com/reel/DWe_B8DErsy/"
+   },
+   {
+    "ts": "2026-03-29",
+    "metric": "likes",
+    "value": 22,
+    "permalink": "https://www.instagram.com/p/DWd9hAJiPSy/"
+   },
+   {
+    "ts": "2026-03-28",
+    "metric": "likes",
+    "value": 23,
+    "permalink": "https://www.instagram.com/p/DWcnKGBjg4w/"
+   },
+   {
+    "ts": "2026-03-28",
+    "metric": "views",
+    "value": 19497,
+    "permalink": "https://www.instagram.com/reel/DWcmFDmjMG0/"
+   },
+   {
+    "ts": "2026-03-28",
+    "metric": "views",
+    "value": 30911,
+    "permalink": "https://www.instagram.com/reel/DWcl7aBkhc0/"
+   },
+   {
+    "ts": "2026-03-28",
+    "metric": "views",
+    "value": 9416,
+    "permalink": "https://www.instagram.com/reel/DWclvztDNZX/"
+   },
+   {
+    "ts": "2026-03-28",
+    "metric": "likes",
+    "value": 197,
+    "permalink": "https://www.instagram.com/p/DWclPjfliIs/"
+   },
+   {
+    "ts": "2026-03-28",
+    "metric": "likes",
+    "value": 10,
+    "permalink": "https://www.instagram.com/p/DWbc9Q0FrLh/"
+   },
+   {
+    "ts": "2026-03-27",
+    "metric": "likes",
+    "value": 13,
+    "permalink": "https://www.instagram.com/p/DWZrQx9E3yR/"
+   },
+   {
+    "ts": "2026-03-27",
+    "metric": "likes",
+    "value": 12,
+    "permalink": "https://www.instagram.com/p/DWZB8U9lnHv/"
+   },
+   {
+    "ts": "2026-03-26",
+    "metric": "likes",
+    "value": 57,
+    "permalink": "https://www.instagram.com/p/DWW_bioD9dp/"
+   },
+   {
+    "ts": "2026-03-26",
+    "metric": "likes",
+    "value": 22,
+    "permalink": "https://www.instagram.com/p/DWVEQUEjKCu/"
+   },
+   {
+    "ts": "2026-03-26",
+    "metric": "likes",
+    "value": 175,
+    "permalink": "https://www.instagram.com/p/DWU_-MOFmFu/"
+   },
+   {
+    "ts": "2026-03-25",
+    "metric": "likes",
+    "value": 18,
+    "permalink": "https://www.instagram.com/p/DWUOVm7j5mR/"
+   },
+   {
+    "ts": "2026-03-25",
+    "metric": "likes",
+    "value": 33,
+    "permalink": "https://www.instagram.com/p/DWTtiIfAea1/"
+   },
+   {
+    "ts": "2026-03-25",
+    "metric": "likes",
+    "value": 9,
+    "permalink": "https://www.instagram.com/p/DWScKrBmtw4/"
+   },
+   {
+    "ts": "2026-03-23",
+    "metric": "likes",
+    "value": 13,
+    "permalink": "https://www.instagram.com/p/DWPUb09mjxu/"
+   },
+   {
+    "ts": "2026-03-23",
+    "metric": "likes",
+    "value": 32,
+    "permalink": "https://www.instagram.com/p/DWPJHvmGqfQ/"
+   },
+   {
+    "ts": "2026-03-23",
+    "metric": "likes",
+    "value": 39,
+    "permalink": "https://www.instagram.com/p/DWPAEvSgViT/"
+   }
+  ]
+ },
+ "calls": 5326,
+ "calls_at_save": 5325,
  "note": "restarted Nov 9 21:10 UTC with size-based targets (1000/800/600/300 posts)",
  "posts_pulled": {
   "sunshinevillage": 1000,
@@ -1000,6 +1309,10 @@
   "whitecapmountains": 14,
   "wilmotmtn": 300,
   "woodwind_park": 300,
-  "canaanresort": 300
+  "canaanresort": 300,
+  "oglebayparkresort": 300,
+  "snowshoemtn": 800,
+  "timberlinemountain": 366,
+  "skiwinterplace": 291
  }
 }
