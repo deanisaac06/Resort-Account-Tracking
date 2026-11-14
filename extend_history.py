@@ -1,5 +1,5 @@
 """Deeper history for chosen resorts: keep paging each account's posts back to a target date
-(default Jan 2021, Major-tier resorts) and add the older months to data/history/monthly.csv.
+(default Oct 2020, Major-tier resorts) and add the older months to data/history/monthly.csv.
 
 The first backfill (backfill.py) stopped at 300-1000 posts per account, which for busy resorts only
 reaches 2023-2024. This picks up those accounts and keeps going until it reaches `since`.
@@ -12,7 +12,7 @@ Only months older than what monthly.csv already has for an account are added; ex
 are never changed.
 
 Settings (settings.json -> "history_extend"):
-  since          "2021-01"   go back to this month
+  since          "2020-10"   go back to this month
   tiers          ["Major"]   which tiers to extend (add "Mid" / "Small" later if wanted)
   max_posts      3000        safety cap per account
   usage_ceiling  60          % of Meta's hourly quota to stop at
@@ -33,7 +33,7 @@ from backfill import (LIGHT_FIELDS, PAGE, PROGRESS as FIRST_PROGRESS, SETTINGS, 
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PROGRESS = os.path.join(HERE, "data", "backfill", "extend.json")
-DEFAULTS = {"since": "2021-01", "tiers": ["Major"], "max_posts": 3000, "usage_ceiling": 60, "max_calls": 300}
+DEFAULTS = {"since": "2020-10", "tiers": ["Major"], "max_posts": 3000, "usage_ceiling": 60, "max_calls": 300}
 
 
 def first_months():
@@ -78,7 +78,9 @@ def main():
     progress = load_json(PROGRESS, None)
     if progress is None or progress.get("since") != cfg["since"] or progress.get("tiers") != cfg["tiers"]:
         # new or changed target -> (re)build the to-do list, keeping accounts already finished
-        old_done = (progress or {}).get("done", {})
+        # keep accounts already finished, unless they stopped short of the new target date
+        old_done = {h: d for h, d in (progress or {}).get("done", {}).items()
+                    if d.get("oldest", "9999") < cfg["since"] + "-01" or d.get("why") in ("hit cap", "no older posts")}
         progress = {"started": now.isoformat(), "since": cfg["since"], "tiers": cfg["tiers"],
                     "todo": pick_accounts(resorts, cfg, first, first_run.get("skipped", {})),
                     "done": old_done, "skipped": {}, "current": None, "calls": 0}
@@ -146,7 +148,7 @@ def main():
             if not args.dry_run:
                 if rows:
                     upsert(rows)
-                progress["done"][h] = {"posts": len(cur["posts"]), "oldest": oldest, "months_added": len(rows)}
+                progress["done"][h] = {"posts": len(cur["posts"]), "oldest": oldest, "months_added": len(rows), "why": why}
                 progress["current"] = None
             todo.remove(h)
             if not args.dry_run:
