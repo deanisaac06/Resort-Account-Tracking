@@ -36,7 +36,7 @@ jobs:
           ALERT_TO: ${{ secrets.ALERT_TO }}
           MAX_CALLS: "150"
         run: python track.py
-      - name: Deeper history (spare quota only; pages Major resorts back to 2021, then stops)
+      - name: Deeper history (spare quota only; pages Major resorts back to Oct 2020, then stops)
         env:
           PYTHONUNBUFFERED: "1"
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
