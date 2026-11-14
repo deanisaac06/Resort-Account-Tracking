@@ -40,5 +40,12 @@
     "ai_max_seconds": 900,
     "ai_retry_hours": 24,
     "report_hour_utc": 15
+  },
+  "history_extend": {
+    "since": "2021-01",
+    "tiers": ["Major"],
+    "max_posts": 3000,
+    "usage_ceiling": 60,
+    "max_calls": 300
   }
 }

@@ -95,6 +95,9 @@ The AI summary uses Google's Gemini free tier: create a key at aistudio.google.c
 
 **Backfill:** `backfill.py` pulls each account's last 200 posts once (50 per call, picking up where it left off each hour) and writes monthly rows for the past months they cover, so history starts well before tracking did. Backfilled months have no follower counts. Normal tracking is paused while it runs and resumes automatically when `data/backfill/progress.json` shows `completed`. `python backfill.py --status` shows progress.
 
+
+**Deeper history:** `extend_history.py` keeps paging Major-tier accounts back to January 2021, since the first backfill only reached 2023-2024 for busy resorts. It runs after the tracker each hour and only uses spare quota (it stops at 60% of Meta's hourly limit, while the tracker stops at 85%), so tracking and alerts carry on as normal. It only adds months older than what `monthly.csv` already has, and it stops for good once every account is done. Progress is saved in `data/backfill/extend.json`, and `python extend_history.py --status` shows it. To go further, change `since` or add `"Mid"` to `tiers` under `history_extend` in settings.json, and it will pick up the new accounts.
+
 ---
 
 ## Running locally
