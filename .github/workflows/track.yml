@@ -36,6 +36,12 @@ jobs:
           ALERT_TO: ${{ secrets.ALERT_TO }}
           MAX_CALLS: "150"
         run: python track.py
+      - name: Deeper history (spare quota only; pages Major resorts back to 2021, then stops)
+        env:
+          PYTHONUNBUFFERED: "1"
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: python extend_history.py
       - name: Weekly report (Mondays; retries the AI summary hourly for up to 24h)
         if: always()
         env:
