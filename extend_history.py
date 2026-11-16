@@ -17,6 +17,7 @@ Settings (settings.json -> "history_extend"):
   max_posts      3000        safety cap per account
   usage_ceiling  60          % of Meta's hourly quota to stop at
   max_calls      300         API calls per hour at most
+  enabled        true        set false to stop it (progress is kept)
 
 Run:  python extend_history.py            (one hour's worth; called by the hourly job)
       python extend_history.py --status   (print progress)
@@ -67,6 +68,9 @@ def main():
     now = datetime.now(timezone.utc)
     settings = load_json(SETTINGS, {})
     cfg = dict(DEFAULTS, **settings.get("history_extend", {}))
+    if not cfg.get("enabled", True) and not args.only:
+        print("Deeper history is turned off (history_extend.enabled = false in settings.json)")
+        return
     first_run = load_json(FIRST_PROGRESS, {})
     if first_run and not first_run.get("completed"):
         print("First backfill still running - deeper history waits for it")

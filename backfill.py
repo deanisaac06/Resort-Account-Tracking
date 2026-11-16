@@ -27,6 +27,9 @@ TARGET_POSTS = 200      # fallback only - the real target depends on resort size
 # Posts to pull per resort, by physical size rank (trail km, then lifts). Buckets don't stack:
 # the biggest 10% get 1000, the next 20% (to the top 30%) 800, the next 20% (to 50%) 600, the rest 300.
 SIZE_BUCKETS = [(0.10, 1000), (0.30, 800), (0.50, 600), (1.00, 300)]
+# Round 2 (`python backfill.py --new-round`): extra posts on top of round 1, same size ranking.
+# The API can't skip ahead, so each account is re-read from its newest post up to the new total.
+EXTRA_BUCKETS = [(0.10, 400), (0.30, 300), (0.50, 200), (1.00, 100)]
 PAGE = 50
 LIGHT_FIELDS = ["timestamp", "like_count", "comments_count", "view_count", "permalink", "media_product_type"]
 
@@ -128,8 +131,11 @@ def monthly_rows(resort, handle, posts, hit_cap, now, settings):
 
 
 def upsert(rows):
-    """Add/replace rows in monthly.csv by (month, handle), leaving everything else alone."""
+    """Add/replace rows in monthly.csv by (month, handle), leaving everything else alone.
+    Months the tracker already rolled up (they have follower counts) are never replaced."""
     history = rollup.read_history()
+    tracked = {(r["month"], r["handle"]) for r in history if str(r.get("followers") or "").strip()}
+    rows = [r for r in rows if (r["month"], r["handle"]) not in tracked]
     keys = {(r["month"], r["handle"]) for r in rows}
     kept = [r for r in history if (r["month"], r["handle"]) not in keys]
     os.makedirs(os.path.dirname(rollup.HISTORY), exist_ok=True)
@@ -169,21 +175,63 @@ def post_targets(resorts, buckets=None):
     return out
 
 
+def new_round(resorts, now):
+    """Archive the finished round and start the next one: each account's new target is its
+    round-1 target (or what it already has, if more) plus EXTRA_BUCKETS, capped at its total posts."""
+    old = load_json(PROGRESS, None)
+    if not old or not old.get("completed"):
+        sys.exit("The current backfill round isn't finished yet")
+    n = old.get("round", 1)
+    save_json(PROGRESS.replace(".json", f"_round{n}.json"), old)
+    base, extra = post_targets(resorts), post_targets(resorts, EXTRA_BUCKETS)
+    have = dict(old.get("posts_pulled", {}))
+    ext = load_json(os.path.join(HERE, "data", "backfill", "extend.json"), {})
+    for h, d in (ext.get("done") or {}).items():
+        have[h] = max(have.get(h, 0), d.get("posts", 0))
+    totals = {}
+    acc = os.path.join(HERE, "data", "accounts.csv")
+    if os.path.exists(acc):
+        with open(acc, newline="", encoding="utf-8") as f:
+            totals = {r["handle"].lower(): int(r["posts_total"]) for r in csv.DictReader(f)
+                      if (r.get("posts_total") or "").isdigit()}
+    targets, done = {}, []
+    for h in base:
+        if h in old.get("skipped", {}):
+            continue
+        t = max(base[h], have.get(h, 0)) + extra[h]
+        if h in totals:
+            t = min(t, totals[h])
+        if t <= have.get(h, 0):
+            done.append(h)                         # already has every post (or more than the target)
+        else:
+            targets[h] = t
+    progress = {"round": n + 1, "started": now.isoformat(), "targets": targets, "done": done,
+                "skipped": dict(old.get("skipped", {})), "current": None, "calls": 0,
+                "posts_pulled": {h: have.get(h, 0) for h in done}}
+    save_json(PROGRESS, progress)
+    pages = sum(-(-t // PAGE) for t in targets.values())
+    print(f"Round {n + 1}: {len(targets)} accounts to top up (~{pages} API calls), {len(done)} already complete")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--status", action="store_true")
+    ap.add_argument("--new-round", action="store_true", help="start another, deeper round after one finishes")
     ap.add_argument("--max-calls", type=int, default=int(os.environ.get("BACKFILL_MAX_CALLS", 400)))
     args = ap.parse_args()
     now = datetime.now(timezone.utc)
     settings = load_json(SETTINGS, {})
+    resorts = rollup.load_resorts()
+    if args.new_round:
+        return new_round(resorts, now)
     progress = load_json(PROGRESS, None)
     if progress is None:
         progress = {"started": now.isoformat(), "done": [], "skipped": {}, "current": None, "calls": 0}
-    resorts = rollup.load_resorts()
     by_handle = {r["instagram"].strip().lstrip("@").lower(): r for r in resorts}
-    targets = post_targets(resorts)
-    todo = [h for h in by_handle if h not in progress["done"] and h not in progress["skipped"]]
-    print(f"Backfill: {len(progress['done'])} done, {len(progress['skipped'])} skipped, {len(todo)} to go "
+    targets = progress.get("targets") or post_targets(resorts)
+    todo = [h for h in (progress["targets"] if progress.get("targets") else by_handle)
+            if h in by_handle and h not in progress["done"] and h not in progress["skipped"]]
+    print(f"Backfill round {progress.get('round', 1)}: {len(progress['done'])} done, {len(progress['skipped'])} skipped, {len(todo)} to go "
           f"({progress['calls']} API calls so far)")
     if args.status or progress.get("completed"):
         return
