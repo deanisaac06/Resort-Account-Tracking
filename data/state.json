@@ -2713,11 +2713,11 @@
    "website": "http://www.oakmountainski.com/"
   },
   "obermountain": {
-   "followers": 56391,
-   "last_checked": "2026-11-16 04:23 UTC",
+   "followers": 56390,
+   "last_checked": "2026-11-16 05:23 UTC",
    "last_post": "2026-11-13",
    "median_likes": 176,
-   "median_views": 7079,
+   "median_views": 7082,
    "posts_total": 1785,
    "status": "ok",
    "website": "https://www.obergatlinburg.com/"
@@ -5696,16 +5696,16 @@
  },
  "cursor": 288,
  "last_run": {
-  "api_calls": 85,
-  "at": "2026-11-16 04:23 UTC",
-  "checked": 85,
+  "api_calls": 1,
+  "at": "2026-11-16 05:23 UTC",
+  "checked": 1,
   "new_hits": 0,
   "new_mega": 0,
-  "stopped": "near Meta's hourly quota ({'call_count': 35, 'total_cputime': 0, 'total_time': 86}) - continuing next run",
+  "stopped": "near Meta's hourly quota ({'call_count': 35, 'total_cputime': 0, 'total_time': 89}) - continuing next run",
   "usage": {
    "call_count": 35,
    "total_cputime": 0,
-   "total_time": 86
+   "total_time": 89
   },
   "watchlist": 20
  },
@@ -7241,14 +7241,14 @@
    "views": null
   },
   "17878192284566914": {
-   "age_days": 26.2,
-   "baseline": 6367,
+   "age_days": 26.3,
+   "baseline": 6372,
    "caption": "Mini Ober \ud83d\udd0e  What's your favorite Ober Adventure?  #mini #adventure #familyadventure #ober #gatlinburg #fall #fallcolors",
    "comments": 6,
    "first_seen": "2026-11-13 20:23 UTC",
-   "followers": 56391,
+   "followers": 56390,
    "handle": "obermountain",
-   "last_seen": "2026-11-16 04:23 UTC",
+   "last_seen": "2026-11-16 05:23 UTC",
    "likes": 186,
    "media_id": "17878192284566914",
    "media_type": "REELS",
@@ -7258,37 +7258,37 @@
    "posted": "2026-10-20",
    "resort": "Ober Mountain",
    "state_prov": "TN",
-   "thumb": "https://scontent-lga3-1.cdninstagram.com/v/t51.82787-15/857774276_18654677497008723_1420290161238983407_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=yJknVsICeCsQ7kNvwFu_S_m&_nc_oc=Adq_k-tkUwf_Cjwl76OjouJSTZ9_nJiTZ__zEIMBZ1askOyx7OfCJx4btbgWpMz4098&_nc_zt=23&_nc_ht=scontent-lga3-1.cdninstagram.com&edm=AL-3X8kEAAAA&_nc_gid=r4RTVhWylHFycvR8qIvwjg&_nc_tpa=Q5bMBQIUgrKSkl9pzV-BuAXsJPkfg7ctsN2XnkjNDM5iLAKqegVzT0-5zHVWVuF_DR622kS7aro9qdUFhg&_nc_ct=RQosPBUKFQQAAAA&oh=00_AQSdIWvpU5Xd7139zQIpDgZMrL53tsyhChmNiMWb1efc0w&oe=6B007204",
+   "thumb": "https://scontent-dfw5-1.cdninstagram.com/v/t51.82787-15/857774276_18654677497008723_1420290161238983407_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=yJknVsICeCsQ7kNvwHpuyTd&_nc_oc=AdpwwPMax4ikyu1NFFFzwqu51SNufY571-lLPfpjWT9r7dBbSMOMMG4gE68jXZoKfAQ&_nc_zt=23&_nc_ht=scontent-dfw5-1.cdninstagram.com&edm=AL-3X8kEAAAA&_nc_gid=zE-l4V8qWsTCTg6XOPnyoQ&_nc_tpa=Q5bMBQIY6-EEtRfV8UDl_Kp3DeBzoBsFJSALMemH-n6hTokUnMw3B7CqjdIhNAb-74HPNL164F7wX0QRgw&_nc_ct=RQosPBUKFQQAAAA&oh=00_AQTVWS0qpvCiGZZxGBRuOL-sWWETehBTUNEsLzhFDnhy2A&oe=6B007204",
    "tier": "Mid",
    "timestamp": "2026-10-20T22:53:39+0000",
-   "value": 25196,
-   "views": 25196
+   "value": 25202,
+   "views": 25202
   },
   "17878290771582101": {
-   "age_days": 2.2,
-   "baseline": 6367,
+   "age_days": 2.3,
+   "baseline": 6372,
    "caption": "\u2744\ufe0f IT'S HAPPENING! \u2744\ufe0f  The slopes and tubing open in ONE WEEK! The first natural snowfall of the season started coating the mountain today, with snow accumulating around the Scenic Deck and base area.",
    "comments": 80,
    "first_seen": "2026-11-13 22:43 UTC",
-   "followers": 56391,
+   "followers": 56390,
    "handle": "obermountain",
-   "last_seen": "2026-11-16 04:23 UTC",
-   "likes": 8525,
+   "last_seen": "2026-11-16 05:23 UTC",
+   "likes": 8530,
    "media_id": "17878290771582101",
    "media_type": "REELS",
    "mega_alerted": "2026-11-14 16:23 UTC",
    "metric": "views",
-   "multiple": 474.6,
+   "multiple": 474.4,
    "permalink": "https://www.instagram.com/reel/DfstOyRlYmL/",
    "posted": "2026-11-13",
    "resort": "Ober Mountain",
    "state_prov": "TN",
-   "thumb": "https://scontent-lga3-2.cdninstagram.com/v/t51.82787-15/902825494_18663466204008723_5853550274507737291_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=NG3F22Pcug8Q7kNvwEsdM-d&_nc_oc=Adr_YCU-O-hXYcBVo4ochBmiIQX-c_R6DH0mcWidiTB3hmZs7cM5p3hwIetJZ2LPMH0&_nc_zt=23&_nc_ht=scontent-lga3-2.cdninstagram.com&edm=AL-3X8kEAAAA&_nc_gid=r4RTVhWylHFycvR8qIvwjg&_nc_tpa=Q5bMBQL-fXsMsspfz_gPzmaeJCdZq_nHqa-VOE4mjLB34Gq7GnqYP5EPBakNWHmck7GEjYuVwKCrXLYOUQ&_nc_ct=RQosPBUKFQQAAAA&oh=00_AQSdZV39lRM4Tx1iB6PawCRGZINW1HPebfZEbAn6oObPuw&oe=6B00510D",
+   "thumb": "https://scontent-dfw5-2.cdninstagram.com/v/t51.82787-15/902825494_18663466204008723_5853550274507737291_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=NG3F22Pcug8Q7kNvwFlCN_G&_nc_oc=Adqlfj4ME4hD5Xa2wDinsXBNaa9ZMPiiSAOIUAoR2M3sQCXING9aEmOg8-Rtl1X-74M&_nc_zt=23&_nc_ht=scontent-dfw5-2.cdninstagram.com&edm=AL-3X8kEAAAA&_nc_gid=zE-l4V8qWsTCTg6XOPnyoQ&_nc_tpa=Q5bMBQKJoeWfaLt5hpd85Jkicy0Zg2uzvIKY-74rJuaq_jdt3MQZ0Ohp6Z3QYEFK-vl9GioJdzE13uGdgg&_nc_ct=RQosPBUKFQQAAAA&oh=00_AQQ49aJ3w9DTf9pn6J6FUMs11X1HGvBUiz50WKzoeRdcHg&oe=6B00510D",
    "tier": "Mid",
    "timestamp": "2026-11-13T22:30:15+0000",
-   "value": 3021474,
-   "views": 3021474,
-   "viral": "474.6x the account's median views; over 500,000 views; 53.6 views per follower"
+   "value": 3022956,
+   "views": 3022956,
+   "viral": "474.4x the account's median views; over 500,000 views; 53.6 views per follower"
   },
   "17878296081635854": {
    "age_days": 11.1,
@@ -27692,14 +27692,14 @@
    "views": null
   },
   "17971388993961976": {
-   "age_days": 16.4,
-   "baseline": 7791,
+   "age_days": 16.5,
+   "baseline": 7793,
    "caption": "The rumors are true. HR is haunting the mountain this Halloween season. \ud83d\udc7b\u26f0\ufe0f #ghostphotoshoot #halloween #gatlinburg #spookyseason",
    "comments": 5,
    "first_seen": "2026-11-13 20:23 UTC",
-   "followers": 56391,
+   "followers": 56390,
    "handle": "obermountain",
-   "last_seen": "2026-11-16 04:23 UTC",
+   "last_seen": "2026-11-16 05:23 UTC",
    "likes": 219,
    "media_id": "17971388993961976",
    "media_type": "REELS",
@@ -27711,8 +27711,8 @@
    "state_prov": "TN",
    "tier": "Mid",
    "timestamp": "2026-10-30T17:37:41+0000",
-   "value": 6367,
-   "views": 6367
+   "value": 6372,
+   "views": 6372
   },
   "17971410867197075": {
    "age_days": 9.2,
@@ -39084,14 +39084,14 @@
    "views": 25817
   },
   "18025638008932066": {
-   "age_days": 6.1,
-   "baseline": 6367,
+   "age_days": 6.2,
+   "baseline": 6372,
    "caption": "\u2744\ufe0f Winter starts here.  The snow machines are working overtime, the mountain is turning white, and we're getting ready for another season of winter fun in the Smokies. \ud83c\udfd4\ufe0f  \ud83d\udef7 Snow Tubing and Skiing bot",
    "comments": 32,
    "first_seen": "2026-11-13 20:23 UTC",
-   "followers": 56391,
+   "followers": 56390,
    "handle": "obermountain",
-   "last_seen": "2026-11-16 04:23 UTC",
+   "last_seen": "2026-11-16 05:23 UTC",
    "likes": 623,
    "media_id": "18025638008932066",
    "media_type": "REELS",
@@ -39101,11 +39101,11 @@
    "posted": "2026-11-10",
    "resort": "Ober Mountain",
    "state_prov": "TN",
-   "thumb": "https://scontent-lga3-2.cdninstagram.com/v/t51.82787-15/894543144_18662136505008723_2818818866494827188_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=Lo0DhDTPVDgQ7kNvwEC45Tb&_nc_oc=AdoDnLup5jB86oCn4ToEptRnOx7wUhszeR7dq9CwE3R4RfWaxp63muXqWyHca2LeH2o&_nc_zt=23&_nc_ht=scontent-lga3-2.cdninstagram.com&edm=AL-3X8kEAAAA&_nc_gid=r4RTVhWylHFycvR8qIvwjg&_nc_tpa=Q5bMBQI5IwxjoSKqf50Y2dI38UzDTxQFCsqCzclOhO8bxB6f9RB5JFM3c7fokVddFysA_U8avtHeXscCyw&_nc_ct=RQosPBUKFQQAAAA&oh=00_AQTPtpEUCP15clkwUfhMuadlSE_x_oQpR-YbRYNrp7kKrg&oe=6B004E84",
+   "thumb": "https://scontent-dfw5-2.cdninstagram.com/v/t51.82787-15/894543144_18662136505008723_2818818866494827188_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=Lo0DhDTPVDgQ7kNvwFmijWT&_nc_oc=Adq-ytKCOcnBipm6owxmDiZEN4TD8Xy0IiFlB5rYL-qXwJpT62YUupfTVffoqk_0xsU&_nc_zt=23&_nc_ht=scontent-dfw5-2.cdninstagram.com&edm=AL-3X8kEAAAA&_nc_gid=zE-l4V8qWsTCTg6XOPnyoQ&_nc_tpa=Q5bMBQIVWsOdHTfUDPnznhxEiJOrkOh12bkCQR8I28yhNOXmOyNOZpNDZKzp8hwM83PadzPtaDAfQK_BRA&_nc_ct=RQosPBUKFQQAAAA&oh=00_AQT_lX5Xmauh8PwKNwzq07M6NoYy0lzuoMrsVaqdY58gUg&oe=6B004E84",
    "tier": "Mid",
    "timestamp": "2026-11-10T01:22:23+0000",
-   "value": 70959,
-   "views": 70959,
+   "value": 70978,
+   "views": 70978,
    "viral": "11.1x the account's median views"
   },
   "18025687553874670": {
@@ -40157,14 +40157,14 @@
    "views": null
   },
   "18031445195885697": {
-   "age_days": 25.2,
-   "baseline": 7791,
+   "age_days": 25.3,
+   "baseline": 7793,
    "caption": "\u2603\ufe0f Do you feel the cold, crisp air? Winter is coming!!!  Snow tubing is anticipated to open in mid-November and we already have tickets available starting Friday, November 20. Visit the Ober Gatlinbur",
    "comments": 13,
    "first_seen": "2026-11-13 20:23 UTC",
-   "followers": 56391,
+   "followers": 56390,
    "handle": "obermountain",
-   "last_seen": "2026-11-16 04:23 UTC",
+   "last_seen": "2026-11-16 05:23 UTC",
    "likes": 127,
    "media_id": "18031445195885697",
    "media_type": "REELS",
@@ -40176,8 +40176,8 @@
    "state_prov": "TN",
    "tier": "Mid",
    "timestamp": "2026-10-21T22:57:17+0000",
-   "value": 6001,
-   "views": 6001
+   "value": 6004,
+   "views": 6004
   },
   "18031493747883746": {
    "age_days": 15.8,
@@ -72633,14 +72633,14 @@
    "views": null
   },
   "18120657905051739": {
-   "age_days": 24.2,
-   "baseline": 7791,
+   "age_days": 24.3,
+   "baseline": 7793,
    "caption": "\ud83e\udd68 Prost! \ud83c\udf7b  Dust off your lederhosen and raise your steins! Oktoberfest is here for 10 more days. Join us for fun as we celebrate Oktoberfest in style with daily competitions, a lineup of seasonal bee",
    "comments": 0,
    "first_seen": "2026-11-13 20:23 UTC",
-   "followers": 56391,
+   "followers": 56390,
    "handle": "obermountain",
-   "last_seen": "2026-11-16 04:23 UTC",
+   "last_seen": "2026-11-16 05:23 UTC",
    "likes": 27,
    "media_id": "18120657905051739",
    "media_type": "REELS",
@@ -72652,8 +72652,8 @@
    "state_prov": "TN",
    "tier": "Mid",
    "timestamp": "2026-10-22T22:30:45+0000",
-   "value": 5902,
-   "views": 5902
+   "value": 5906,
+   "views": 5906
   },
   "18120673064086480": {
    "age_days": 1.5,
@@ -85269,9 +85269,9 @@
    "caption": "\ud83e\uddd1\u200d\ud83c\udf73 visitgatlinburg's annual Chili Cookoff is the perfect kickoff to winter season in the Smokies! \u2603\ufe0f\u2744\ufe0f  We served almost 50 gallons of free chili to the thousands of visitors on the parkway, and we w",
    "comments": 3,
    "first_seen": "2026-11-13 20:23 UTC",
-   "followers": 56391,
+   "followers": 56390,
    "handle": "obermountain",
-   "last_seen": "2026-11-16 04:23 UTC",
+   "last_seen": "2026-11-16 05:23 UTC",
    "likes": 252,
    "media_id": "18136492337494574",
    "media_type": "FEED",
