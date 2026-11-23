@@ -162,7 +162,7 @@ def enrich(posts, settings_s):
             name, value = metric_for(fresh)
             if name == p["metric"] and value:
                 p["value"] = value
-                if p.get("baseline"):
+                if p.get("baseline") and p.get("multiple"):  # only refresh a trusted normal
                     p["multiple"] = round(value / max(p["baseline"], 1), 1)
             p.update(views=fresh.get("view_count", p.get("views")), likes=fresh.get("like_count", p.get("likes")),
                      comments=fresh.get("comments_count", p.get("comments")))
@@ -170,6 +170,10 @@ def enrich(posts, settings_s):
         ctx = history_note(p, hist)
         if ctx:
             p["history"] = ctx
+            if not p.get("multiple") and ctx.get("long_normal"):
+                # the tracker's sample had too few posts of this type for a normal - use the longer history
+                p["baseline"] = ctx["long_normal"]
+                p["multiple"] = round(p["value"] / max(ctx["long_normal"], 1), 1)
     print(f"  history pulled for {len(hist_by)}/{len(handles)} accounts ({client.calls} API calls, usage {client.last_usage})")
 
 
@@ -301,19 +305,23 @@ def kind(p):
 
 
 def row_text(i, p):
-    mult = f"{mult_str(p['multiple'])}x normal" if p.get("multiple") else "no baseline"
+    if p.get("multiple"):
+        mult = f"{mult_str(p['multiple'])}x normal (normal {fmt(p.get('baseline'))})"
+    else:
+        mult = "not enough history yet for a normal"
     note = f" - {p['history']['note']}" if (p.get("history") or {}).get("note") else ""
     return (f"{i}. {p['resort']} (@{p['handle']}, {p['state_prov']}) - {fmt(p['value'])} {p['metric']}, "
-            f"{mult} (normal {fmt(p.get('baseline'))}), posted {p['posted']}{note}\n   {p['permalink']}\n"
+            f"{mult}, posted {p['posted']}{note}\n   {p['permalink']}\n"
             f"   {(p.get('caption') or '')[:110]}")
 
 
 def row_html(i, p):
     mult = f"{mult_str(p['multiple'])}&times;" if p.get("multiple") else "&ndash;"
+    norm = f"normal {fmt(p.get('baseline'))}" if p.get("multiple") else "not enough history yet"
     return (f"<tr><td style='padding:6px 8px;color:#888'>{i}</td>"
             f"<td style='padding:6px 8px'><b>{escape(p['resort'])}</b><br><span style='color:#777;font-size:12px'>@{escape(p['handle'])} &middot; {escape(p['state_prov'])} &middot; {escape(p.get('tier') or '')}</span></td>"
             f"<td style='padding:6px 8px;text-align:right'><b>{fmt(p['value'])}</b> {p['metric']}</td>"
-            f"<td style='padding:6px 8px;text-align:right'>{mult}<br><span style='color:#777;font-size:12px'>normal {fmt(p.get('baseline'))}</span></td>"
+            f"<td style='padding:6px 8px;text-align:right'>{mult}<br><span style='color:#777;font-size:12px'>{norm}</span></td>"
             f"<td style='padding:6px 8px'>{p['posted']}</td>"
             f"<td style='padding:6px 8px'><a href='{p['permalink']}'>View</a></td></tr>"
             f"<tr><td></td><td colspan='5' style='padding:0 8px 10px;color:#555;font-size:12px;border-bottom:1px solid #eee'>{escape((p.get('caption') or '')[:160])}</td></tr>")
@@ -419,7 +427,16 @@ def prepare(now, s_settings):
     """Pick the posts and pull fresh numbers/history/preview links. Returns a JSON-able snapshot."""
     state = load(STATE, {})
     outperformers, biggest, megas, stats, s = build(state, s_settings, now)
-    enrich(megas + outperformers, s)
+    # Posts with no normal yet (too few posts of that type in the tracker's sample) can't be ranked
+    # against their own account. Pull longer history for the big ones so they get a real normal.
+    no_base = [p for p in biggest if not p.get("multiple")]
+    enrich(megas + outperformers + no_base, s)
+    if any(p.get("multiple") for p in no_base):
+        def clears_floor(p):
+            return p["value"] >= (s["min_views"] if p["metric"] == "views" else s["min_likes"])
+        pool = {p["media_id"]: p for p in outperformers + no_base
+                if (p.get("multiple") or 0) >= s["min_multiple"] and clears_floor(p)}
+        outperformers = sorted(pool.values(), key=lambda p: -p["multiple"])[: s["top_outperformers"]]
     return {"built_at": now.isoformat(), "outperformers": outperformers, "biggest": biggest,
             "megas": megas, "stats": stats, "s": s}
 
