@@ -30,7 +30,7 @@ Heavenly,skiheavenly,NV,USA,Major,164754,2225,193376,1759,2026-11-21,2026-11-23 
 Holiday Valley,holidayvalley,NY,USA,Major,70786,2903,5110,100,2026-11-20,2026-11-23 22:23 UTC,ok
 Jack Frost / Big Boulder,skijfbb,PA,USA,Major,24784,2140,1618,94,2026-11-23,2026-11-23 22:23 UTC,ok
 Jackson Hole,jacksonhole,WY,USA,Major,687678,5346,119513,2946,2026-11-23,2026-11-23 22:23 UTC,ok
-Keystone,keystone_resort,CO,USA,Major,,,,,,2026-11-23 22:23 UTC,unavailable: Invalid user id
+Keystone,keystoneresort,CO,USA,Major,,,,,,,
 Killington,killingtonmtn,VT,USA,Major,218192,4691,76184,2234,2026-11-23,2026-11-23 22:23 UTC,ok
 Kimberley Alpine Resort,kimberleyalpineresort,BC,Canada,Major,17876,2919,14221,94,2026-11-23,2026-11-23 22:23 UTC,ok
 Kirkwood Mountain Resort,kirkwoodmtn,CA,USA,Major,97096,1592,76102,2904,2026-11-23,2026-11-23 22:23 UTC,ok
@@ -38,7 +38,7 @@ Lake Louise Ski Area,skilouise,AB,Canada,Major,167024,4365,25009,571,2026-11-22,
 Le Massif de Charlevoix,lemassif,QC,Canada,Major,38943,2047,2096,54,2026-11-23,2026-11-23 22:23 UTC,ok
 Loon Mountain,loonmtnresort,NH,USA,Major,71815,3555,17154,532,2026-10-20,2026-11-23 22:23 UTC,ok
 Loveland Ski Area,lovelandskiarea,CO,USA,Major,86677,3275,11226,617,2026-11-23,2026-11-23 22:23 UTC,ok
-Mammoth Mountain,mammothmountain,CA,USA,Major,720132,7461,194547,5860,2026-11-23,2026-11-23 22:23 UTC,ok
+Mammoth Mountain,mammothmountain,CA,USA,Major,720145,7461,194992,5861,2026-11-23,2026-11-23 23:23 UTC,ok
 Mont Tremblant,monttremblant,QC,Canada,Major,146696,3453,39532,1020,2026-11-23,2026-11-23 22:23 UTC,ok
 Mont-Sainte-Anne,montsainteanne,QC,Canada,Major,30141,1154,20156,76,2026-11-23,2026-11-23 22:23 UTC,ok
 Mount Snow,mountsnow,VT,USA,Major,101164,1189,31213,1334,2026-11-18,2026-11-23 22:23 UTC,ok
@@ -87,13 +87,14 @@ Timberline Lodge,timberlinelodge,OR,USA,Major,99627,2132,37172,1116,2026-11-20,2
 Vail,vailmtn,CO,USA,Major,381064,1353,,1582,2026-11-23,2026-11-23 22:23 UTC,ok
 Whistler Blackcomb,whistlerblackcomb,BC,Canada,Major,441281,3800,41177,2022,2026-11-23,2026-11-23 22:23 UTC,ok
 Whitefish Mountain Resort,skiwhitefish,MT,USA,Major,93672,2583,16752,578,2026-11-23,2026-11-23 22:23 UTC,ok
+Whitewater Ski Resort,whitewatermountainresort,BC,Canada,Major,,,,,,,
 Wilmot Mountain,wilmotmtn,WI,USA,Major,15192,939,2662,88,2026-11-23,2026-11-23 22:23 UTC,ok
 Winter Park Resort,winterparkresort,CO,USA,Major,228309,6001,64422,1192,2026-11-22,2026-11-23 22:23 UTC,ok
 Wisp Resort,wispresort,MD,USA,Major,24299,1243,11101,166,2026-11-23,2026-11-23 22:23 UTC,ok
 Wolf Creek Ski Area,wolfcreekski,CO,USA,Major,67999,1272,96246,1812,2026-11-22,2026-11-23 22:23 UTC,ok
 Yellowstone Club,yellowstoneclub,MT,USA,Major,92727,1361,,530,2026-11-23,2026-11-23 22:23 UTC,ok
 Alpine Ski Club,alpineskiclub,ON,Canada,Mid,9320,1063,5516,84,2026-11-22,2026-11-23 22:23 UTC,ok
-Alpine Valley,alpinevalleyohio,OH,USA,Mid,,,,,,2026-11-23 22:23 UTC,unavailable: Invalid user id
+Alpine Valley,alpinevalley_oh,OH,USA,Mid,,,,,,,
 Alpine Valley Ski Area,alpinevalleyskiarea,MI,USA,Mid,8251,1019,7312,112,2026-11-06,2026-11-23 22:23 UTC,ok
 Alyeska Resort,resortalyeska,AK,USA,Mid,88915,3467,13376,168,2026-11-23,2026-11-23 22:23 UTC,ok
 Andes Tower Hills,andestowerhills,MN,USA,Mid,3192,684,990,40,2026-11-23,2026-11-23 22:23 UTC,ok
@@ -133,12 +134,10 @@ Bruce Mound,brucemound,WI,USA,Mid,432,70,,5,2026-11-02,2026-11-23 11:23 UTC,ok
 Brundage Mountain,brundagemtn,ID,USA,Mid,34424,3888,12614,266,2026-11-22,2026-11-23 11:23 UTC,ok
 Bryce Resort,bryce_resort,VA,USA,Mid,12522,1325,,71,2026-11-22,2026-11-23 11:23 UTC,ok
 Buena Vista,bvskiarea,MN,USA,Mid,1487,847,1146,56,2026-11-22,2026-11-23 11:23 UTC,ok
-Buffalo Ski Club,buffaloskiclub,NY,USA,Mid,,,,,,2026-11-23 11:23 UTC,unavailable: Invalid user id
 Burke Mountain,burkemountainofficial,VT,USA,Mid,26847,2492,11918,92,2026-11-17,2026-11-23 11:23 UTC,ok
 Caberfae Peaks,caberfaepeaks,MI,USA,Mid,22572,1900,14806,256,2026-11-20,2026-11-23 12:23 UTC,ok
 Caledon Ski Club,caledonskiclub,ON,Canada,Mid,4298,810,7302,110,2026-11-21,2026-11-23 12:23 UTC,ok
 Camp Fortune,campfortune,QC,Canada,Mid,17956,2102,6039,84,2026-11-18,2026-11-23 12:23 UTC,ok
-Campgaw Mountain,campgawmountainnj,NJ,USA,Mid,,,,,,2026-11-23 12:23 UTC,unavailable: Invalid user id
 Canaan Valley Resort,canaanresort,WV,USA,Mid,17238,2413,2270,28,2026-11-20,2026-11-23 12:23 UTC,ok
 Cannon Mountain,cannonmountain,NH,USA,Mid,46156,1367,,880,2026-11-14,2026-11-23 12:23 UTC,ok
 Cannonsburg,cannonsburg,MI,USA,Mid,,,,,,2026-11-23 12:23 UTC,unavailable: Invalid user id
@@ -189,11 +188,9 @@ Hoodoo,skihoodoo,OR,USA,Mid,28767,1142,82285,103,2026-11-18,2026-11-23 13:23 UTC
 Horseshoe Resort,horseshoeresort,ON,Canada,Mid,52965,2582,7205,60,2026-11-22,2026-11-23 13:23 UTC,ok
 Hudson Bay Mountain,hudsonbaymountain,BC,Canada,Mid,7125,1524,1878,12,2026-11-20,2026-11-23 13:23 UTC,ok
 Hunter Mountain,huntermountain,NY,USA,Mid,70055,1219,14493,682,2026-11-20,2026-11-23 13:23 UTC,ok
-Hyland Hills,what_the_hillz,MN,USA,Mid,,,,,,2026-11-23 13:23 UTC,unavailable: Invalid user id
 Jay Peak,jaypeakresort,VT,USA,Mid,150873,6386,123788,416,2026-11-21,2026-11-23 13:23 UTC,ok
 Jiminy Peak,jiminypeak,MA,USA,Mid,35582,2821,13926,226,2026-11-22,2026-11-23 13:23 UTC,ok
 June Mountain,junemountain,CA,USA,Mid,48623,1224,3975,594,2026-10-22,2026-11-23 13:23 UTC,ok
-Kelly Canyon,kellycanyonresort,ID,USA,Mid,,,,,,2026-11-23 13:23 UTC,unavailable: Invalid user id
 Kicking Horse Resort,kickinghorsemtn,BC,Canada,Mid,102273,3086,20197,598,2026-11-21,2026-11-23 13:23 UTC,ok
 King Pine,kingpineski,NH,USA,Mid,8540,2212,6725,63,2026-11-18,2026-11-23 13:23 UTC,ok
 Kissing Bridge,kissingbridge,NY,USA,Mid,13768,1784,5342,50,2026-11-20,2026-11-23 13:23 UTC,ok
@@ -217,7 +214,7 @@ Massif du Sud,massifdusud,QC,Canada,Mid,10805,1500,2708,48,2026-11-05,2026-11-23
 McCauley Mountain,mccauley_mtn,NY,USA,Mid,2313,107,,248,2023-06-26,2026-11-23 14:23 UTC,ok
 McIntyre Ski Area,mcintyreskiarea,NH,USA,Mid,5106,1276,,39,2026-11-22,2026-11-23 14:23 UTC,ok
 Middlebury Snow Bowl,middsnowbowl,VT,USA,Mid,9090,1130,8698,36,2026-11-02,2026-11-23 14:23 UTC,ok
-Mission Ridge,missionridge,WA,USA,Mid,31326,5264,9311,347,2026-11-23,2026-11-23 22:23 UTC,ok
+Mission Ridge,missionridge,WA,USA,Mid,31331,5264,9322,348,2026-11-23,2026-11-23 23:23 UTC,ok
 Mohawk Mountain,mohawkmtn,CT,USA,Mid,18692,1380,6375,92,2026-11-16,2026-11-23 14:23 UTC,ok
 Monarch Mountain,monarchmountain,CO,USA,Mid,46425,2233,14820,686,2026-11-23,2026-11-23 14:23 UTC,ok
 Mont Cascades,mont_cascades,QC,Canada,Mid,5778,946,,17,2026-11-22,2026-11-23 14:23 UTC,ok
@@ -253,11 +250,11 @@ Mystery Mountain,mystery_mountain,MB,Canada,Mid,461,130,499,9,2026-10-01,2026-11
 Nakiska,nakiskaskiarea,AB,Canada,Mid,22480,1795,10648,292,2026-11-21,2026-11-23 14:23 UTC,ok
 Nordic Mountain,nordicmountain,WI,USA,Mid,6948,1066,6238,196,2026-11-19,2026-11-23 14:23 UTC,ok
 Nordic Valley,nordicvalley,UT,USA,Mid,14918,1047,17968,109,2026-11-20,2026-11-23 14:23 UTC,ok
-Norway Mountain,norwaymtn,MI,USA,Mid,,,,,,2026-11-23 14:23 UTC,unavailable: Invalid user id
 Nub's Nob,nubsnob,MI,USA,Mid,22765,750,,501,2026-11-22,2026-11-23 14:23 UTC,ok
 Ober Mountain,obermountain,TN,USA,Mid,56788,1787,17486,246,2026-11-21,2026-11-23 22:23 UTC,ok
 Osler Bluff Ski Club,oslerbluffskiclubofficial,ON,Canada,Mid,4729,572,5156,143,2026-11-18,2026-11-23 14:23 UTC,ok
 Otsego Club,otsegoresort,MI,USA,Mid,4788,1876,1281,21,2026-11-22,2026-11-23 14:23 UTC,ok
+Owl's Head,montowlshead,QC,Canada,Mid,,,,,,,
 Pajarito Mountain,skipajarito,NM,USA,Mid,8817,2170,3272,172,2026-11-22,2026-11-23 14:23 UTC,ok
 Paoli Peaks,paolipeaks,IN,USA,Mid,8462,1248,2979,44,2026-02-26,2026-11-23 14:23 UTC,ok
 Pats Peak,patspeakskiarea,NH,USA,Mid,22210,3248,6453,31,2026-11-20,2026-11-23 14:23 UTC,ok
@@ -281,6 +278,7 @@ Red River Ski Area,redriverskiarea,NM,USA,Mid,25585,2634,,378,2026-11-19,2026-11
 Saddleback,saddlebackmaine,ME,USA,Mid,39822,2233,26888,424,2026-11-18,2026-11-23 16:23 UTC,ok
 Sandia Peak,sandia_peak_ski,NM,USA,Mid,7983,247,5988,124,2026-11-22,2026-11-23 16:23 UTC,ok
 Sasquatch Mountain Resort,sasquatchmountainresort,BC,Canada,Mid,18781,1321,5791,15,2026-11-17,2026-11-23 16:23 UTC,ok
+Searchmont Resort,skisearchmont,ON,Canada,Mid,,,,,,,
 Shames Mountain,shamesmountain,BC,Canada,Mid,10898,455,,17,2026-11-15,2026-11-23 16:23 UTC,ok
 Shanty Creek (Schuss Mountain),shantycreekresort,MI,USA,Mid,14999,3463,2582,11,2026-11-23,2026-11-23 16:23 UTC,ok
 Shawnee Mountain,shawneemountain,PA,USA,Mid,23189,2478,4168,116,2026-11-21,2026-11-23 16:23 UTC,ok
@@ -298,14 +296,12 @@ Ski Mont Blanc,ski_mont_blanc,QC,Canada,Mid,9067,769,11596,5,2026-11-23,2026-11-
 Ski Montcalm,skimontcalm,QC,Canada,Mid,3366,524,2462,49,2026-11-22,2026-11-23 16:23 UTC,ok
 Ski Saint-Bruno,ski.saint.bruno,QC,Canada,Mid,12010,1167,7649,142,2026-11-21,2026-11-23 16:23 UTC,ok
 Ski Santa Fe,skisantafe,NM,USA,Mid,52590,1796,24606,947,2026-11-21,2026-11-23 16:23 UTC,ok
-Ski Sawmill,ski_sawmill,PA,USA,Mid,,,,,,2026-11-23 16:23 UTC,unavailable: Invalid user id
 Ski Snowstar,skisnowstar,IL,USA,Mid,2801,614,,2,2026-03-09,2026-11-23 16:23 UTC,ok
 Ski Sundown,skisundown,CT,USA,Mid,20956,1102,2812,80,2026-11-19,2026-11-23 16:23 UTC,ok
 Ski Ward,skiward,MA,USA,Mid,6836,452,8283,50,2026-11-20,2026-11-23 16:23 UTC,ok
 Ski Wentworth,skiwentworth,NS,Canada,Mid,22063,2663,3852,29,2026-11-21,2026-11-23 16:23 UTC,ok
 Smugglers' Notch,smugglersnotchvt,VT,USA,Mid,72617,2906,35454,490,2026-11-17,2026-11-23 16:23 UTC,ok
 Snow King Mountain,snowkingmountain,WY,USA,Mid,21634,803,7605,258,2026-11-23,2026-11-23 16:23 UTC,ok
-Snow Ridge,snowridgeskiresort,NY,USA,Mid,,,,,,2026-11-23 16:23 UTC,unavailable: Invalid user id
 Snow Snake,snowsnakeskigolf,MI,USA,Mid,1744,593,613,8,2026-11-21,2026-11-23 16:23 UTC,ok
 Snow Trails,snowtrails,OH,USA,Mid,30941,1142,12850,521,2026-11-17,2026-11-23 16:23 UTC,ok
 Snow Valley Ski Resort,skisnowvalley,ON,Canada,Mid,23096,3585,2318,34,2026-11-18,2026-11-23 22:23 UTC,ok
@@ -328,7 +324,7 @@ Sunlight Mountain Resort,sunlightmountainresort,CO,USA,Mid,16492,1851,10248,301,
 Sunridge Ski Area,sunridge,AB,Canada,Mid,8237,1024,8841,128,2026-11-23,2026-11-23 20:23 UTC,ok
 Sunrise Park Resort,sunriseskiaz,AZ,USA,Mid,23525,856,,30,2026-11-23,2026-11-23 18:23 UTC,ok
 Swain,swainresort,NY,USA,Mid,5937,1709,2590,40,2026-11-20,2026-11-23 18:23 UTC,ok
-Swiss Valley,swiss_valley_ski_resort,MI,USA,Mid,,,,,,2026-11-23 18:23 UTC,unavailable: Invalid user id
+Swiss Valley,skiswissvalley,MI,USA,Mid,,,,,,,
 Tahoe Donner Downhill,tahoedonnerassociation,CA,USA,Mid,9812,1648,3482,105,2026-11-21,2026-11-23 18:23 UTC,ok
 Tenney Mountain,skitenney,NH,USA,Mid,10282,796,7766,124,2026-11-18,2026-11-23 18:23 UTC,ok
 Terry Peak,skiterrypeak,SD,USA,Mid,5468,140,,110,2026-11-13,2026-11-23 18:23 UTC,ok
@@ -428,6 +424,7 @@ Kinosoo Ridge,skikinosooridge,AB,Canada,Small,2813,1521,22387,12,2026-11-20,2026
 Lake City Ski Hill,skilakecity,CO,USA,Small,71,13,,2,2025-02-28,2026-11-23 20:23 UTC,ok
 Laurentian Ski Hill,laurentianskihill,ON,Canada,Small,2501,351,7980,42,2026-11-09,2026-11-23 20:23 UTC,ok
 Little Ski Hill,littleskihill,ID,USA,Small,3552,745,,37,2026-11-21,2026-11-23 20:23 UTC,ok
+Little Smoky Ski Area,littlesmokyskiarea,AB,Canada,Small,,,,,,,
 Loch Lomond,loch_lomond_ski,ON,Canada,Small,2362,187,,15,2026-11-07,2026-11-23 20:23 UTC,ok
 Lost Valley,lostvalleymaine,ME,USA,Small,9809,3549,,6,2026-11-23,2026-11-23 20:23 UTC,ok
 Loup Loup Ski Bowl,skitheloup,WA,USA,Small,3304,626,2051,,2026-11-21,2026-11-23 20:23 UTC,ok
