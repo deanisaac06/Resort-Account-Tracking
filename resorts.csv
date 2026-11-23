@@ -12,7 +12,7 @@ Hidden Valley Ski Resort,AB,Canada,Mid,4,15,https://albertaparks.ca/hiddenvalley
 Innisfail Ski Hill,AB,Canada,Small,1,1,,,,facebook only,https://facebook.com/iskihill,,,,,
 Kinosoo Ridge,AB,Canada,Small,4,7,https://kinosoo.ca,skikinosooridge,https://www.instagram.com/skikinosooridge/,website,,,,yes,2792,check
 Lake Louise Ski Area,AB,Canada,Major,13,80,https://skilouise.com,skilouise,https://www.instagram.com/skilouise/,website,,,,yes,165776,check
-Little Smoky Ski Area,AB,Canada,Small,1,4,https://littlesmokyski.ca,,,not on website,,,,,,
+Little Smoky Ski Area,AB,Canada,Small,1,4,https://littlesmokyski.ca,littlesmokyskiarea,https://www.instagram.com/littlesmokyskiarea/,guess (website matches),,,,yes,332,yes
 Long Lake,AB,Canada,Small,2,4,https://skilonglake.com,,,not on website,,,,,,
 Manning Ski Hill,AB,Canada,Small,1,1,,,,facebook only,https://facebook.com/ManningSkiHill,,,,,
 Marmot Basin,AB,Canada,Mid,6,37,https://skimarmot.com,marmotbasin,https://www.instagram.com/marmotbasin/,website,,,,yes,43650,check
@@ -72,7 +72,7 @@ Troll Resort,BC,Canada,Mid,5,34,https://trollskiresort.com,trollresort,https://w
 Tweedsmuir Ski Club,BC,Canada,Small,1,0,https://tweedsmuirskiclub.com,,,not on website,,,,,,
 Wapiti Ski Club,BC,Canada,Small,1,9,https://wapitiskiclub.com,,,not on website,,,,,,
 Whistler Blackcomb,BC,Canada,Major,36,299,https://whistlerblackcomb.com,whistlerblackcomb,https://www.instagram.com/whistlerblackcomb/,website,,,,yes,438261,check
-Whitewater Ski Resort,BC,Canada,Major,5,55,https://skiwhitewater.com,whitewatermountainresort,https://www.instagram.com/whitewatermountainresort/,website (fixed Nov 2026),,,,yes,,
+Whitewater Ski Resort,BC,Canada,Major,5,55,https://skiwhitewater.com,whitewatermountainresort,https://www.instagram.com/whitewatermountainresort/,website (fixed Nov 2026),,,,yes,44508,check
 Asessippi Ski Area and Resort,MB,Canada,Small,4,9,https://asessippi.com,,,not on website,,,,,,
 Falcon Ridge,MB,Canada,Small,4,0,https://falconridgeski.com,falcon_ridge,https://www.instagram.com/falcon_ridge/,website,,,,yes,6575,check
 Holiday Mountain,MB,Canada,Small,4,4,https://holidaymountain.ca,onholidaymtn,https://www.instagram.com/onholidaymtn/,website,,,,yes,6666,yes
@@ -142,7 +142,7 @@ Mt. Chinguacousy,ON,Canada,Small,2,0,https://brampton.ca,,,removed: link was not
 Osler Bluff Ski Club,ON,Canada,Mid,4,17,https://oslerbluff.com,oslerbluffskiclubofficial,https://www.instagram.com/oslerbluffskiclubofficial/,IG search,,,,yes,4676,yes
 Remi Ski Club,ON,Canada,Small,1,0,,,,no website,,,,,,
 ROC Georgina,ON,Canada,Small,1,0,https://georgina.ca,,,removed: link was not the ski area,,,,,,
-Searchmont Resort,ON,Canada,Mid,5,9,https://searchmont.com,skisearchmont,https://www.instagram.com/skisearchmont/,website (fixed Nov 2026),,,,yes,,
+Searchmont Resort,ON,Canada,Mid,5,9,https://searchmont.com,skisearchmont,https://www.instagram.com/skisearchmont/,website (fixed Nov 2026),,,,yes,4082,yes
 Sir Sam's,ON,Canada,Mid,5,5,https://sirsams.ca,sirsamsskiride,https://www.instagram.com/sirsamsskiride/,IG search,,,,yes,7314,yes
 Ski Lakeridge,ON,Canada,Mid,6,6,https://ski-lakeridge.com,skilakeridge,https://www.instagram.com/skilakeridge/,IG search,,,,yes,16202,yes
 Snow Valley Ski Resort,ON,Canada,Mid,8,8,https://skisnowvalley.com,skisnowvalley,https://www.instagram.com/skisnowvalley/,IG search,,,,yes,22922,check
@@ -198,7 +198,7 @@ Mont Villa Saguenay,QC,Canada,Small,3,1,,,,no website,,,,,,
 Mont-Bellevue (Sherbrooke),QC,Canada,Small,2,4,https://sherbrooke.ca,,,not on website,,,,,,
 Mont-Bélu,QC,Canada,Small,2,8,https://montbelu.com,,,not on website,,,,,,
 Mont-Sainte-Anne,QC,Canada,Major,9,58,https://mont-sainte-anne.com,montsainteanne,https://www.instagram.com/montsainteanne/,website,,,,yes,29993,yes
-Owl's Head,QC,Canada,Mid,6,17,https://owlshead.com,montowlshead,https://www.instagram.com/montowlshead/,website (fixed Nov 2026),,,,yes,,
+Owl's Head,QC,Canada,Mid,6,17,https://owlshead.com,montowlshead,https://www.instagram.com/montowlshead/,website (fixed Nov 2026),,,,yes,6447,yes
 Mont Hatley,QC,Canada,Small,0,1,https://monthatley.com,mont_hatley,https://www.instagram.com/mont_hatley/,website (auto),,,,yes,1130,yes
 Parc du Mont-Comi,QC,Canada,Small,4,10,https://mont-comi.ca,,,not on website,,,,,,
 Petit Chamonix,QC,Canada,Small,2,5,https://petitchamonix.com,,,not on website,,,,,,
@@ -232,115 +232,115 @@ Vallée du Parc,QC,Canada,Small,3,2,https://valleeduparc.com,valleeduparc,https:
 Mission Ridge Winter Park,SK,Canada,Small,3,4,https://missionridge.ca,,,not on website,,,,,,
 Optimist Hill,SK,Canada,Small,2,0,https://optimisthill.ca,,,not on website,,,,,,
 Ski Timber Ridge,SK,Canada,Small,1,2,,,,facebook only,https://facebook.com/skitimberridge,,,,,
-Table Mountain Regional Park,SK,Canada,Small,4,5,https://tablemountainregionalpark.com,tablemountainnb,https://www.instagram.com/tablemountainnb/,website (auto),,,,yes,,
+Table Mountain Regional Park,SK,Canada,Small,4,5,https://tablemountainregionalpark.com,tablemountainnb,https://www.instagram.com/tablemountainnb/,website (auto),,,,yes,5926,check
 The Duck (Duck Mountain),SK,Canada,Small,3,7,https://skitheduck.com,,,not on website,,,,,,
 Wapiti Valley,SK,Canada,Small,2,5,https://skiwapiti.com,,,removed: link was not the ski area,,,,,,
 Moose Mountain (Dawson),YT,Canada,Small,1,2,https://dawsoncity.ca,,,removed: link was not the ski area,,,,,,
 Mount Maichen,YT,Canada,Small,2,8,https://watsonlakeskiclub.com,,,not on website,,,,,,
-Mount Sima,YT,Canada,Small,2,10,https://mountsima.com,mountsima,https://www.instagram.com/mountsima/,website (auto),,,,yes,,
-Alyeska Resort,AK,USA,Mid,7,30,https://alyeskaresort.com,resortalyeska,https://www.instagram.com/resortalyeska/,website,,,,yes,,
-Arctic Valley Ski Area,AK,USA,Small,3,10,https://arcticvalley.org,arcticvalley,https://www.instagram.com/arcticvalley/,website (auto),,,,yes,,
+Mount Sima,YT,Canada,Small,2,10,https://mountsima.com,mountsima,https://www.instagram.com/mountsima/,website (auto),,,,yes,4730,check
+Alyeska Resort,AK,USA,Mid,7,30,https://alyeskaresort.com,resortalyeska,https://www.instagram.com/resortalyeska/,website,,,,yes,88917,check
+Arctic Valley Ski Area,AK,USA,Small,3,10,https://arcticvalley.org,arcticvalley,https://www.instagram.com/arcticvalley/,website (auto),,,,yes,8162,yes
 Birch Hill Ski Area,AK,USA,Small,3,6,https://wainwright.armymwr.com,,,not on website,,,,,,
-Eaglecrest Ski Area,AK,USA,Mid,3,17,https://skieaglecrest.com,skieaglecrest,https://www.instagram.com/skieaglecrest/,IG search,,,,yes,,
+Eaglecrest Ski Area,AK,USA,Mid,3,17,https://skieaglecrest.com,skieaglecrest,https://www.instagram.com/skieaglecrest/,IG search,,,,yes,17895,check
 Hillberg Ski Area,AK,USA,Small,2,5,https://jberlife.com/Hillberg,,,removed: link was not the ski area,,,,,,
-Hilltop Ski Area,AK,USA,Small,2,4,https://hilltopskiarea.org,hilltop907,https://www.instagram.com/hilltop907/,website (auto),,,,yes,,
-Homer Rope Tow,AK,USA,Small,0,0,https://homerropetow.org,homer_rope_tow,https://www.instagram.com/homer_rope_tow/,website (auto),,,,yes,,
+Hilltop Ski Area,AK,USA,Small,2,4,https://hilltopskiarea.org,hilltop907,https://www.instagram.com/hilltop907/,website (auto),,,,yes,11350,check
+Homer Rope Tow,AK,USA,Small,0,0,https://homerropetow.org,homer_rope_tow,https://www.instagram.com/homer_rope_tow/,website (auto),,,,yes,1385,check
 Moose Mountain Ski Resort,AK,USA,Mid,0,34,https://shredthemoose.com,,,not on website,,,,,,
 Mount Eyak Ski Area,AK,USA,Small,2,6,https://mteyak.org,,,not on website,,,,,,
-Skeetawk,AK,USA,Small,1,3,https://skeetawk.com,skeetawkak,https://www.instagram.com/skeetawkak/,website (auto),,,,yes,,
-Ski Land (Mt Aurora),AK,USA,Mid,1,21,https://skilandfairbanks.com,skilandalaska,https://www.instagram.com/skilandalaska/,website (auto),,,,yes,,
+Skeetawk,AK,USA,Small,1,3,https://skeetawk.com,skeetawkak,https://www.instagram.com/skeetawkak/,website (auto),,,,yes,5536,yes
+Ski Land (Mt Aurora),AK,USA,Mid,1,21,https://skilandfairbanks.com,skilandalaska,https://www.instagram.com/skilandalaska/,website (auto),,,,yes,3945,check
 Cloudmont Ski Resort,AL,USA,Small,1,0,,,,facebook only,https://facebook.com/cloudmont,,,,,
-Arizona Snowbowl,AZ,USA,Mid,8,22,https://arizonasnowbowl.com,azsnowbowl,https://www.instagram.com/azsnowbowl/,website,,,,yes,,
+Arizona Snowbowl,AZ,USA,Mid,8,22,https://arizonasnowbowl.com,azsnowbowl,https://www.instagram.com/azsnowbowl/,website,,,,yes,112714,check
 Mount Lemmon Ski Valley,AZ,USA,Small,3,7,https://skithelemmon.com,,,not on website,,,,,,
-Sunrise Park Resort,AZ,USA,Mid,7,42,https://sunriseskiparkaz.com,sunriseskiaz,https://www.instagram.com/sunriseskiaz/,IG search,,,,yes,,
-Alta Sierra Ski Resort,CA,USA,Small,3,2,,altasierraski,https://www.instagram.com/altasierraski/,website,,,,yes,,
+Sunrise Park Resort,AZ,USA,Mid,7,42,https://sunriseskiparkaz.com,sunriseskiaz,https://www.instagram.com/sunriseskiaz/,IG search,,,,yes,23530,check
+Alta Sierra Ski Resort,CA,USA,Small,3,2,,altasierraski,https://www.instagram.com/altasierraski/,website,,,,yes,6224,check
 Badger Pass Ski Area,CA,USA,Mid,5,6,https://travelyosemite.com,,,removed: link was not the ski area,,,,,,
 Bear Mountain,CA,USA,Mid,11,13,https://bigbearmountainresort.com,,,removed: link was not the ski area,,,,,,
-Bear Valley,CA,USA,Mid,9,36,https://bearvalley.com,bearvalleyresort,https://www.instagram.com/bearvalleyresort/,website,,,,yes,,
-Boreal Mountain Resort,CA,USA,Mid,7,14,https://rideboreal.com,borealmtn,https://www.instagram.com/borealmtn/,IG search,,,,yes,,
+Bear Valley,CA,USA,Mid,9,36,https://bearvalley.com,bearvalleyresort,https://www.instagram.com/bearvalleyresort/,website,,,,yes,35012,check
+Boreal Mountain Resort,CA,USA,Mid,7,14,https://rideboreal.com,borealmtn,https://www.instagram.com/borealmtn/,IG search,,,,yes,60057,check
 Buckhorn Ski Club,CA,USA,Small,0,0,https://buckhornlodge.org,,,not on website,,,,,,
 Cedar Pass Ski Hill,CA,USA,Small,2,2,,,,no website,,,,,,
-China Peak Mountain Resort,CA,USA,Mid,11,35,https://skichinapeak.com,skichinapeak,https://www.instagram.com/skichinapeak/,website,,,,yes,,
+China Peak Mountain Resort,CA,USA,Mid,11,35,https://skichinapeak.com,skichinapeak,https://www.instagram.com/skichinapeak/,website,,,,yes,41642,check
 Coppervale Ski Hill,CA,USA,Small,2,2,https://lassencollege.edu,,,not on website,,,,,,
-Dodge Ridge,CA,USA,Mid,11,34,https://dodgeridge.com,dodgeridge,https://www.instagram.com/dodgeridge/,website,,,,yes,,
-Donner Ski Ranch,CA,USA,Mid,8,18,https://donnerskiranch.com,donnerskiranch,https://www.instagram.com/donnerskiranch/,IG search,,,,yes,,
-Granlibakken Tahoe,CA,USA,Small,1,0,https://granlibakken.com,granlibakken,https://www.instagram.com/granlibakken/,website (auto),,,,yes,,
-Homewood Mountain Resort,CA,USA,Mid,7,35,https://skihomewood.com,skihomewood,https://www.instagram.com/skihomewood/,IG search,,,,yes,,
-June Mountain,CA,USA,Mid,7,27,https://junemountain.com,junemountain,https://www.instagram.com/junemountain/,website,,,,yes,,
-Kirkwood Mountain Resort,CA,USA,Major,13,41,https://kirkwood.com,kirkwoodmtn,https://www.instagram.com/kirkwoodmtn/,website,,,,yes,,
-Mammoth Mountain,CA,USA,Major,28,86,https://mammothmountain.com,mammothmountain,https://www.instagram.com/mammothmountain/,website,,,,yes,,
+Dodge Ridge,CA,USA,Mid,11,34,https://dodgeridge.com,dodgeridge,https://www.instagram.com/dodgeridge/,website,,,,yes,35076,check
+Donner Ski Ranch,CA,USA,Mid,8,18,https://donnerskiranch.com,donnerskiranch,https://www.instagram.com/donnerskiranch/,IG search,,,,yes,6561,yes
+Granlibakken Tahoe,CA,USA,Small,1,0,https://granlibakken.com,granlibakken,https://www.instagram.com/granlibakken/,website (auto),,,,yes,8078,yes
+Homewood Mountain Resort,CA,USA,Mid,7,35,https://skihomewood.com,skihomewood,https://www.instagram.com/skihomewood/,IG search,,,,yes,20752,yes
+June Mountain,CA,USA,Mid,7,27,https://junemountain.com,junemountain,https://www.instagram.com/junemountain/,website,,,,yes,48630,check
+Kirkwood Mountain Resort,CA,USA,Major,13,41,https://kirkwood.com,kirkwoodmtn,https://www.instagram.com/kirkwoodmtn/,website,,,,yes,97103,check
+Mammoth Mountain,CA,USA,Major,28,86,https://mammothmountain.com,mammothmountain,https://www.instagram.com/mammothmountain/,website,,,,yes,720144,check
 Mount Waterman,CA,USA,Small,0,6,https://mtwaterman.org,,,not on website,,,,,,
-Mountain High,CA,USA,Major,12,19,https://mthigh.com,mthighsnow,https://www.instagram.com/mthighsnow/,website,,,,yes,,
-Mt. Baldy Resort,CA,USA,Mid,4,15,https://mtbaldyresort.com,mtbaldyresort,https://www.instagram.com/mtbaldyresort/,IG search,,,,yes,,
-Mt. Shasta Ski Park,CA,USA,Mid,6,29,https://skipark.com,mtshastaskipark,https://www.instagram.com/mtshastaskipark/,website,,,,yes,,
-Northstar California,CA,USA,Major,20,83,https://northstarcalifornia.com,northstar_california,https://www.instagram.com/northstar_california/,website,,,,yes,,
-Palisades Tahoe,CA,USA,Major,44,108,https://palisadestahoe.com,palisadestahoe,https://www.instagram.com/palisadestahoe/,website,,,,yes,,
-Sierra-at-Tahoe,CA,USA,Major,13,27,https://sierraattahoe.com,sierra_at_tahoe,https://www.instagram.com/sierra_at_tahoe/,website,,,,yes,,
-Big Bear Mountain Resort (Bear Mountain + Snow Summit),CA,USA,Major,26,33,https://bigbearmountainresort.com,bigbearmountainresort,https://www.instagram.com/bigbearmountainresort/,IG search,,,,yes,,
+Mountain High,CA,USA,Major,12,19,https://mthigh.com,mthighsnow,https://www.instagram.com/mthighsnow/,website,,,,yes,103218,check
+Mt. Baldy Resort,CA,USA,Mid,4,15,https://mtbaldyresort.com,mtbaldyresort,https://www.instagram.com/mtbaldyresort/,IG search,,,,yes,41077,yes
+Mt. Shasta Ski Park,CA,USA,Mid,6,29,https://skipark.com,mtshastaskipark,https://www.instagram.com/mtshastaskipark/,website,,,,yes,32302,check
+Northstar California,CA,USA,Major,20,83,https://northstarcalifornia.com,northstar_california,https://www.instagram.com/northstar_california/,website,,,,yes,135082,check
+Palisades Tahoe,CA,USA,Major,44,108,https://palisadestahoe.com,palisadestahoe,https://www.instagram.com/palisadestahoe/,website,,,,yes,275362,check
+Sierra-at-Tahoe,CA,USA,Major,13,27,https://sierraattahoe.com,sierra_at_tahoe,https://www.instagram.com/sierra_at_tahoe/,website,,,,yes,77038,check
+Big Bear Mountain Resort (Bear Mountain + Snow Summit),CA,USA,Major,26,33,https://bigbearmountainresort.com,bigbearmountainresort,https://www.instagram.com/bigbearmountainresort/,IG search,,,,yes,260420,check
 Snow Valley Mountain Resort,CA,USA,Major,13,13,https://snow-valley.com,,,not on website,,,,,,
-Soda Springs,CA,USA,Mid,6,7,https://skisodasprings.com,skisodasprings,https://www.instagram.com/skisodasprings/,IG search,,,,yes,,
-Sugar Bowl Resort,CA,USA,Major,13,38,https://sugarbowl.com,sugarbowlresort,https://www.instagram.com/sugarbowlresort/,website,,,,yes,,
-Tahoe Donner Downhill,CA,USA,Mid,5,9,https://tahoedonner.com,tahoedonnerassociation,https://www.instagram.com/tahoedonnerassociation/,website (auto),,,,yes,,
-Arapahoe Basin,CO,USA,Mid,9,49,https://arapahoebasin.com,arapahoe_basin,https://www.instagram.com/arapahoe_basin/,website,,,,yes,,
-Aspen Snowmass (4 mountains),CO,USA,Major,39,262,https://aspensnowmass.com,aspensnowmass,https://www.instagram.com/aspensnowmass/,website,,,,yes,,
-Beaver Creek Resort,CO,USA,Major,24,167,https://beavercreek.com,beavercreek,https://www.instagram.com/beavercreek/,website,,,,yes,,
-Breckenridge Ski Resort,CO,USA,Major,35,113,https://breckenridge.com,breckenridgemtn,https://www.instagram.com/breckenridgemtn/,website,,,,yes,,
+Soda Springs,CA,USA,Mid,6,7,https://skisodasprings.com,skisodasprings,https://www.instagram.com/skisodasprings/,IG search,,,,yes,6363,yes
+Sugar Bowl Resort,CA,USA,Major,13,38,https://sugarbowl.com,sugarbowlresort,https://www.instagram.com/sugarbowlresort/,website,,,,yes,60318,yes
+Tahoe Donner Downhill,CA,USA,Mid,5,9,https://tahoedonner.com,tahoedonnerassociation,https://www.instagram.com/tahoedonnerassociation/,website (auto),,,,yes,9815,check
+Arapahoe Basin,CO,USA,Mid,9,49,https://arapahoebasin.com,arapahoe_basin,https://www.instagram.com/arapahoe_basin/,website,,,,yes,168744,check
+Aspen Snowmass (4 mountains),CO,USA,Major,39,262,https://aspensnowmass.com,aspensnowmass,https://www.instagram.com/aspensnowmass/,website,,,,yes,387819,check
+Beaver Creek Resort,CO,USA,Major,24,167,https://beavercreek.com,beavercreek,https://www.instagram.com/beavercreek/,website,,,,yes,178928,check
+Breckenridge Ski Resort,CO,USA,Major,35,113,https://breckenridge.com,breckenridgemtn,https://www.instagram.com/breckenridgemtn/,website,,,,yes,373278,check
 Chapman Hill,CO,USA,Small,2,1,https://durangogov.org,,,not on website,,,,,,
-Copper Mountain,CO,USA,Major,23,115,https://coppercolorado.com,coppermtn,https://www.instagram.com/coppermtn/,website,,,,yes,,
+Copper Mountain,CO,USA,Major,23,115,https://coppercolorado.com,coppermtn,https://www.instagram.com/coppermtn/,website,,,,yes,234423,check
 Cranor Hill,CO,USA,Small,1,2,,,,no website,,,,,,
-Crested Butte Mountain Resort,CO,USA,Major,15,56,https://skicb.com,skicrestedbutte,https://www.instagram.com/skicrestedbutte/,website,,,,yes,,
-Cuchara Mountain Park,CO,USA,Mid,1,16,https://cucharamountainpark.org,cucharamountainpark,https://www.instagram.com/cucharamountainpark/,IG search (double-check),,,,yes,,
+Crested Butte Mountain Resort,CO,USA,Major,15,56,https://skicb.com,skicrestedbutte,https://www.instagram.com/skicrestedbutte/,website,,,,yes,100375,check
+Cuchara Mountain Park,CO,USA,Mid,1,16,https://cucharamountainpark.org,cucharamountainpark,https://www.instagram.com/cucharamountainpark/,IG search (double-check),,,,yes,3022,check
 Echo Mountain,CO,USA,Small,2,4,https://echomntn.com,,,not on website,,,,,,
-Eldora,CO,USA,Mid,10,30,https://eldora.com,eldoramtnresort,https://www.instagram.com/eldoramtnresort/,website,,,,yes,,
-Granby Ranch,CO,USA,Mid,6,24,https://granbyranch.com,granbyranch,https://www.instagram.com/granbyranch/,website,,,,yes,,
-Hesperus Ski Area,CO,USA,Small,1,8,https://ski-hesperus.com,skihesperus,https://www.instagram.com/skihesperus/,website (auto),,,,yes,,
-Hoedown Hill,CO,USA,Small,4,2,https://hoedownhill.com,hoedownhill,https://www.instagram.com/hoedownhill/,website (auto),,,,yes,,
+Eldora,CO,USA,Mid,10,30,https://eldora.com,eldoramtnresort,https://www.instagram.com/eldoramtnresort/,website,,,,yes,58411,check
+Granby Ranch,CO,USA,Mid,6,24,https://granbyranch.com,granbyranch,https://www.instagram.com/granbyranch/,website,,,,yes,14684,check
+Hesperus Ski Area,CO,USA,Small,1,8,https://ski-hesperus.com,skihesperus,https://www.instagram.com/skihesperus/,website (auto),,,,yes,2368,yes
+Hoedown Hill,CO,USA,Small,4,2,https://hoedownhill.com,hoedownhill,https://www.instagram.com/hoedownhill/,website (auto),,,,yes,13784,yes
 Howelsen Hill,CO,USA,Small,4,7,https://steamboatsprings.net,,,removed: link was not the ski area,,,,,,
-Kendall Mountain,CO,USA,Small,1,2,https://skikendall.com,kendallmountain,https://www.instagram.com/kendallmountain/,website (auto),,,,yes,,
-Keystone,CO,USA,Major,20,117,https://keystoneresort.com,keystoneresort,https://www.instagram.com/keystoneresort/,manual (Isaac),,,,yes,,
-Lake City Ski Hill,CO,USA,Small,1,2,https://skilakecity.com,skilakecity,https://www.instagram.com/skilakecity/,website (auto),,,,yes,,
+Kendall Mountain,CO,USA,Small,1,2,https://skikendall.com,kendallmountain,https://www.instagram.com/kendallmountain/,website (auto),,,,yes,1464,yes
+Keystone,CO,USA,Major,20,117,https://keystoneresort.com,keystoneresort,https://www.instagram.com/keystoneresort/,manual (Isaac),,,,yes,223689,check
+Lake City Ski Hill,CO,USA,Small,1,2,https://skilakecity.com,skilakecity,https://www.instagram.com/skilakecity/,website (auto),,,,yes,71,check
 Lee's Ski Hill,CO,USA,Small,1,0,https://cityofouray.com,,,removed: link was not the ski area,,,,,,
-Loveland Ski Area,CO,USA,Major,11,53,https://skiloveland.com,lovelandskiarea,https://www.instagram.com/lovelandskiarea/,website,,,,yes,,
-Monarch Mountain,CO,USA,Mid,9,37,https://skimonarch.com,monarchmountain,https://www.instagram.com/monarchmountain/,website,,,,yes,,
-Powderhorn,CO,USA,Mid,5,37,https://powderhorn.com,skipowderhorn,https://www.instagram.com/skipowderhorn/,website,,,,yes,,
-Purgatory Resort,CO,USA,Major,14,68,https://purgatory.ski,skipurg,https://www.instagram.com/skipurg/,IG search,,,,yes,,
-Silverton Mountain,CO,USA,Small,1,1,https://silvertonmountain.com,silvertonmtn,https://www.instagram.com/silvertonmtn/,website (auto),,,,yes,,
-Ski Cooper,CO,USA,Mid,5,32,https://skicooper.com,skicooper,https://www.instagram.com/skicooper/,website,,,,yes,,
-Steamboat Ski Resort,CO,USA,Major,24,118,https://steamboat.com,steamboatresort,https://www.instagram.com/steamboatresort/,website,,,,yes,,
-Sunlight Mountain Resort,CO,USA,Mid,3,37,https://sunlightmtn.com,sunlightmountainresort,https://www.instagram.com/sunlightmountainresort/,IG search (double-check),,,,yes,,
-Telluride Ski Resort,CO,USA,Major,20,101,https://tellurideskiresort.com,tellurideski,https://www.instagram.com/tellurideski/,website,,,,yes,,
-Vail,CO,USA,Major,32,215,https://vail.com,vailmtn,https://www.instagram.com/vailmtn/,website,,,,yes,,
-Winter Park Resort,CO,USA,Major,25,112,https://winterparkresort.com,winterparkresort,https://www.instagram.com/winterparkresort/,website,,,,yes,,
-Wolf Creek Ski Area,CO,USA,Major,11,50,https://wolfcreekski.com,wolfcreekski,https://www.instagram.com/wolfcreekski/,website,,,,yes,,
+Loveland Ski Area,CO,USA,Major,11,53,https://skiloveland.com,lovelandskiarea,https://www.instagram.com/lovelandskiarea/,website,,,,yes,86678,check
+Monarch Mountain,CO,USA,Mid,9,37,https://skimonarch.com,monarchmountain,https://www.instagram.com/monarchmountain/,website,,,,yes,46436,check
+Powderhorn,CO,USA,Mid,5,37,https://powderhorn.com,skipowderhorn,https://www.instagram.com/skipowderhorn/,website,,,,yes,20001,yes
+Purgatory Resort,CO,USA,Major,14,68,https://purgatory.ski,skipurg,https://www.instagram.com/skipurg/,IG search,,,,yes,69746,check
+Silverton Mountain,CO,USA,Small,1,1,https://silvertonmountain.com,silvertonmtn,https://www.instagram.com/silvertonmtn/,website (auto),,,,yes,82677,check
+Ski Cooper,CO,USA,Mid,5,32,https://skicooper.com,skicooper,https://www.instagram.com/skicooper/,website,,,,yes,12722,check
+Steamboat Ski Resort,CO,USA,Major,24,118,https://steamboat.com,steamboatresort,https://www.instagram.com/steamboatresort/,website,,,,yes,178994,check
+Sunlight Mountain Resort,CO,USA,Mid,3,37,https://sunlightmtn.com,sunlightmountainresort,https://www.instagram.com/sunlightmountainresort/,IG search (double-check),,,,yes,16494,yes
+Telluride Ski Resort,CO,USA,Major,20,101,https://tellurideskiresort.com,tellurideski,https://www.instagram.com/tellurideski/,website,,,,yes,217922,check
+Vail,CO,USA,Major,32,215,https://vail.com,vailmtn,https://www.instagram.com/vailmtn/,website,,,,yes,381070,check
+Winter Park Resort,CO,USA,Major,25,112,https://winterparkresort.com,winterparkresort,https://www.instagram.com/winterparkresort/,website,,,,yes,228313,check
+Wolf Creek Ski Area,CO,USA,Major,11,50,https://wolfcreekski.com,wolfcreekski,https://www.instagram.com/wolfcreekski/,website,,,,yes,68001,yes
 Lakeridge,CT,USA,Small,1,0,https://lakeridgect.com,,,removed: link was not the ski area,,,,,,
-Mohawk Mountain,CT,USA,Mid,7,7,https://mohawkmtn.com,mohawkmtn,https://www.instagram.com/mohawkmtn/,IG search,,,,yes,,
-Mount Southington,CT,USA,Mid,7,3,https://mountsouthington.com,mtsouthington,https://www.instagram.com/mtsouthington/,IG search,,,,yes,,
-Powder Ridge Park,CT,USA,Mid,8,5,https://powderridgepark.com,powderridgepark,https://www.instagram.com/powderridgepark/,IG search,,,,yes,,
-Ski Sundown,CT,USA,Mid,5,6,https://skisundown.com,skisundown,https://www.instagram.com/skisundown/,IG search,,,,yes,,
-Crescent Hill,IA,USA,Small,2,3,https://explorecrescenthill.com,hicrescenthill,https://www.instagram.com/hicrescenthill/,website (auto),,,,yes,,
-Seven Oaks,IA,USA,Small,4,2,https://sevenoaksrec.com,sevenoaksrec,https://www.instagram.com/sevenoaksrec/,website (auto),,,,yes,,
-Sleepy Hollow Sports Park,IA,USA,Small,2,1,https://sleepyhollowsportspark.com,sleepyhollowsportsparkdm,https://www.instagram.com/sleepyhollowsportsparkdm/,website (auto),,,,yes,,
-Sundown Mountain,IA,USA,Mid,6,3,https://sundownmtn.com,sundownmountain,https://www.instagram.com/sundownmountain/,IG search,,,,yes,,
+Mohawk Mountain,CT,USA,Mid,7,7,https://mohawkmtn.com,mohawkmtn,https://www.instagram.com/mohawkmtn/,IG search,,,,yes,18693,check
+Mount Southington,CT,USA,Mid,7,3,https://mountsouthington.com,mtsouthington,https://www.instagram.com/mtsouthington/,IG search,,,,yes,14502,check
+Powder Ridge Park,CT,USA,Mid,8,5,https://powderridgepark.com,powderridgepark,https://www.instagram.com/powderridgepark/,IG search,,,,yes,38512,yes
+Ski Sundown,CT,USA,Mid,5,6,https://skisundown.com,skisundown,https://www.instagram.com/skisundown/,IG search,,,,yes,20958,yes
+Crescent Hill,IA,USA,Small,2,3,https://explorecrescenthill.com,hicrescenthill,https://www.instagram.com/hicrescenthill/,website (auto),,,,yes,5651,check
+Seven Oaks,IA,USA,Small,4,2,https://sevenoaksrec.com,sevenoaksrec,https://www.instagram.com/sevenoaksrec/,website (auto),,,,yes,8745,yes
+Sleepy Hollow Sports Park,IA,USA,Small,2,1,https://sleepyhollowsportspark.com,sleepyhollowsportsparkdm,https://www.instagram.com/sleepyhollowsportsparkdm/,website (auto),,,,yes,2242,check
+Sundown Mountain,IA,USA,Mid,6,3,https://sundownmtn.com,sundownmountain,https://www.instagram.com/sundownmountain/,IG search,,,,yes,12352,yes
 Bald Mountain Ski Area,ID,USA,Small,2,7,https://skibaldmountain.com,,,not on website,,,,,,
 Blizzard Mountain,ID,USA,Small,1,6,,,,no website,,,,,,
-Bogus Basin,ID,USA,Major,11,59,https://bogusbasin.org,bogusbasin,https://www.instagram.com/bogusbasin/,website,,,,yes,,
-Brundage Mountain,ID,USA,Mid,6,49,https://brundage.com,brundagemtn,https://www.instagram.com/brundagemtn/,website,,,,yes,,
+Bogus Basin,ID,USA,Major,11,59,https://bogusbasin.org,bogusbasin,https://www.instagram.com/bogusbasin/,website,,,,yes,77300,check
+Brundage Mountain,ID,USA,Mid,6,49,https://brundage.com,brundagemtn,https://www.instagram.com/brundagemtn/,website,,,,yes,34429,check
 Chipmunk Ski Hill,ID,USA,Small,1,1,,,,no website,,,,,,
 Cottonwood Butte,ID,USA,Small,1,4,,,,no website,,,,,,
-Kelly Canyon,ID,USA,Mid,4,24,https://skikelly.com,kellycanyonresort,https://www.instagram.com/kellycanyonresort/,website,,,,yes,,
-Little Ski Hill,ID,USA,Small,1,3,https://littleskihill.org,littleskihill,https://www.instagram.com/littleskihill/,website (auto),,,,yes,,
-Lookout Pass,ID,USA,Mid,5,37,https://skilookout.com,skilookoutpass,https://www.instagram.com/skilookoutpass/,website,,,,yes,,
-Lost Trail Powder Mountain,ID,USA,Mid,8,36,https://losttrail.com,losttrailskiarea,https://www.instagram.com/losttrailskiarea/,website,,,,yes,,
-Magic Mountain,ID,USA,Small,3,9,https://magicmountainresort.com,magicmountainski,https://www.instagram.com/magicmountainski/,website (auto),,,,yes,,
-Pebble Creek,ID,USA,Mid,3,24,https://pebblecreekskiarea.com,pebbleskiarea,https://www.instagram.com/pebbleskiarea/,website,,,,yes,,
-Pomerelle,ID,USA,Mid,3,21,https://pomerelle-mtn.com,pomerellemountain,https://www.instagram.com/pomerellemountain/,IG search,,,,yes,,
-Rotarun Ski Area,ID,USA,Small,2,3,https://rotarun.org,rotarunskiarea,https://www.instagram.com/rotarunskiarea/,website (auto),,,,yes,,
-Schweitzer,ID,USA,Major,10,74,https://schweitzer.com,schweitzer_mountain,https://www.instagram.com/schweitzer_mountain/,website,,,,yes,,
-Silver Mountain Resort,ID,USA,Mid,7,38,https://silvermt.com,silvermountain,https://www.instagram.com/silvermountain/,website,,,,yes,,
+Kelly Canyon,ID,USA,Mid,4,24,https://skikelly.com,kellycanyonresort,https://www.instagram.com/kellycanyonresort/,website,,,,,,NOT FOUND / personal account
+Little Ski Hill,ID,USA,Small,1,3,https://littleskihill.org,littleskihill,https://www.instagram.com/littleskihill/,website (auto),,,,yes,3553,check
+Lookout Pass,ID,USA,Mid,5,37,https://skilookout.com,skilookoutpass,https://www.instagram.com/skilookoutpass/,website,,,,yes,20961,check
+Lost Trail Powder Mountain,ID,USA,Mid,8,36,https://losttrail.com,losttrailskiarea,https://www.instagram.com/losttrailskiarea/,website,,,,yes,22401,check
+Magic Mountain,ID,USA,Small,3,9,https://magicmountainresort.com,magicmountainski,https://www.instagram.com/magicmountainski/,website (auto),,,,yes,3260,yes
+Pebble Creek,ID,USA,Mid,3,24,https://pebblecreekskiarea.com,pebbleskiarea,https://www.instagram.com/pebbleskiarea/,website,,,,yes,13284,yes
+Pomerelle,ID,USA,Mid,3,21,https://pomerelle-mtn.com,pomerellemountain,https://www.instagram.com/pomerellemountain/,IG search,,,,yes,10497,check
+Rotarun Ski Area,ID,USA,Small,2,3,https://rotarun.org,rotarunskiarea,https://www.instagram.com/rotarunskiarea/,website (auto),,,,yes,2982,check
+Schweitzer,ID,USA,Major,10,74,https://schweitzer.com,schweitzer_mountain,https://www.instagram.com/schweitzer_mountain/,website,,,,yes,77510,check
+Silver Mountain Resort,ID,USA,Mid,7,38,https://silvermt.com,silvermountain,https://www.instagram.com/silvermountain/,website,,,,yes,29661,yes
 Snowhaven,ID,USA,Small,3,4,https://grangeville.us,,,not on website,,,,,,
-Soldier Mountain,ID,USA,Mid,3,22,https://soldiermountain.com,soldiermountain,https://www.instagram.com/soldiermountain/,website,,,,yes,,
-Sun Valley,ID,USA,Major,17,92,https://sunvalley.com,sunvalley,https://www.instagram.com/sunvalley/,website,,,,yes,,
-Tamarack Resort,ID,USA,Major,7,58,https://tamarackidaho.com,tamarackresort,https://www.instagram.com/tamarackresort/,website,,,,yes,,
+Soldier Mountain,ID,USA,Mid,3,22,https://soldiermountain.com,soldiermountain,https://www.instagram.com/soldiermountain/,website,,,,yes,9455,yes
+Sun Valley,ID,USA,Major,17,92,https://sunvalley.com,sunvalley,https://www.instagram.com/sunvalley/,website,,,,yes,122041,check
+Tamarack Resort,ID,USA,Major,7,58,https://tamarackidaho.com,tamarackresort,https://www.instagram.com/tamarackresort/,website,,,,yes,47228,yes
 Chestnut Mountain Resort,IL,USA,Mid,8,5,https://chestnutmtn.com,chestnutmtn,https://www.instagram.com/chestnutmtn/,IG search,,,,yes,,
 Four Lakes,IL,USA,Small,4,1,https://fourlakessnowsports.com,fourlakesski,https://www.instagram.com/fourlakesski/,website (auto),,,,yes,,
 Plumtree,IL,USA,Small,1,0,https://golakecarroll.com,,,removed: link was not the ski area,,,,,,
