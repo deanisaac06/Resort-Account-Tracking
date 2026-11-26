@@ -33,16 +33,16 @@ Jackson Hole,jacksonhole,WY,USA,Major,687449,5347,223034,2999,2026-11-25,2026-11
 Keystone,keystoneresort,CO,USA,Major,223773,4569,44048,733,2026-11-25,2026-11-26 12:23 UTC,ok
 Killington,killingtonmtn,VT,USA,Major,218474,4695,76297,2148,2026-11-25,2026-11-26 12:23 UTC,ok
 Kimberley Alpine Resort,kimberleyalpineresort,BC,Canada,Major,17930,2923,15060,107,2026-11-25,2026-11-26 12:23 UTC,ok
-Kirkwood Mountain Resort,kirkwoodmtn,CA,USA,Major,97353,1596,119370,2852,2026-11-25,2026-11-26 12:23 UTC,ok
+Kirkwood Mountain Resort,kirkwoodmtn,CA,USA,Major,97354,1596,119778,2852,2026-11-25,2026-11-26 12:55 UTC,ok
 Lake Louise Ski Area,skilouise,AB,Canada,Major,167163,4367,19771,460,2026-11-25,2026-11-26 12:23 UTC,ok
 Le Massif de Charlevoix,lemassif,QC,Canada,Major,38989,2049,3340,88,2026-11-25,2026-11-26 12:23 UTC,ok
 Loon Mountain,loonmtnresort,NH,USA,Major,71878,3556,15856,532,2026-11-25,2026-11-26 12:23 UTC,ok
 Loveland Ski Area,lovelandskiarea,CO,USA,Major,86741,3275,11556,630,2026-11-23,2026-11-26 12:23 UTC,ok
-Mammoth Mountain,mammothmountain,CA,USA,Major,720156,7464,299400,6009,2026-11-26,2026-11-26 12:23 UTC,ok
+Mammoth Mountain,mammothmountain,CA,USA,Major,720153,7464,299410,6010,2026-11-26,2026-11-26 12:55 UTC,ok
 Mont Tremblant,monttremblant,QC,Canada,Major,146929,3457,42517,934,2026-11-25,2026-11-26 12:23 UTC,ok
 Mont-Sainte-Anne,montsainteanne,QC,Canada,Major,30215,1157,20360,118,2026-11-25,2026-11-26 12:23 UTC,ok
 Mount Snow,mountsnow,VT,USA,Major,101346,1191,31377,1364,2026-11-25,2026-11-26 12:23 UTC,ok
-Mount Washington Alpine Resort,mountwashington,BC,Canada,Major,54404,2705,62988,908,2026-11-25,2026-11-26 12:23 UTC,ok
+Mount Washington Alpine Resort,mountwashington,BC,Canada,Major,54410,2705,63010,908,2026-11-25,2026-11-26 12:55 UTC,ok
 Mountain High,mthighsnow,CA,USA,Major,103444,5263,61459,1830,2026-11-26,2026-11-26 12:23 UTC,ok
 Mt. Bachelor,mtbachelor,OR,USA,Major,165560,3743,33051,448,2026-11-25,2026-11-26 12:23 UTC,ok
 Mt. Brighton,mt.brighton,MI,USA,Major,15722,1081,3471,248,2026-11-25,2026-11-26 12:23 UTC,ok
@@ -53,7 +53,7 @@ Northstar California,northstar_california,CA,USA,Major,135245,2941,29557,1892,20
 Okemo,okemomtn,VT,USA,Major,79785,1096,24882,646,2026-11-25,2026-11-26 12:23 UTC,ok
 Palisades Tahoe,palisadestahoe,CA,USA,Major,275659,4603,114400,3370,2026-11-25,2026-11-26 12:23 UTC,ok
 Panorama Mountain Resort,panoramaresort,BC,Canada,Major,50716,1521,,347,2026-11-24,2026-11-26 12:23 UTC,ok
-Park City Mountain,pcski,UT,USA,Major,208723,3438,83544,2263,2026-11-26,2026-11-26 12:23 UTC,ok
+Park City Mountain,pcski,UT,USA,Major,208729,3438,83555,2306,2026-11-26,2026-11-26 12:55 UTC,ok
 Perfect North Slopes,perfectnorth,IN,USA,Major,57354,627,231434,1348,2026-11-24,2026-11-26 12:23 UTC,ok
 Pine Knob,skipineknob,MI,USA,Major,18759,1416,51149,112,2026-11-26,2026-11-26 12:23 UTC,ok
 Powder Mountain,powdermountain,UT,USA,Major,88417,4192,31054,578,2026-11-24,2026-11-26 12:23 UTC,ok
@@ -85,7 +85,7 @@ Taos Ski Valley,skitaos,NM,USA,Major,87951,2393,42126,1506,2026-11-25,2026-11-26
 Telluride Ski Resort,tellurideski,CO,USA,Major,217961,4930,38555,914,2026-11-25,2026-11-26 12:23 UTC,ok
 Timberline Lodge,timberlinelodge,OR,USA,Major,99684,2133,37337,1138,2026-11-24,2026-11-26 12:23 UTC,ok
 Vail,vailmtn,CO,USA,Major,381024,1355,,1701,2026-11-25,2026-11-26 12:23 UTC,ok
-Whistler Blackcomb,whistlerblackcomb,BC,Canada,Major,441779,3803,40932,1913,2026-11-25,2026-11-26 12:23 UTC,ok
+Whistler Blackcomb,whistlerblackcomb,BC,Canada,Major,441767,3803,41511,1914,2026-11-25,2026-11-26 12:55 UTC,ok
 Whitefish Mountain Resort,skiwhitefish,MT,USA,Major,93747,2585,12352,589,2026-11-26,2026-11-26 12:23 UTC,ok
 Whitewater Ski Resort,whitewatermountainresort,BC,Canada,Major,44537,1820,17563,320,2026-11-23,2026-11-26 12:23 UTC,ok
 Wilmot Mountain,wilmotmtn,WI,USA,Major,15273,943,,114,2026-11-25,2026-11-26 12:23 UTC,ok
@@ -214,7 +214,7 @@ Massif du Sud,massifdusud,QC,Canada,Mid,10808,1500,2716,48,2026-11-05,2026-11-26
 McCauley Mountain,mccauley_mtn,NY,USA,Mid,2313,107,,248,2023-06-26,2026-11-26 08:23 UTC,ok
 McIntyre Ski Area,mcintyreskiarea,NH,USA,Mid,5123,1277,,42,2026-11-25,2026-11-26 08:23 UTC,ok
 Middlebury Snow Bowl,middsnowbowl,VT,USA,Mid,9097,1131,8718,47,2026-11-24,2026-11-26 08:23 UTC,ok
-Mission Ridge,missionridge,WA,USA,Mid,31595,5270,29355,740,2026-11-26,2026-11-26 12:23 UTC,ok
+Mission Ridge,missionridge,WA,USA,Mid,31595,5270,29366,740,2026-11-26,2026-11-26 12:55 UTC,ok
 Mohawk Mountain,mohawkmtn,CT,USA,Mid,18699,1382,3958,73,2026-11-25,2026-11-26 08:23 UTC,ok
 Monarch Mountain,monarchmountain,CO,USA,Mid,47024,2234,24938,686,2026-11-25,2026-11-26 08:23 UTC,ok
 Mont Cascades,mont_cascades,QC,Canada,Mid,5796,951,9553,24,2026-11-25,2026-11-26 08:23 UTC,ok
